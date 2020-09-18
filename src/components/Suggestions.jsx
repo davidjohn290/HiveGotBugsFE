@@ -15,7 +15,7 @@ class Suggestions extends React.Component {
           <form action="">
             <label htmlFor="">Enter Your Suggestion Here:</label>
             <input type="text" id="textBox"/>
-            <button class="button-submit">
+            <button className="button-submit">
               <div className="hexagon-button">Submit</div>
             </button>
           </form>

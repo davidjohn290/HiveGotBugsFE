@@ -15,7 +15,7 @@ class SingleProblem extends React.Component {
         </div>
         <div className="header">
           <Title />
-        </div>
+        </div> 
         <div className="problemsContainer" id="singleProblem">
           <h2>Solve A Problem</h2>
 
