@@ -6,6 +6,7 @@ import Title from "../components/header/Title";
 // <Section>
 export const StyledTitle = styled(Title)`
   text-align: center;
+  margin: auto;
   max-width: 95%;
 `;
 
