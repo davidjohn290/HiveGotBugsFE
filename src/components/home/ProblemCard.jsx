@@ -7,21 +7,31 @@ function ProblemCard({ problem, className }) {
   const timeDifference = Date.now() - new Date(problem.created_at);
   const timeString = formatTimeString(timeDifference);
   const difficultyRef = ["Easy", "Medium", "Hard"];
+  const solved = problem.solved ? "Solved" : "Unsolved";
+  const difficulty = difficultyRef[problem.difficulty];
 
   return (
     <li className={className}>
+      <p>
+        <span className="negative_hexagon"></span>
+        {`${solved} ${difficulty} Tech: ${problem.tech} | Posted by: ${
+          problem.username
+        } ${timeString} ${problem.title} ${problem.body.slice(0, 100)}...`}
+      </p>
+      {/* <img src={hexagonRotated} alt="Hexagon background" />
       <article>
-        <p>
-          Posted by {problem.username} {""} {timeString}
-        </p>
-        <p>Difficulty: {difficultyRef[problem.difficulty]}</p>
-        <p>{problem.solved ? "Solved" : "Unsolved"}</p>
+        <p
+          className={"header"}
+        >{` ${solved} | ${difficulty} | Tech: ${problem.tech}`}</p>
+        <p
+          className={"header"}
+        >{`Posted by: ${problem.username} ${timeString}`}</p>
         <StyledLink to={`/problem/${problem.problem_id}`}>
           <h2>{capitalizeFirstLetter(problem.title)}</h2>
         </StyledLink>
 
         {problem.body.length > 100 ? (
-          <p>
+          <p className={"body"}>
             {problem.body.slice(0, 100) + "... "}
 
             <StyledLink to={`/problem/${problem.problem_id}`}>
@@ -31,7 +41,7 @@ function ProblemCard({ problem, className }) {
         ) : (
           problem.body
         )}
-      </article>
+      </article> */}
     </li>
   );
 }

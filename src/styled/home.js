@@ -36,38 +36,123 @@ export const StyledFilterProblemsDifficulty = styled(FilterProblemsDifficulty)`
 
 // <ul>
 export const StyledProblemsList = styled(ProblemsList)`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   padding: 0px;
 `;
 
 // <li>
 export const StyledProblemCard = styled(ProblemCard)`
   list-style-type: none;
-  text-align: center;
+  padding-left: 1em;
+  padding-right: 1em;
+  width: 280px;
+  height: 280px;
 
-      position: relative;
-      width: 250px;
-      height: 144.34px;
-      background-color: #a6cba0;
-      margin: 72.17px 0;
-  
-
-:before,
-:after {
-      content: "";
-      display: block;
-      position: absolute;
-      width: 0;
-      border-left: 125px solid transparent;
-      border-right: 125px solid transparent;
-    }
-:before {
-      bottom: 100%;
-      border-bottom: 72.17px solid #a6cba0;
-    }
-:after {
-      top: 100%;
-      width: 0;
-      border-top: 72.17px solid #a6cba0;
-    }
+  p {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    overflow: hidden;
+    background-color: #da995c;
+    color: rgb(39, 44, 53);
+    margin: 0px;
+    padding: 0px;
   }
+
+  /* Make a hexagonal container using negative space */
+  .negative_hexagon:before,
+  .negative_hexagon:after {
+    content: "";
+    background-color: #272c35;
+    shape-margin: 1em;
+  }
+  .negative_hexagon:before {
+    float: left;
+    width: 50%;
+    height: 100%;
+    shape-outside: polygon(
+      51.48% 85.01%,
+      2.98% 43%,
+      51.48% 0.99%,
+      100% 0.99%,
+      100% 0%,
+      0% 0%,
+      0% 100%,
+      100% 100%,
+      100% 85.01%,
+      51.48% 85.01%
+    );
+    clip-path: polygon(
+      51.48% 85.01%,
+      2.98% 43%,
+      51.48% 1%,
+      101% 1%,
+      101% -2%,
+      -1% -2%,
+      -1% 102%,
+      101% 102%,
+      101% 85.01%,
+      51.48% 85.01%
+    );
+  }
+  .negative_hexagon:after {
+    float: right;
+    width: 50%;
+    height: 100%;
+    shape-outside: polygon(
+      0% 0%,
+      0% 0.99%,
+      48.52% 0.99%,
+      97.02% 43%,
+      48.52% 85.01%,
+      0% 85.01%,
+      0% 100%,
+      100% 100%,
+      100% 0%,
+      0% 0%
+    );
+    clip-path: polygon(
+      0% -2%,
+      0% 1%,
+      48.52% 1%,
+      97.02% 43%,
+      48.52% 85.01%,
+      0% 85.01%,
+      0% 102%,
+      101% 102%,
+      101% -2%,
+      0% -2%
+    );
+  }
+  /* flex-basis: 0;
+  position: relative;
+  display: block;
+  list-style-type: none;
+  text-align: center;
+  width: 100%;
+
+  img {
+    display: block;
+    width: 328px;
+  }
+
+  article {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -60%);
+    width: 100%;
+  }
+
+  p.header {
+    width: 66%;
+    margin: auto;
+    font-size: 11pt;
+  }
+  p,
+  h2 {
+    margin: 0.5em;
+  } */
 `;
