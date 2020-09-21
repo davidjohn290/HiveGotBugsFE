@@ -1,15 +1,15 @@
 import React, { Component } from "react";
 import BugChart from "./BugChart";
 import { getUserByUsername } from "../../utils/api";
-
+import { UserContext } from "../../UserContext";
 import { StyledUserCard } from "../../styled/dashboard";
 
-// import "../dashboard.css";
-
 class Dashboard extends Component {
+  static contextType = UserContext;
+
   state = {
     isLoading: true,
-    username: "Destiny82",
+    username: this.context.username,
     avatar_url: "",
     role: "user",
     memberSince: "",
@@ -20,9 +20,15 @@ class Dashboard extends Component {
     github_url: "",
   };
 
-  componentDidMount() {
-    const { username } = this.state;
-    getUserByUsername("Destiny82").then((user) => {
+  componentDidUpdate(prevProps, prevState) {
+    const { username } = this.context;
+    if (prevState.username !== username) {
+      this.LoginUser(username);
+    }
+  }
+
+  LoginUser = (username) => {
+    getUserByUsername(username).then((user) => {
       this.setState({
         avatar_url: user.avatar_url,
         role: user.role,
@@ -33,9 +39,10 @@ class Dashboard extends Component {
         skills: [user.skill1, user.skill2, user.skill3],
         github_url: user.github_url,
         isLoading: false,
+        username: this.context.username,
       });
     });
-  }
+  };
 
   //be able to edit profile!!!!
 
@@ -49,11 +56,22 @@ class Dashboard extends Component {
       skills,
       github_url,
       username,
+      role,
     } = this.state;
-    if (isLoading) return <p>Dashboard loading...</p>;
+
+    if (isLoading) return <p>Please login to see your dashboard</p>;
     return (
       <div>
-        <StyledUserCard user={username} />
+        <StyledUserCard
+          username={username}
+          memberSince={memberSince}
+          avatar_url={avatar_url}
+          bugPoints={bugPoints}
+          description={description}
+          skills={skills}
+          github_url={github_url}
+          role={role}
+        />
         <BugChart />
       </div>
     );
