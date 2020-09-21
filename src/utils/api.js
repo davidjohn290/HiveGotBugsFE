@@ -31,8 +31,5 @@ export const makeUserAMentor = (username, { bio, skills, github }) => {
       skill3: skills[2],
       github_url: `www.github.com/${github}`,
     })
-    .then(({ data: user }) => {
-      return user;
-    })
-    .catch((err) => console.log(err));
+    .then(({ data: user }) => user);
 };

@@ -17,8 +17,10 @@ class MentorForm extends Component {
   onSubmit = (e) => {
     e.preventDefault();
     const { bio, skills, github, username } = this.state;
-    makeUserAMentor(username, { bio, skills, github });
-    this.setState({ submitted: true, bio: "", skills: [], github: "" });
+    if (bio !== "" && skills.length !== 0 && github !== "") {
+      makeUserAMentor(username, { bio, skills, github });
+      this.setState({ submitted: true, bio: "", skills: [], github: "" });
+    }
   };
 
   onInput = ({ target: { value, name } }) => {
@@ -28,7 +30,10 @@ class MentorForm extends Component {
       const skill3 = value.split(",")[2];
       this.setState({ skills: [skill1, skill2, skill3] });
     } else {
-      this.setState({ [name]: value });
+      const onlyUsername = /(.com|www.)/.test(value);
+      if (!onlyUsername) {
+        this.setState({ [name]: value });
+      }
     }
   };
 
