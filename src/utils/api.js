@@ -17,6 +17,12 @@ export const getProblems = (sort, solved, difficulty, tech) => {
     .then(({ data: { problems } }) => problems);
 };
 
+export const getSingleProblem = (id) => {
+  return axiosInstance
+    .get(`/problems/${id}`)
+    .then(({ data: { problem } }) => problem);
+};
+
 export const getTech = () => {
   return axiosInstance.get("/tech").then(({ data: { tech } }) => tech);
 };

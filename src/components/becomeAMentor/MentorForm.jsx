@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { makeUserAMentor } from "/Users/davidspc/Desktop/Northcoders_new/Project/hive-got-bugs-fe/src/utils/api.js";
+import { makeUserAMentor } from "../../utils/api";
 
 class MentorForm extends Component {
   state = {

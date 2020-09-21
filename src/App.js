@@ -11,24 +11,28 @@ class App extends Component {
   state = { username: null };
 
   toggleLogin = () => {
-    this.setState(({ user }) => {
-      if (user) return { user: null };
-      else return { user: "Destiny82" };
+    this.setState(({ username }) => {
+      if (username) return { username: null };
+      else return { username: "Destiny82" };
     });
   };
 
   render() {
     // const err = { type: "general404", msg: "Page not found!", status: 404 };
-    const { user } = this.state;
 
     return (
       <div className="app">
-        <UserContext.Provider value={{ user, toggleLogin: this.toggleLogin }}>
+        <UserContext.Provider
+          value={{
+            username: this.state.username,
+            toggleLogin: this.toggleLogin,
+          }}
+        >
           <Header />
           <Router>
             <StyledHome path="/" />
+            <SingleProblem path="/problem/:problem_id" />
             <StyledMentorForm path="/become-a-mentor" />
-            <SingleProblem path="/problem" />
             <Dashboard path="/dashboard" />
           </Router>
         </UserContext.Provider>
