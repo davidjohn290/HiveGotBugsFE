@@ -1,16 +1,21 @@
 import React, { Component } from "react";
-//import "/Users/davidspc/Desktop/Northcoders_new/Project/hive-got-bugs-fe/src/css/mentorForm.css";
+import { makeUserAMentor } from "/Users/davidspc/Desktop/Northcoders_new/Project/hive-got-bugs-fe/src/utils/api.js";
 
 class MentorForm extends Component {
   state = {
     bio: "",
     skills: [],
     github: "",
+    username: this.context,
+    submitted: false,
   };
 
   onSubmit = (e) => {
     e.preventDefault();
-    console.log(this.state);
+    const { bio, skills, github, username } = this.state;
+    this.setState({ submitted: true, bio: "", skills: [], github: "" });
+
+    makeUserAMentor(username, { bio, skills, github });
   };
 
   onInput = ({ target: { value, name } }) => {
@@ -26,6 +31,7 @@ class MentorForm extends Component {
 
   render() {
     const { className } = this.props;
+    const { submitted } = this.state;
     return (
       <section className={className}>
         <header>
@@ -35,35 +41,39 @@ class MentorForm extends Component {
             mentor. Fill out your mentor profile below!
           </p>
         </header>
-        <form className="form" onSubmit={this.onSubmit}>
-          <label>Bio:</label>
-          <textarea
-            name="bio"
-            cols="25"
-            rows="8"
-            placeholder="Write here..."
-            onChange={this.onInput}
-          ></textarea>
-          <label>
-            Skills:
-            <input
-              type="text"
-              name="skills"
-              placeholder="Split with commas e.g Java, React"
-              onChange={this.onInput}
-            />
-          </label>
-          <label>
-            Github Username:
-            <input
-              type="text"
-              name="github"
+        {submitted ? (
+          <form className="form" onSubmit={this.onSubmit}>
+            <label>Bio:</label>
+            <textarea
+              name="bio"
+              cols="25"
+              rows="8"
               placeholder="Write here..."
               onChange={this.onInput}
-            />
-          </label>
-          <button type="submit">Submit</button>
-        </form>
+            ></textarea>
+            <label>
+              Skills:
+              <input
+                type="text"
+                name="skills"
+                placeholder="Split with commas e.g Java, React"
+                onChange={this.onInput}
+              />
+            </label>
+            <label>
+              Github Username:
+              <input
+                type="text"
+                name="github"
+                placeholder="Write here..."
+                onChange={this.onInput}
+              />
+            </label>
+            <button type="submit">Submit</button>
+          </form>
+        ) : (
+          <p>Your request has been submitted!</p>
+        )}
       </section>
     );
   }

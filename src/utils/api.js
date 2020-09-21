@@ -20,3 +20,17 @@ export const getProblems = (sort, solved, difficulty, tech) => {
 export const getTech = () => {
   return axiosInstance.get("/tech").then(({ data: { tech } }) => tech);
 };
+
+export const makeUserAMentor = (username, { bio, skills, github }) => {
+  return axiosInstance
+    .patch(`/users/${username}`, {
+      description: bio,
+      skills1: skills[0],
+      skills2: skills[1],
+      skills3: skills[2],
+      github_url: github,
+    })
+    .then(({ data: user }) => {
+      return user;
+    });
+};

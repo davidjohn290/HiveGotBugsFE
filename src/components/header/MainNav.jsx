@@ -3,6 +3,7 @@ import { StyledHexButton } from "../../styled/lib";
 import Search from "./Search";
 import { StyledMenuNav } from "../../styled/header";
 import Icon from "./Icon";
+import Login from "./Login";
 
 class MainNav extends Component {
   state = { searchIsVisible: false, menuIsVisible: false };
@@ -36,6 +37,9 @@ class MainNav extends Component {
               <StyledHexButton as="button" onClick={this.toggleSearch}>
                 Search
               </StyledHexButton>
+            </li>
+            <li>
+              <Login />
             </li>
           </ul>
         </nav>
