@@ -6,16 +6,19 @@ class MentorForm extends Component {
     bio: "",
     skills: [],
     github: "",
-    username: this.context,
+    username: "",
     submitted: false,
   };
+
+  componentDidMount() {
+    this.setState({ username: this.context.user });
+  }
 
   onSubmit = (e) => {
     e.preventDefault();
     const { bio, skills, github, username } = this.state;
-    this.setState({ submitted: true, bio: "", skills: [], github: "" });
-
     makeUserAMentor(username, { bio, skills, github });
+    this.setState({ submitted: true, bio: "", skills: [], github: "" });
   };
 
   onInput = ({ target: { value, name } }) => {
@@ -41,7 +44,7 @@ class MentorForm extends Component {
             mentor. Fill out your mentor profile below!
           </p>
         </header>
-        {submitted ? (
+        {!submitted ? (
           <form className="form" onSubmit={this.onSubmit}>
             <label>Bio:</label>
             <textarea
@@ -49,6 +52,7 @@ class MentorForm extends Component {
               cols="25"
               rows="8"
               placeholder="Write here..."
+              required
               onChange={this.onInput}
             ></textarea>
             <label>
@@ -57,6 +61,7 @@ class MentorForm extends Component {
                 type="text"
                 name="skills"
                 placeholder="Split with commas e.g Java, React"
+                required
                 onChange={this.onInput}
               />
             </label>
@@ -66,6 +71,7 @@ class MentorForm extends Component {
                 type="text"
                 name="github"
                 placeholder="Write here..."
+                required
                 onChange={this.onInput}
               />
             </label>

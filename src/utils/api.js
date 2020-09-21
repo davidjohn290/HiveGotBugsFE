@@ -24,13 +24,15 @@ export const getTech = () => {
 export const makeUserAMentor = (username, { bio, skills, github }) => {
   return axiosInstance
     .patch(`/users/${username}`, {
+      role: "mentor",
       description: bio,
-      skills1: skills[0],
-      skills2: skills[1],
-      skills3: skills[2],
-      github_url: github,
+      skill1: skills[0],
+      skill2: skills[1],
+      skill3: skills[2],
+      github_url: `www.github.com/${github}`,
     })
     .then(({ data: user }) => {
       return user;
-    });
+    })
+    .catch((err) => console.log(err));
 };
