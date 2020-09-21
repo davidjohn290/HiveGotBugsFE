@@ -37,6 +37,8 @@ class Dashboard extends Component {
     });
   }
 
+  //be able to edit profile!!!!
+
   render() {
     const {
       isLoading,
