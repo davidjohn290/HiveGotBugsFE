@@ -33,3 +33,9 @@ export const makeUserAMentor = (username, { bio, skills, github }) => {
     })
     .then(({ data: user }) => user);
 };
+
+export const getUserByUsername = (username) => {
+  return axiosInstance.get(`/users/${username}`).then(({ data: { user } }) => {
+    return user;
+  });
+};
