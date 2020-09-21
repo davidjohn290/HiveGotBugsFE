@@ -1,12 +1,18 @@
 import React from "react";
 import { StyledErrorPage, StyledLoader } from "../../styled/lib";
-import SuggestionsList from "./SuggestionsList";
-import SingleProblemCard from "./SingleProblemCard";
-import AddSuggestionForm from "./AddSuggestionForm";
+import { StyledSuggestionsList } from "../../styled/singleProblem";
+import { StyledSingleProblemCard } from "../../styled/singleProblem";
+
 import * as api from "../../utils/api";
+import { StyledEditProblemForm } from "../../styled/singleProblem";
 
 class SingleProblem extends React.Component {
-  state = { problem: null, isLoading: true, err: null };
+  state = {
+    problem: null,
+    editFormVisible: false,
+    isLoading: true,
+    err: null,
+  };
 
   componentDidMount() {
     const { problem_id } = this.props;
@@ -18,14 +24,13 @@ class SingleProblem extends React.Component {
     api
       .getSingleProblem(problem_id)
       .then((problem) => {
-        console.log(problem);
         this.setState({ problem, isLoading: false });
       })
       .catch(({ response }) => {
         this.setState({
           isLoading: false,
           // err: {
-          //   type: "fetchProblems",
+          //   type: "fetchSingleProblem",
           //   msg: response.data.msg,
           //   status: response.status,
           // },
@@ -33,18 +38,33 @@ class SingleProblem extends React.Component {
       });
   }
 
+  toggleEditForm = () => {
+    this.setState(({ editFormVisible }) => {
+      return { editFormVisible: !editFormVisible };
+    });
+  };
+
+  handleDelete = () => {
+    console.log("problem delete function called");
+  };
+
   render() {
-    const { isLoading, err, problem } = this.state;
-    const { className } = this.props;
+    const { isLoading, err, problem, editFormVisible } = this.state;
+    const { className, problem_id } = this.props;
 
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
 
     return (
       <main className={className}>
-        <SingleProblemCard problem={problem} />
-        <AddSuggestionForm />
-        <SuggestionsList />
+        <StyledSingleProblemCard
+          problem={problem}
+          toggleEditForm={this.toggleEditForm}
+          handleDelete={this.handleDelete}
+        />
+        {editFormVisible && <StyledEditProblemForm />}
+
+        <StyledSuggestionsList problem={problem} problem_id={problem_id} />
       </main>
     );
   }

@@ -39,3 +39,17 @@ export const makeUserAMentor = (username, { bio, skills, github }) => {
     })
     .then(({ data: user }) => user);
 };
+
+export const getSuggestions = (problem_id) => {
+  return axiosInstance
+    .get(`/problems/${problem_id}/suggestions`)
+    .then(({ data: { suggestions } }) => suggestions);
+};
+
+export const deleteSuggestion = (suggestion_id) => {
+  return axiosInstance.delete(`/suggestions/${suggestion_id}/`);
+};
+
+export const editSuggestion = (suggestion_id, body) => {
+  return axiosInstance.patch(`/suggestions/${suggestion_id}/`);
+};
