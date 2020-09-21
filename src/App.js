@@ -3,9 +3,9 @@ import { Router } from "@reach/router";
 import { StyledHome } from "./styled/home";
 import SingleProblem from "./components/singleProblem/SingleProblem";
 import Header from "./components/header/Header";
-import MentorForm from "./components/becomeAMentor/MentorForm";
 import Dashboard from "./components/dashboard/Dashboard";
 import { UserContext } from "./UserContext";
+import { StyledMentorForm } from "./styled/mentor";
 
 class App extends Component {
   state = { username: null };
@@ -29,8 +29,8 @@ class App extends Component {
           <Header />
           <Router>
             <StyledHome path="/" />
-            <MentorForm path="/become-a-mentor" />
             <SingleProblem path="/problem/:problem_id" />
+            <StyledMentorForm path="/become-a-mentor" />
             <Dashboard path="/dashboard" />
           </Router>
         </UserContext.Provider>
