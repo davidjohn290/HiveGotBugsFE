@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import { StyledHome } from "./styled/home";
-import SingleProblem from "./components/singleProblem/SingleProblem";
+import { StyledSingleProblem } from "./styled/singleProblem";
 import Header from "./components/header/Header";
 import Dashboard from "./components/dashboard/Dashboard";
 import { UserContext } from "./UserContext";
@@ -31,7 +31,7 @@ class App extends Component {
           <Header />
           <Router>
             <StyledHome path="/" />
-            <SingleProblem path="/problem/:problem_id" />
+            <StyledSingleProblem path="/problem/:problem_id" />
             <StyledMentorForm path="/become-a-mentor" />
             <Dashboard path="/dashboard" />
           </Router>
