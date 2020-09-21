@@ -8,9 +8,9 @@ import { Router } from "@reach/router";
 // import "./css/suggestionCard.css";
 // import "./css/button.css";
 import { StyledHome } from "./styled/home";
-import SingleProblem from "./components/SingleProblem";
+import SingleProblem from "./components/singleProblem/SingleProblem";
 import Header from "./components/header/Header";
-import MentorForm from "./components/MentorForm";
+import MentorForm from "./components/becomeAMentor/MentorForm";
 import Dashboard from "./components/dashboard/Dashboard";
 
 function App() {

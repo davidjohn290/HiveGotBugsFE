@@ -24,17 +24,38 @@ class Home extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
-    const { selectedSort } = this.state;
+    const { selectedSort, selectedDifficulty, selectedTech } = this.state;
     const isSolved = false;
     if (prevState.selectedSort !== selectedSort) {
-      this.fetchProblems(selectedSort, isSolved);
+      this.fetchProblems(
+        selectedSort,
+        isSolved,
+        selectedDifficulty,
+        selectedTech
+      );
+    }
+    if (prevState.selectedDifficulty !== selectedDifficulty) {
+      this.fetchProblems(
+        selectedSort,
+        isSolved,
+        selectedDifficulty,
+        selectedTech
+      );
+    }
+    if (prevState.selectedTech !== selectedTech) {
+      this.fetchProblems(
+        selectedSort,
+        isSolved,
+        selectedDifficulty,
+        selectedTech
+      );
     }
   }
 
-  fetchProblems(selectedSort, isSolved) {
+  fetchProblems(selectedSort, isSolved, selectedDifficulty, selectedTech) {
     this.setState({ isLoading: true });
     api
-      .getProblems(selectedSort, isSolved)
+      .getProblems(selectedSort, isSolved, selectedDifficulty, selectedTech)
       .then((problems) => {
         this.setState({ problems, isLoading: false });
       })
@@ -62,7 +83,9 @@ class Home extends Component {
 
   handleDifficultyChange = (event) => {
     const { value } = event.target;
-    this.setState({ selectedDifficulty: value });
+    if (value === "easy") this.setState({ selectedDifficulty: 0 });
+    if (value === "medium") this.setState({ selectedDifficulty: 1 });
+    if (value === "hard") this.setState({ selectedDifficulty: 2 });
   };
 
   render() {
@@ -76,6 +99,7 @@ class Home extends Component {
     } = this.state;
     const { className } = this.props;
     if (err) return <StyledErrorPage {...err} />;
+    if (isLoading) return <StyledLoader />;
 
     return (
       <main className={className}>
@@ -92,11 +116,7 @@ class Home extends Component {
           handleDifficultyChange={this.handleDifficultyChange}
           selectedDifficulty={selectedDifficulty}
         />
-        {isLoading ? (
-          <StyledLoader />
-        ) : (
-          <StyledProblemsList problems={problems} />
-        )}
+        <StyledProblemsList problems={problems} />
       </main>
     );
   }
