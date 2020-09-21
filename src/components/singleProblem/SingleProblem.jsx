@@ -2,10 +2,9 @@ import React from "react";
 import { StyledErrorPage, StyledLoader } from "../../styled/lib";
 import { StyledSuggestionsList } from "../../styled/singleProblem";
 import { StyledSingleProblemCard } from "../../styled/singleProblem";
-import { StyledAddSuggestionForm } from "../../styled/singleProblem";
+
 import * as api from "../../utils/api";
 import { StyledEditProblemForm } from "../../styled/singleProblem";
-import { UserContext } from "../../UserContext";
 
 class SingleProblem extends React.Component {
   state = {
@@ -14,8 +13,6 @@ class SingleProblem extends React.Component {
     isLoading: true,
     err: null,
   };
-
-  static contextType = UserContext;
 
   componentDidMount() {
     const { problem_id } = this.props;
@@ -27,14 +24,13 @@ class SingleProblem extends React.Component {
     api
       .getSingleProblem(problem_id)
       .then((problem) => {
-        console.log(problem);
         this.setState({ problem, isLoading: false });
       })
       .catch(({ response }) => {
         this.setState({
           isLoading: false,
           // err: {
-          //   type: "fetchProblems",
+          //   type: "fetchSingleProblem",
           //   msg: response.data.msg,
           //   status: response.status,
           // },
@@ -54,8 +50,7 @@ class SingleProblem extends React.Component {
 
   render() {
     const { isLoading, err, problem, editFormVisible } = this.state;
-    const { className } = this.props;
-    const { username } = this.context;
+    const { className, problem_id } = this.props;
 
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
@@ -68,8 +63,8 @@ class SingleProblem extends React.Component {
           handleDelete={this.handleDelete}
         />
         {editFormVisible && <StyledEditProblemForm />}
-        {username && <StyledAddSuggestionForm />}
-        <StyledSuggestionsList />
+
+        <StyledSuggestionsList problem={problem} problem_id={problem_id} />
       </main>
     );
   }
