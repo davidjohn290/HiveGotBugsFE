@@ -5,9 +5,9 @@ import { StyledHexButton } from "../../styled/lib";
 const Login = ({ className }) => {
   return (
     <UserContext.Consumer>
-      {({ user, toggleLogin }) => (
+      {({ username, toggleLogin }) => (
         <StyledHexButton as="button" onClick={toggleLogin}>
-          {user ? "Log out" : "Log in"}
+          {username ? "Log out" : "Log in"}
         </StyledHexButton>
       )}
     </UserContext.Consumer>

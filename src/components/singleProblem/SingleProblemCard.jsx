@@ -1,4 +1,3 @@
-// To do: refactor as class
 // Get access to context`
 // Get the single problem from api here rather than in parent compoent
 // Add this.showEditProblem function(but don't write functionality yet)
@@ -9,8 +8,11 @@ import React, { Component } from "react";
 import { formatTimeString } from "../../utils/time";
 import { capitalizeFirstLetter } from "../../utils/capitalize";
 import { StyledHexButton } from "../../styled/lib";
+import { UserContext } from "../../UserContext";
 
 class SingleProblemCard extends Component {
+  static contextType = UserContext;
+
   render() {
     const { username } = this.context;
     const { problem } = this.props;

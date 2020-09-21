@@ -19,12 +19,14 @@ class App extends Component {
 
   render() {
     // const err = { type: "general404", msg: "Page not found!", status: 404 };
-    const { username } = this.state;
 
     return (
       <div className="app">
         <UserContext.Provider
-          value={{ username, toggleLogin: this.toggleLogin }}
+          value={{
+            username: this.state.username,
+            toggleLogin: this.toggleLogin,
+          }}
         >
           <Header />
           <Router>
