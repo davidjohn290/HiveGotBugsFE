@@ -98,6 +98,7 @@ class Home extends Component {
       err,
     } = this.state;
     const { className } = this.props;
+
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
 

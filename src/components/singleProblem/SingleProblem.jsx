@@ -1,37 +1,51 @@
 import React from "react";
-
-// import Title from "./Title";
-// import Icon from "./Icon";
-import Suggestions from "./Suggestions";
+import { StyledErrorPage, StyledLoader } from "../../styled/lib";
+import SuggestionsList from "./SuggestionsList";
+import SingleProblemCard from "./SingleProblemCard";
+import AddSuggestionForm from "./AddSuggestionForm";
+import * as api from "../../utils/api";
 
 class SingleProblem extends React.Component {
-  state = {};
+  state = { problem: null, isLoading: true, err: null };
+
+  componentDidMount() {
+    const { problem_id } = this.props;
+    this.fetchSingleProblem(problem_id);
+  }
+
+  fetchSingleProblem(problem_id) {
+    this.setState({ isLoading: true });
+    api
+      .getSingleProblem(problem_id)
+      .then((problem) => {
+        console.log(problem);
+        this.setState({ problem, isLoading: false });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          // err: {
+          //   type: "fetchProblems",
+          //   msg: response.data.msg,
+          //   status: response.status,
+          // },
+        });
+      });
+  }
 
   render() {
+    const { isLoading, err, problem } = this.state;
+    const { className } = this.props;
+
+    if (err) return <StyledErrorPage {...err} />;
+    if (isLoading) return <StyledLoader />;
+
     return (
-      <div className="singleProblemContainer">
-        <div className="iconNav">{/* <Icon /> */}</div>
-        <div className="header">{/* <Title /> */}</div>
-        <div className="problemsContainer" id="singleProblem">
-          <h2>Solve A Problem</h2>
-
-          <h4>Problem Title</h4>
-          <p>Posted By | Posted When</p>
-          <p>Difficulty Rating | Language</p>
-          <p>
-            Lorem ipsum dolor sit amet, consectetur adipisicing elit.
-            Voluptatibus explicabo recusandae itaque corrupti porro, molestiae
-            dignissimos distinctio quidem odio quam perferendis consectetur
-            atque rerum tenetur modi! Nisi voluptas sequi vitae! Lorem ipsum
-            dolor sit amet, consectetur adipisicing elit. Voluptatibus explicabo
-            recusandae itaque corrupti porro, molestiae dignissimos distinctio
-            quidem odio quam perferendis consectetur atque rerum tenetur modi!
-            Nisi voluptas sequi vitae!
-          </p>
-
-          <Suggestions />
-        </div>
-      </div>
+      <main className={className}>
+        <SingleProblemCard problem={problem} />
+        <AddSuggestionForm />
+        <SuggestionsList />
+      </main>
     );
   }
 }
