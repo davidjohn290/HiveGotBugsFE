@@ -29,22 +29,6 @@ class SingleProblem extends React.Component {
             Nisi voluptas sequi vitae!
           </p>
 
-          <div className="difficultyVote">
-            <h4>Vote On Difficulty:</h4>
-
-            <div className="difficultyButtons">
-              <button className="button" id="easy">
-                Easy
-              </button>
-              <button className="button" id="medium">
-                Medium
-              </button>
-              <button className="button" id="hard">
-                Hard
-              </button>
-            </div>
-          </div>
-
           <Suggestions />
         </div>
       </div>

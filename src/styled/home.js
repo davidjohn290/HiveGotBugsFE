@@ -49,16 +49,26 @@ export const StyledProblemCard = styled(ProblemCard)`
   padding-right: 1em;
   width: 280px;
   height: 280px;
+  text-align: center;
 
-  p {
+  article {
     width: 100%;
     height: 100%;
-    text-align: center;
+  }
+
+  .content {
+    width: 100%;
+    height: 100%;
     overflow: hidden;
     background-color: #da995c;
     color: rgb(39, 44, 53);
     margin: 0px;
     padding: 0px;
+    font-size: 10pt;
+  }
+
+  h2 {
+    margin: 0.1em;
   }
 
   /* Make a hexagonal container using negative space */
@@ -66,7 +76,7 @@ export const StyledProblemCard = styled(ProblemCard)`
   .negative_hexagon:after {
     content: "";
     background-color: #272c35;
-    shape-margin: 1em;
+    shape-margin: 0.3em;
   }
   .negative_hexagon:before {
     float: left;

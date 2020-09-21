@@ -1,19 +1,22 @@
 import React, { Component } from "react";
+import * as api from "../../utils/api";
 
 class FilterProblemsTech extends Component {
-  state = { techList: ["tech1", "tech2", "tech3"] };
+  state = { tech: [] };
 
   componentDidMount() {
-    this.fetchTechList();
+    this.fetchTech();
   }
 
-  fetchTechList() {
-    // set state with list of tech
+  fetchTech() {
+    api.getTech().then((tech) => {
+      this.setState({ tech });
+    });
   }
 
   render() {
     const { handleTechChange, selectedTech, className } = this.props;
-    const { techList } = this.state;
+    const { tech } = this.state;
 
     return (
       <section className={className}>
@@ -25,10 +28,10 @@ class FilterProblemsTech extends Component {
           onChange={handleTechChange}
         >
           <option value="">None</option>
-          {techList.map((tech) => {
+          {tech.map((tech) => {
             return (
-              <option key={tech} value={tech}>
-                {tech}
+              <option key={tech.slug} value={tech.slug}>
+                {tech.slug}
               </option>
             );
           })}

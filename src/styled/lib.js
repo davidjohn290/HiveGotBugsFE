@@ -70,6 +70,10 @@ export const StyledLink = styled(Link)`
   }
 `;
 
-export const StyledLoader = styled(Loader)``;
+export const StyledLoader = styled(Loader)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
 
 export const StyledErrorPage = styled(ErrorPage)``;
