@@ -6,14 +6,41 @@ import AddSuggestionForm from "../components/singleProblem/AddSuggestionForm";
 import SuggestionsList from "../components/singleProblem/SuggestionsList";
 import SuggestionCard from "../components/singleProblem/SuggestionCard";
 
-export const StyledSingleProblem = styled(SingleProblem)``;
+// <main>
+export const StyledSingleProblem = styled(SingleProblem)`
+  text-align: center;
+`;
 
-export const StyledSingleProblemCard = styled(SingleProblemCard)``;
+// <article>
+export const StyledSingleProblemCard = styled(SingleProblemCard)`
+  border-style: solid;
+  border-width: 2px;
+  border-color: red;
+`;
 
-export const StyledEditProblemForm = styled(EditProblemForm)``;
+// <form>
+export const StyledEditProblemForm = styled(EditProblemForm)`
+  border-style: solid;
+  border-width: 2px;
+  border-color: blue;
+`;
 
-export const StyledAddSuggestionForm = styled(AddSuggestionForm)``;
+// <form>
+export const StyledAddSuggestionForm = styled(AddSuggestionForm)`
+  border-style: solid;
+  border-width: 2px;
+  border-color: green;
+`;
 
-export const StyledSuggestionsList = styled(SuggestionsList)``;
+// <ul>
+export const StyledSuggestionsList = styled(SuggestionsList)`
+  padding: 0px;
+`;
 
-export const StyledSuggestionCard = styled(SuggestionCard)``;
+// <li>
+export const StyledSuggestionCard = styled(SuggestionCard)`
+  list-style-type: none;
+  border-style: solid;
+  border-width: 2px;
+  border-color: black;
+`;

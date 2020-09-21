@@ -1,8 +1,8 @@
 import React from "react";
 
-function SuggestionCard() {
+function SuggestionCard({ className }) {
   return (
-    <article className="suggestionsCard">
+    <li className={className}>
       <p>Suggested By:</p>
       <p>Username</p>
       <p>
@@ -22,7 +22,7 @@ function SuggestionCard() {
           <div className="suggestion-button">This Solved My Problem</div>
         </button>
       </div>
-    </article>
+    </li>
   );
 }
 
