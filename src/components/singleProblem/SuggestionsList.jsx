@@ -2,7 +2,7 @@ import React from "react";
 
 import SuggestionCard from "./SuggestionCard";
 
-class Suggestions extends React.Component {
+class SuggestionsList extends React.Component {
   state = {};
 
   render() {
@@ -29,4 +29,4 @@ class Suggestions extends React.Component {
   }
 }
 
-export default Suggestions;
+export default SuggestionsList;
