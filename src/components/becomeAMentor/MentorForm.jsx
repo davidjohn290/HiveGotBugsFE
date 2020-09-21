@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import "../css/mentorForm.css";
+//import "/Users/davidspc/Desktop/Northcoders_new/Project/hive-got-bugs-fe/src/css/mentorForm.css";
 
 class MentorForm extends Component {
   state = {
@@ -25,8 +25,9 @@ class MentorForm extends Component {
   };
 
   render() {
+    const { className } = this.props;
     return (
-      <div className="mentorform">
+      <section className={className}>
         <header>
           <h2>Become a mentor</h2>
           <p>
@@ -48,7 +49,7 @@ class MentorForm extends Component {
             <input
               type="text"
               name="skills"
-              placeholder="Write here..."
+              placeholder="Split with commas e.g Java, React"
               onChange={this.onInput}
             />
           </label>
@@ -63,7 +64,7 @@ class MentorForm extends Component {
           </label>
           <button type="submit">Submit</button>
         </form>
-      </div>
+      </section>
     );
   }
 }

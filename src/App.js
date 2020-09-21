@@ -10,8 +10,8 @@ import { Router } from "@reach/router";
 import { StyledHome } from "./styled/home";
 import SingleProblem from "./components/singleProblem/SingleProblem";
 import Header from "./components/header/Header";
-import MentorForm from "./components/becomeAMentor/MentorForm";
 import Dashboard from "./components/dashboard/Dashboard";
+import { StyledMentorForm } from "./styled/mentor";
 
 function App() {
   return (
@@ -19,7 +19,7 @@ function App() {
       <Header />
       <Router>
         <StyledHome path="/" />
-        <MentorForm path="/become-a-mentor" />
+        <StyledMentorForm path="/become-a-mentor" />
         <SingleProblem path="/problem" />
         <Dashboard path="/dashboard" />
       </Router>
