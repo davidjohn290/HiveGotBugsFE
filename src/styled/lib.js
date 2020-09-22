@@ -4,8 +4,7 @@ import Loader from "../components/Loader";
 import ErrorPage from "../components/ErrorPage";
 
 // <Link>, sometimes overridden as <Button>
-export const StyledHexButton = styled(Link)
-`
+export const StyledHexButton = styled(Link)`
   position: relative;
   width: 70px;
   height: 40.41px;
@@ -45,7 +44,7 @@ export const StyledHexButton = styled(Link)
   }
 `;
 
-export const StyledDifficultyButton = styled.button `
+export const StyledDifficultyButton = styled.button`
   margin-left: 0.2em;
   margin-right: 0.2em;
   text-align: center;
@@ -61,8 +60,7 @@ export const StyledDifficultyButton = styled.button `
   }};
 `;
 
-export const StyledLink = styled(Link)
-`
+export const StyledLink = styled(Link)`
   text-decoration: none;
   color: black;
   font-weight: 500;
@@ -72,12 +70,10 @@ export const StyledLink = styled(Link)
   }
 `;
 
-export const StyledLoader = styled(Loader)
-`
+export const StyledLoader = styled(Loader)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const StyledErrorPage = styled(ErrorPage)
-``;
+export const StyledErrorPage = styled(ErrorPage)``;

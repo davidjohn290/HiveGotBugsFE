@@ -23,29 +23,33 @@ class SuggestionsList extends React.Component {
         this.setState({ suggestions, isLoading: false });
       })
       .catch(({ response }) => {
-        // this.setState({
-        //   isLoading: false,
-        //   err: {
-        //     type: "fetchSuggestions",
-        //     msg: response.data.msg,
-        //     status: response.status,
-        //   },
-        // });
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "fetchSuggestions",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
       });
+  };
+
+  addSuggestionOptimistic = (problem_id) => {
+    console.log("add suggestion optimistic called");
   };
 
   deleteSuggestionOptimistic = (suggestion_id) => {
     const { suggestions } = this.state;
     console.log("deleteSuggestionsOptimistic called");
     api.deleteSuggestion(suggestion_id).catch(({ response }) => {
-      // this.setState({
-      //   isLoading: false,
-      //   err: {
-      //     type: "deleteSuggestion",
-      //     msg: response.data.msg,
-      //     status: response.status,
-      //   },
-      // });
+      this.setState({
+        isLoading: false,
+        err: {
+          type: "deleteSuggestion",
+          msg: response.data.msg,
+          status: response.status,
+        },
+      });
     });
     const filteredSuggestions = suggestions.filter(
       (suggestion) => suggestion.suggestion_id !== suggestion_id
@@ -69,7 +73,11 @@ class SuggestionsList extends React.Component {
     return (
       <>
         <h2>Suggestions</h2>
-        {username && <StyledAddSuggestionForm />}
+        {username && (
+          <StyledAddSuggestionForm
+            addSuggestionOptimistic={this.addSuggestionOptimistic}
+          />
+        )}
         <ul className={className}>
           {suggestions.map((suggestion) => {
             return (
