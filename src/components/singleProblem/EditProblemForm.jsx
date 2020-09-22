@@ -26,7 +26,6 @@ class EditProblemForm extends Component {
     api
       .getTech()
       .then((techList) => {
-        console.log(techList);
         this.setState({ techList });
       })
       .catch(({ response }) => {
@@ -61,13 +60,11 @@ class EditProblemForm extends Component {
     const editedProblem = { difficulty, tech, title, body };
     submitEvent.preventDefault();
 
-    difficulty &&
-      tech &&
-      title &&
-      body &&
+    if (difficulty !== undefined && tech && title && body) {
       api
         .patchProblem(problem.problem_id, editedProblem)
         .catch(({ response }) => {
+          console.log(response);
           this.setState({
             err: {
               type: "editProblem",
@@ -76,7 +73,10 @@ class EditProblemForm extends Component {
             },
           });
         });
-    toggleEditForm();
+
+      toggleEditForm();
+      editProblemOptimistic(editedProblem);
+    }
   };
 
   render() {
