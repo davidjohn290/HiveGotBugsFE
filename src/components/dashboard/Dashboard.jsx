@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-
 import { getUserByUsername, getProblemByUsername } from "../../utils/api";
 import { UserContext } from "../../UserContext";
 import { StyledUserCard, StyledBugChart } from "../../styled/dashboard";
@@ -76,7 +75,7 @@ class Dashboard extends Component {
       filter,
     } = this.state;
 
-    if (isLoading) return <p>Please login to see your dashboard</p>;
+    if (isLoading) return <h3>Please login to see your dashboard</h3>;
     return (
       <div className={className}>
         <StyledUserCard
@@ -92,8 +91,11 @@ class Dashboard extends Component {
         <StyledBugChart username={username} />
         <section>
           <h2>Posted problems</h2>
-
-          <StyledHexButton as="button" onClick={this.showSolved}>
+          <StyledHexButton
+            as="button"
+            onClick={this.showSolved}
+            id="solvedButton"
+          >
             {!filter ? "Show Solved" : "Show Unsolved"}
           </StyledHexButton>
           <ul>
