@@ -63,12 +63,10 @@ class Dashboard extends Component {
         skills: [user.skill1, user.skill2, user.skill3],
         github_url: user.github_url,
         isLoading: false,
-        username: this.context.username,
+        username: user.username,
       });
     });
   };
-
-  //be able to edit profile!!!!
 
   render() {
     const { className } = this.props;

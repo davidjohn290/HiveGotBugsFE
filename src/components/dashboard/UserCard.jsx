@@ -6,7 +6,6 @@ const UserCard = ({
   github_url,
   description,
   memberSince,
-  bugPoints,
   skills,
   username,
   className,
@@ -17,17 +16,19 @@ const UserCard = ({
       <header>
         <h2>Dashboard</h2>
         <h3>Welcome {username}</h3>
-        <h4>Member since: {moment(memberSince).fromNow()}</h4>
+        <h4>Became a member: {moment(memberSince).fromNow()}</h4>
         <img src={avatar_url} alt={username} />
+        {role === "mentor" ? (
+          <>
+            <h4>Bio:</h4>
+            <h4>{description}</h4>
+            <h4>
+              Skills: {skills[0]}, {skills[1]}, {skills[2]}{" "}
+            </h4>
+            <h4>Github URL: {github_url}</h4>
+          </>
+        ) : null}
       </header>
-
-      {role === "mentor" ? (
-        <>
-          <p>Description: {description}</p>
-          <p>Skills: {(skills[0], skills[1], skills[2])} </p>
-          <p>Github URL: {github_url}</p>
-        </>
-      ) : null}
     </div>
   );
 };

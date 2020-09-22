@@ -55,7 +55,6 @@ class EditProblemForm extends Component {
   handleSubmit = (submitEvent) => {
     const { difficulty, tech, title, body } = this.state;
     const { editProblemOptimistic, toggleEditForm, problem } = this.props;
-    const { user } = this.context;
 
     const editedProblem = { difficulty, tech, title, body };
     submitEvent.preventDefault();

@@ -3,7 +3,7 @@ import { StyledHexButton } from "../../styled/lib";
 import { getUserByUsername, editUserProfileByUsername } from "../../utils/api";
 class EditDashboard extends Component {
   state = {
-    username: "Merlin70",
+    username: this.props.username,
     description: "",
     github_url: "",
     skill1: "",
