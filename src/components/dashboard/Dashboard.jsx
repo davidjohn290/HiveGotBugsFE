@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import BugChart from "./BugChart";
-import { getUserByUsername } from "../../utils/api";
+
+import { getUserByUsername, getProblemByUsername } from "../../utils/api";
 import { UserContext } from "../../UserContext";
-import { StyledUserCard } from "../../styled/dashboard";
+import { StyledUserCard, StyledBugChart } from "../../styled/dashboard";
+import { StyledProblemCard } from "../../styled/home";
 
 class Dashboard extends Component {
   static contextType = UserContext;
@@ -18,12 +19,16 @@ class Dashboard extends Component {
     description: "",
     skills: [],
     github_url: "",
+    problems: [],
   };
 
   componentDidUpdate(prevProps, prevState) {
     const { username } = this.context;
     if (prevState.username !== username) {
       this.LoginUser(username);
+      getProblemByUsername(username).then((problems) => {
+        this.setState({ problems });
+      });
     }
   }
 
@@ -47,6 +52,7 @@ class Dashboard extends Component {
   //be able to edit profile!!!!
 
   render() {
+    const { className } = this.props;
     const {
       isLoading,
       avatar_url,
@@ -57,11 +63,12 @@ class Dashboard extends Component {
       github_url,
       username,
       role,
+      problems,
     } = this.state;
 
     if (isLoading) return <p>Please login to see your dashboard</p>;
     return (
-      <div>
+      <div className={className}>
         <StyledUserCard
           username={username}
           memberSince={memberSince}
@@ -72,7 +79,14 @@ class Dashboard extends Component {
           github_url={github_url}
           role={role}
         />
-        <BugChart />
+        <StyledBugChart username={username} />
+        <ul>
+          {problems.map((problem) => {
+            return (
+              <StyledProblemCard key={problem.problem_id} problem={problem} />
+            );
+          })}
+        </ul>
       </div>
     );
   }

@@ -45,3 +45,9 @@ export const getUserByUsername = (username) => {
     return user;
   });
 };
+
+export const getProblemByUsername = (username) => {
+  return axiosInstance
+    .get(`/problems?username=${username}`)
+    .then(({ data: { problems } }) => problems);
+};

@@ -1,4 +1,5 @@
 import React from "react";
+import moment from "moment";
 
 const UserCard = ({
   avatar_url,
@@ -15,8 +16,8 @@ const UserCard = ({
     <div className={className}>
       <header>
         <h2>Dashboard</h2>
-        <h4>{username}</h4>
-        <h4>Member since {memberSince}</h4>
+        <h3>Welcome {username}</h3>
+        <h4>Member since: {moment(memberSince).fromNow()}</h4>
         <img src={avatar_url} alt={username} />
       </header>
 
