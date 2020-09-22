@@ -38,9 +38,19 @@ class SingleProblem extends React.Component {
       });
   }
 
-  editProblemOptimistic() {
-    console.log("edit problem optimistic called");
-  }
+  editProblemOptimistic = (editedProblem) => {
+    this.setState(({ problem }) => {
+      return {
+        problem: {
+          ...editedProblem,
+          created_at: problem.created_at,
+          username: problem.username,
+          solved: problem.solved,
+          problem_id: problem.problem_id,
+        },
+      };
+    });
+  };
 
   toggleEditForm = () => {
     this.setState(({ editFormVisible }) => {
@@ -48,8 +58,20 @@ class SingleProblem extends React.Component {
     });
   };
 
-  handleDelete = () => {
-    console.log("problem delete function called");
+  handleDeleteProblem = (problem_id) => {
+    api
+      .deleteProblem(problem_id)
+      .then(() => {})
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "deleteProblem",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
   };
 
   render() {
@@ -64,7 +86,7 @@ class SingleProblem extends React.Component {
         <StyledSingleProblemCard
           problem={problem}
           toggleEditForm={this.toggleEditForm}
-          handleDelete={this.handleDelete}
+          handleDelete={this.handleDeleteProblem}
         />
         {editFormVisible && (
           <StyledEditProblemForm

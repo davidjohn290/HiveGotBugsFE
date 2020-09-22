@@ -4,8 +4,9 @@ import { Link } from "@reach/router";
 const ErrorPage = (err) => {
   const { type, msg, status } = err;
   const errRef = {
-    editProblem: "Could not edit the problem!",
     fetchSingleProblem: "Could not get the problem!",
+    editProblem: "Could not edit the problem!",
+    deleteProblem: "Could not delete the problem!",
     fetchSuggestions: "Could not fetch suggestions!",
     deleteSuggestion: "Could not delete the suggestion!",
   };

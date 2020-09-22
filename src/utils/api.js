@@ -23,6 +23,16 @@ export const getSingleProblem = (id) => {
     .then(({ data: { problem } }) => problem);
 };
 
+export const patchProblem = (problem_id, problem) => {
+  return axiosInstance
+    .patch(`/problems/${problem_id}`, problem)
+    .then(({ data: { problem } }) => problem);
+};
+
+export const deleteProblem = (problem_id) => {
+  return axiosInstance.delete(`/problems/${problem_id}`);
+};
+
 export const getTech = () => {
   return axiosInstance.get("/tech").then(({ data: { tech } }) => tech);
 };
@@ -45,12 +55,6 @@ export const makeUserAMentor = (username, { bio, skills, github }) => {
       github_url: `www.github.com/${github}`,
     })
     .then(({ data: user }) => user);
-};
-
-export const patchProblem = (problem_id, problem) => {
-  return axiosInstance
-    .patch(`/problems/${problem_id}`, problem)
-    .then(({ data: { problem } }) => problem);
 };
 
 export const getSuggestions = (problem_id) => {
