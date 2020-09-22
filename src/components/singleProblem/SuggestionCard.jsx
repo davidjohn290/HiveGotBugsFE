@@ -29,6 +29,7 @@ class SuggestionCard extends Component {
       solveOptimistic,
       editSuggestionOptimistic,
     } = this.props;
+
     const { editFormVisible } = this.state;
 
     const timeDifference = Date.now() - new Date(suggestion.created_at);
@@ -42,7 +43,12 @@ class SuggestionCard extends Component {
               <StyledHexButton as="button" onClick={this.toggleEditForm}>
                 Edit
               </StyledHexButton>
-              <StyledHexButton as="button" onClick={deleteSuggestionOptimistic}>
+              <StyledHexButton
+                as="button"
+                onClick={() => {
+                  deleteSuggestionOptimistic(suggestion.suggestion_id);
+                }}
+              >
                 Delete
               </StyledHexButton>
             </>
@@ -57,7 +63,9 @@ class SuggestionCard extends Component {
           {suggestion.approved_by && <p>{suggestion.approved_by}</p>}
           {editFormVisible && (
             <StyledEditSuggestionForm
+              suggestion={suggestion}
               editSuggestionOptimistic={editSuggestionOptimistic}
+              toggleEditForm={this.toggleEditForm}
             />
           )}
         </li>
