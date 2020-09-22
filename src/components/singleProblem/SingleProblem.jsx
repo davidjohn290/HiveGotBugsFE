@@ -29,13 +29,17 @@ class SingleProblem extends React.Component {
       .catch(({ response }) => {
         this.setState({
           isLoading: false,
-          // err: {
-          //   type: "fetchSingleProblem",
-          //   msg: response.data.msg,
-          //   status: response.status,
-          // },
+          err: {
+            type: "fetchSingleProblem",
+            msg: response.data.msg,
+            status: response.status,
+          },
         });
       });
+  }
+
+  editProblemOptimistic() {
+    console.log("edit problem optimistic called");
   }
 
   toggleEditForm = () => {
@@ -62,7 +66,13 @@ class SingleProblem extends React.Component {
           toggleEditForm={this.toggleEditForm}
           handleDelete={this.handleDelete}
         />
-        {editFormVisible && <StyledEditProblemForm />}
+        {editFormVisible && (
+          <StyledEditProblemForm
+            problem={problem}
+            editProblemOptimistic={this.editProblemOptimistic}
+            toggleEditForm={this.toggleEditForm}
+          />
+        )}
 
         <StyledSuggestionsList problem={problem} problem_id={problem_id} />
       </main>

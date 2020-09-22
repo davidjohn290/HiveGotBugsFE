@@ -40,6 +40,12 @@ export const makeUserAMentor = (username, { bio, skills, github }) => {
     .then(({ data: user }) => user);
 };
 
+export const patchProblem = (problem_id, problem) => {
+  return axiosInstance
+    .patch(`/problems/${problem_id}`, problem)
+    .then(({ data: { problem } }) => problem);
+};
+
 export const getSuggestions = (problem_id) => {
   return axiosInstance
     .get(`/problems/${problem_id}/suggestions`)
