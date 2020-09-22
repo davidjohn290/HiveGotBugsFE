@@ -6,7 +6,6 @@ import React, { Component } from "react";
 import { formatTimeString } from "../../utils/time";
 import { UserContext } from "../../UserContext";
 import { StyledHexButton } from "../../styled/lib";
-import { StyledEditSuggestionForm } from "../../styled/singleProblem";
 
 class SuggestionCard extends Component {
   state = { editFormVisible: false };
@@ -27,9 +26,7 @@ class SuggestionCard extends Component {
       className,
       deleteSuggestionOptimistic,
       solveOptimistic,
-      editSuggestionOptimistic,
     } = this.props;
-    const { editFormVisible } = this.state;
 
     const timeDifference = Date.now() - new Date(suggestion.created_at);
     const timeString = formatTimeString(timeDifference);
@@ -55,11 +52,6 @@ class SuggestionCard extends Component {
           <p>{`Suggested by: ${suggestion.username} ${timeString}`}</p>
           <p>{suggestion.body}</p>
           {suggestion.approved_by && <p>{suggestion.approved_by}</p>}
-          {editFormVisible && (
-            <StyledEditSuggestionForm
-              editSuggestionOptimistic={editSuggestionOptimistic}
-            />
-          )}
         </li>
       </>
     );

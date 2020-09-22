@@ -5,7 +5,6 @@ import EditProblemForm from "../components/singleProblem/EditProblemForm";
 import AddSuggestionForm from "../components/singleProblem/AddSuggestionForm";
 import SuggestionsList from "../components/singleProblem/SuggestionsList";
 import SuggestionCard from "../components/singleProblem/SuggestionCard";
-import SuggestionForm from "../components/singleProblem/EditSuggestionForm";
 
 // <main>
 export const StyledSingleProblem = styled(SingleProblem)`
@@ -47,4 +46,3 @@ export const StyledSuggestionCard = styled(SuggestionCard)`
 `;
 
 // <form>
-export const StyledEditSuggestionForm = styled(SuggestionForm)``;
