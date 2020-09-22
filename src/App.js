@@ -4,6 +4,7 @@ import { StyledHome } from "./styled/home";
 import { StyledSingleProblem } from "./styled/singleProblem";
 import Header from "./components/header/Header";
 import Dashboard from "./components/dashboard/Dashboard";
+import MentorPage from "./components/Mentor/MentorPage"
 import { UserContext } from "./UserContext";
 import { StyledMentorForm } from "./styled/mentor";
 
@@ -34,6 +35,7 @@ class App extends Component {
             <StyledSingleProblem path="/problem/:problem_id" />
             <StyledMentorForm path="/become-a-mentor" />
             <Dashboard path="/dashboard" />
+            <MentorPage path="/mentors" />
           </Router>
         </UserContext.Provider>
       </div>
