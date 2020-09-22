@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import { Router } from "@reach/router";
 import { StyledHome } from "./styled/home";
-import SingleProblem from "./components/singleProblem/SingleProblem";
+import { StyledSingleProblem } from "./styled/singleProblem";
 import Header from "./components/header/Header";
 import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
 import { StyledMentorForm } from "./styled/mentor";
+import MentorList from "./components/mentors/MentorList";
 
 class App extends Component {
   state = { username: null };
@@ -31,9 +32,10 @@ class App extends Component {
           <Header />
           <Router>
             <StyledHome path="/" />
-            <SingleProblem path="/problem/:problem_id" />
+            <StyledSingleProblem path="/problem/:problem_id" />
             <StyledMentorForm path="/become-a-mentor" />
             <StyledDashboard path="/dashboard" />
+            <MentorList path="/mentors" />
           </Router>
         </UserContext.Provider>
       </div>

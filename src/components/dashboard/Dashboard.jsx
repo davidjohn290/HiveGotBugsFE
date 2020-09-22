@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { getUserByUsername, getProblemByUsername } from "../../utils/api";
 import { UserContext } from "../../UserContext";
-import { StyledUserCard, StyledBugChart } from "../../styled/dashboard";
+import {
+  StyledUserCard,
+  StyledBugChart,
+  StyledEditDashboard,
+} from "../../styled/dashboard";
 import { StyledProblemCard } from "../../styled/home";
 import { StyledHexButton } from "../../styled/lib";
 
@@ -21,6 +25,7 @@ class Dashboard extends Component {
     github_url: "",
     problems: [],
     filter: false,
+    toggleEdit: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
@@ -37,6 +42,12 @@ class Dashboard extends Component {
   showSolved = () => {
     this.setState((currentState) => {
       return { filter: !currentState.filter };
+    });
+  };
+
+  toggleShowEdit = () => {
+    this.setState((currentState) => {
+      return { toggleEdit: !currentState.toggleEdit };
     });
   };
 
@@ -73,6 +84,7 @@ class Dashboard extends Component {
       role,
       problems,
       filter,
+      toggleEdit,
     } = this.state;
 
     if (isLoading) return <h3>Please login to see your dashboard</h3>;
@@ -91,13 +103,24 @@ class Dashboard extends Component {
         <StyledBugChart username={username} />
         <section>
           <h2>Posted problems</h2>
-          <StyledHexButton
-            as="button"
-            onClick={this.showSolved}
-            id="solvedButton"
-          >
-            {!filter ? "Show Solved" : "Show Unsolved"}
-          </StyledHexButton>
+          <header className="dashboardButtons">
+            <StyledHexButton
+              as="button"
+              id="editButton"
+              onClick={this.toggleShowEdit}
+            >
+              {!toggleEdit ? "Edit" : "Close Edit"}
+            </StyledHexButton>
+            {toggleEdit && <StyledEditDashboard username={username} />}
+            <StyledHexButton
+              as="button"
+              onClick={this.showSolved}
+              id="solvedButton"
+            >
+              {!filter ? "Show Solved" : "Show Unsolved"}
+            </StyledHexButton>
+          </header>
+
           <ul>
             {problems.map((problem) => {
               return (

@@ -1,5 +1,3 @@
-// Get access to context`
-// Get the single problem from api here rather than in parent compoent
 // Add this.showEditProblem function(but don't write functionality yet)
 // Add Delete Problem button and handleDeleteProblem function
 // Add a form component to edit the problem
@@ -15,7 +13,12 @@ class SingleProblemCard extends Component {
 
   render() {
     const { username } = this.context;
-    const { problem } = this.props;
+    const {
+      problem,
+      toggleEditForm,
+      handleDeleteProblem,
+      className,
+    } = this.props;
 
     const timeDifference = Date.now() - new Date(problem.created_at);
     const timeString = formatTimeString(timeDifference);
@@ -24,12 +27,18 @@ class SingleProblemCard extends Component {
     const difficulty = difficultyRef[problem.difficulty];
 
     return (
-      <article>
+      <article className={className}>
         {username === problem.username && (
-          <StyledHexButton as="button" onClick={this.showEditProblem}>
-            Edit Problem
-          </StyledHexButton>
+          <>
+            <StyledHexButton as="button" onClick={toggleEditForm}>
+              Edit
+            </StyledHexButton>
+            <StyledHexButton as="button" onClick={handleDeleteProblem}>
+              Delete
+            </StyledHexButton>
+          </>
         )}
+
         <p>{solved}</p>
         <p>Difficulty: {difficulty} </p>
         <p>Tech: {problem.tech} </p>
