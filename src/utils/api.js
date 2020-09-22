@@ -79,7 +79,7 @@ export const deleteSuggestion = (suggestion_id) => {
 };
 
 export const editSuggestion = (suggestion_id, body) => {
-  return axiosInstance.patch(`/suggestions/${suggestion_id}/`);
+  return axiosInstance.patch(`/suggestions/${suggestion_id}/`, { body });
 };
 
 export const editUserProfileByUsername = (username, body) => {
