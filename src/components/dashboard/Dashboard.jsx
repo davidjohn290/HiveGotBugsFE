@@ -4,6 +4,7 @@ import { getUserByUsername, getProblemByUsername } from "../../utils/api";
 import { UserContext } from "../../UserContext";
 import { StyledUserCard, StyledBugChart } from "../../styled/dashboard";
 import { StyledProblemCard } from "../../styled/home";
+import { StyledHexButton } from "../../styled/lib";
 
 class Dashboard extends Component {
   static contextType = UserContext;
@@ -20,17 +21,25 @@ class Dashboard extends Component {
     skills: [],
     github_url: "",
     problems: [],
+    filter: false,
   };
 
   componentDidUpdate(prevProps, prevState) {
     const { username } = this.context;
-    if (prevState.username !== username) {
+    const { filter } = this.state;
+    if (prevState.username !== username || prevState.filter !== filter) {
       this.LoginUser(username);
-      getProblemByUsername(username).then((problems) => {
+      getProblemByUsername(username, filter).then((problems) => {
         this.setState({ problems });
       });
     }
   }
+
+  showSolved = () => {
+    this.setState((currentState) => {
+      return { filter: !currentState.filter };
+    });
+  };
 
   LoginUser = (username) => {
     getUserByUsername(username).then((user) => {
@@ -64,6 +73,7 @@ class Dashboard extends Component {
       username,
       role,
       problems,
+      filter,
     } = this.state;
 
     if (isLoading) return <p>Please login to see your dashboard</p>;
@@ -80,13 +90,20 @@ class Dashboard extends Component {
           role={role}
         />
         <StyledBugChart username={username} />
-        <ul>
-          {problems.map((problem) => {
-            return (
-              <StyledProblemCard key={problem.problem_id} problem={problem} />
-            );
-          })}
-        </ul>
+        <section>
+          <h2>Posted problems</h2>
+
+          <StyledHexButton as="button" onClick={this.showSolved}>
+            {!filter ? "Show Solved" : "Show Unsolved"}
+          </StyledHexButton>
+          <ul>
+            {problems.map((problem) => {
+              return (
+                <StyledProblemCard key={problem.problem_id} problem={problem} />
+              );
+            })}
+          </ul>
+        </section>
       </div>
     );
   }

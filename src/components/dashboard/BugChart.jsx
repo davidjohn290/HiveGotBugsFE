@@ -43,7 +43,7 @@ class BugChart extends Component {
             "rgba(153, 102, 255, 0.2)",
             "rgba(255, 206, 86, 0.2)",
           ],
-          borderColor: "rgba(255,99,132,1)",
+          borderColor: "#da995c",
           borderWidth: 1,
           hoverBackgroundColor: "rgba(255,100,64,0.4)",
           hoverBorderColor: "rgba(255,99,132,1)",

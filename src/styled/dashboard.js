@@ -45,6 +45,16 @@ export const StyledBugChart = styled(BugChart)`
 `;
 
 export const StyledDashboard = styled(Dashboard)`
+  button {
+    margin: 5%;
+    margin-bottom: 1cm;
+  }
+
+  h2 {
+    text-align: center;
+    margin-top: 5px;
+    margin-bottom: 1cm;
+  }
   ul {
     display: flex;
     padding: 0;
