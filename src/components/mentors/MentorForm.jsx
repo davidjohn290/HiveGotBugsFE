@@ -1,7 +1,9 @@
 import React, { Component } from "react";
 import { makeUserAMentor } from "../../utils/api";
+import { UserContext } from "../../UserContext";
 
 class MentorForm extends Component {
+  static contextType = UserContext;
   state = {
     bio: "",
     skills: [],
