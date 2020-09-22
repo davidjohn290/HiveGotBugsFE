@@ -39,7 +39,6 @@ export const getTech = () => {
 
 export const getAllMentors = () => {
   return axiosInstance.get("/users?role=mentor").then((res) => {
-    console.log(res.data.users);
     return res.data.users;
   });
 };
@@ -57,6 +56,18 @@ export const makeUserAMentor = (username, { bio, skills, github }) => {
     .then(({ data: user }) => user);
 };
 
+export const getUserByUsername = (username) => {
+  return axiosInstance.get(`/users/${username}`).then(({ data: { user } }) => {
+    return user;
+  });
+};
+
+export const getProblemByUsername = (username, filter) => {
+  return axiosInstance
+    .get(`/problems?username=${username}&solved=${filter}`)
+    .then(({ data: { problems } }) => problems);
+};
+
 export const getSuggestions = (problem_id) => {
   return axiosInstance
     .get(`/problems/${problem_id}/suggestions`)
@@ -69,4 +80,11 @@ export const deleteSuggestion = (suggestion_id) => {
 
 export const editSuggestion = (suggestion_id, body) => {
   return axiosInstance.patch(`/suggestions/${suggestion_id}/`, { body });
+};
+
+export const editUserProfileByUsername = (username, body) => {
+  console.log(body);
+  return axiosInstance
+    .patch(`/users/${username}`, body)
+    .then(({ data: { user } }) => user);
 };
