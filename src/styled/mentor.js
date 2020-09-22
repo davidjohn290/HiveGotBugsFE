@@ -1,5 +1,6 @@
 import styled from "styled-components";
-import MentorForm from "../components/Mentor/MentorForm";
+
+import MentorForm from "../components/mentors/MentorForm";
 
 export const StyledMentorForm = styled(MentorForm)`
   font-size: 0.5cm;

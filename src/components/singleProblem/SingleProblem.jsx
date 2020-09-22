@@ -2,7 +2,7 @@ import React from "react";
 import { StyledErrorPage, StyledLoader } from "../../styled/lib";
 import { StyledSuggestionsList } from "../../styled/singleProblem";
 import { StyledSingleProblemCard } from "../../styled/singleProblem";
-
+import { navigate } from "@reach/router";
 import * as api from "../../utils/api";
 import { StyledEditProblemForm } from "../../styled/singleProblem";
 
@@ -29,14 +29,28 @@ class SingleProblem extends React.Component {
       .catch(({ response }) => {
         this.setState({
           isLoading: false,
-          // err: {
-          //   type: "fetchSingleProblem",
-          //   msg: response.data.msg,
-          //   status: response.status,
-          // },
+          err: {
+            type: "fetchSingleProblem",
+            msg: response.data.msg,
+            status: response.status,
+          },
         });
       });
   }
+
+  editProblemOptimistic = (editedProblem) => {
+    this.setState(({ problem }) => {
+      return {
+        problem: {
+          ...editedProblem,
+          created_at: problem.created_at,
+          username: problem.username,
+          solved: problem.solved,
+          problem_id: problem.problem_id,
+        },
+      };
+    });
+  };
 
   toggleEditForm = () => {
     this.setState(({ editFormVisible }) => {
@@ -44,8 +58,25 @@ class SingleProblem extends React.Component {
     });
   };
 
-  handleDelete = () => {
-    console.log("problem delete function called");
+  handleDeleteProblem = () => {
+    const {
+      problem: { problem_id },
+    } = this.state;
+    api
+      .deleteProblem(problem_id)
+      .then(() => {
+        navigate("/");
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "deleteProblem",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
   };
 
   render() {
@@ -60,9 +91,15 @@ class SingleProblem extends React.Component {
         <StyledSingleProblemCard
           problem={problem}
           toggleEditForm={this.toggleEditForm}
-          handleDelete={this.handleDelete}
+          handleDeleteProblem={this.handleDeleteProblem}
         />
-        {editFormVisible && <StyledEditProblemForm />}
+        {editFormVisible && (
+          <StyledEditProblemForm
+            problem={problem}
+            editProblemOptimistic={this.editProblemOptimistic}
+            toggleEditForm={this.toggleEditForm}
+          />
+        )}
 
         <StyledSuggestionsList problem={problem} problem_id={problem_id} />
       </main>

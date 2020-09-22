@@ -1,7 +1,3 @@
-// Add this.showEditProblem function(but don't write functionality yet)
-// Add Delete Problem button and handleDeleteProblem function
-// Add a form component to edit the problem
-
 import React, { Component } from "react";
 import { formatTimeString } from "../../utils/time";
 import { capitalizeFirstLetter } from "../../utils/capitalize";
@@ -13,7 +9,12 @@ class SingleProblemCard extends Component {
 
   render() {
     const { username } = this.context;
-    const { problem, toggleEditForm, handleDelete, className } = this.props;
+    const {
+      problem,
+      toggleEditForm,
+      handleDeleteProblem,
+      className,
+    } = this.props;
 
     const timeDifference = Date.now() - new Date(problem.created_at);
     const timeString = formatTimeString(timeDifference);
@@ -28,7 +29,7 @@ class SingleProblemCard extends Component {
             <StyledHexButton as="button" onClick={toggleEditForm}>
               Edit
             </StyledHexButton>
-            <StyledHexButton as="button" onClick={handleDelete}>
+            <StyledHexButton as="button" onClick={handleDeleteProblem}>
               Delete
             </StyledHexButton>
           </>

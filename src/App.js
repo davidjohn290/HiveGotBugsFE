@@ -3,10 +3,11 @@ import { Router } from "@reach/router";
 import { StyledHome } from "./styled/home";
 import { StyledSingleProblem } from "./styled/singleProblem";
 import Header from "./components/header/Header";
-import Dashboard from "./components/dashboard/Dashboard";
 import MentorPage from "./components/Mentor/MentorPage"
+import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
 import { StyledMentorForm } from "./styled/mentor";
+import MentorList from "./components/mentors/MentorList";
 
 class App extends Component {
   state = { username: null };
@@ -34,8 +35,9 @@ class App extends Component {
             <StyledHome path="/" />
             <StyledSingleProblem path="/problem/:problem_id" />
             <StyledMentorForm path="/become-a-mentor" />
-            <Dashboard path="/dashboard" />
             <MentorPage path="/mentors" />
+            <StyledDashboard path="/dashboard" />
+            <MentorList path="/mentors" />
           </Router>
         </UserContext.Provider>
       </div>
