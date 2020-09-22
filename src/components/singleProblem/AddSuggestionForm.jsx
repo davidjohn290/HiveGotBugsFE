@@ -17,7 +17,7 @@ class AddSuggestionForm extends Component {
     const { username } = this.context;
 
     submitEvent.preventDefault();
-    body &&
+    if (body) {
       api
         .addSuggestion(problem_id, username, body)
         .then((newSuggestion) => {
@@ -33,7 +33,8 @@ class AddSuggestionForm extends Component {
             },
           });
         });
-    this.setState({ body: "" });
+      this.setState({ body: "" });
+    }
   };
 
   handleChangeBody = ({ target: { value } }) => {

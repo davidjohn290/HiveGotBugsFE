@@ -59,23 +59,31 @@ class SuggestionsList extends React.Component {
   };
 
   editSuggestionOptimistic = (suggestion_id, body) => {
-    const { suggestions } = this.state;
-
-    this.setState({
-      suggestions: suggestions.map((suggestion) => {
-        if (suggestion.suggestion_id === suggestion_id) {
-          return { ...suggestion, body };
-        } else return suggestion;
-      }),
+    this.setState(({ suggestions }) => {
+      return {
+        suggestions: suggestions.map((suggestion) => {
+          if (suggestion.suggestion_id === suggestion_id) {
+            return { ...suggestion, body };
+          } else return suggestion;
+        }),
+      };
     });
   };
 
-  solveOptimistic = () => {
-    console.log("solveOptimistic called");
+  suggestionSolvedOptimistic = (suggestion_id, username) => {
+    this.setState(({ suggestions }) => {
+      return {
+        suggestions: suggestions.map((suggestion) => {
+          if (suggestion.suggestion_id === suggestion_id) {
+            return { ...suggestion, approved_by: username };
+          } else return suggestion;
+        }),
+      };
+    });
   };
 
   render() {
-    const { className, problem } = this.props;
+    const { className, problem, problemSolvedOptimistic } = this.props;
     const { suggestions, err } = this.state;
     const { username } = this.context;
     if (err) return <ErrorPage {...err} />;
@@ -98,7 +106,8 @@ class SuggestionsList extends React.Component {
                 key={suggestion.suggestion_id}
                 deleteSuggestionOptimistic={this.deleteSuggestionOptimistic}
                 editSuggestionOptimistic={this.editSuggestionOptimistic}
-                solveOptimistic={this.solveOptimistic}
+                suggestionSolvedOptimistic={this.suggestionSolvedOptimistic}
+                problemSolvedOptimistic={problemSolvedOptimistic}
               />
             );
           })}

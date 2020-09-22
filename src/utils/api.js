@@ -78,8 +78,8 @@ export const deleteSuggestion = (suggestion_id) => {
   return axiosInstance.delete(`/suggestions/${suggestion_id}/`);
 };
 
-export const editSuggestion = (suggestion_id, body) => {
-  return axiosInstance.patch(`/suggestions/${suggestion_id}/`, { body });
+export const editSuggestion = (suggestion_id, update) => {
+  return axiosInstance.patch(`/suggestions/${suggestion_id}/`, update);
 };
 
 export const addSuggestion = (problem_id, username, body) => {
@@ -89,8 +89,13 @@ export const addSuggestion = (problem_id, username, body) => {
 };
 
 export const editUserProfileByUsername = (username, body) => {
-  console.log(body);
   return axiosInstance
     .patch(`/users/${username}`, body)
     .then(({ data: { user } }) => user);
+};
+
+export const incrementBugPoints = (username) => {
+  return axiosInstance
+    .patch(`/users/${username}/`, { inc_bug_points: 1 })
+    .then(({ data: { suggestion } }) => suggestion);
 };

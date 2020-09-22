@@ -3,7 +3,7 @@ import { Router } from "@reach/router";
 import { StyledHome } from "./styled/home";
 import { StyledSingleProblem } from "./styled/singleProblem";
 import Header from "./components/header/Header";
-import MentorPage from "./components/Mentor/MentorPage"
+import MentorPage from "./components/Mentor/MentorPage";
 import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
 import { StyledMentorForm } from "./styled/mentor";

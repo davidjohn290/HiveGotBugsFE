@@ -52,6 +52,17 @@ class SingleProblem extends React.Component {
     });
   };
 
+  problemSolvedOptimistic = () => {
+    this.setState(({ problem }) => {
+      return {
+        problem: {
+          ...problem,
+          solved: "true",
+        },
+      };
+    });
+  };
+
   toggleEditForm = () => {
     this.setState(({ editFormVisible }) => {
       return { editFormVisible: !editFormVisible };
@@ -101,7 +112,11 @@ class SingleProblem extends React.Component {
           />
         )}
 
-        <StyledSuggestionsList problem={problem} problem_id={problem_id} />
+        <StyledSuggestionsList
+          problem={problem}
+          problem_id={problem_id}
+          problemSolvedOptimistic={this.problemSolvedOptimistic}
+        />
       </main>
     );
   }

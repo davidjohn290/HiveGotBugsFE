@@ -25,8 +25,8 @@ class EditSuggestionForm extends Component {
     } = this.props;
     const { body } = this.state;
 
-    body &&
-      api.editSuggestion(suggestion_id, body).catch(({ response }) => {
+    if (body) {
+      api.editSuggestion(suggestion_id, { body }).catch(({ response }) => {
         this.setState({
           isLoading: false,
           err: {
@@ -36,8 +36,9 @@ class EditSuggestionForm extends Component {
           },
         });
       });
-    editSuggestionOptimistic(suggestion_id, body);
-    toggleEditForm();
+      editSuggestionOptimistic(suggestion_id, body);
+      toggleEditForm();
+    }
   };
 
   handleChangeBody = ({ target: { value } }) => {

@@ -11,6 +11,7 @@ const ErrorPage = (err) => {
     deleteSuggestion: "Could not delete the suggestion!",
     addSuggestion: "Could not add the suggestion!",
     editSuggestion: "Could not edit the suggestion!",
+    markSolved: "Could not mark as solved!",
   };
 
   return (
