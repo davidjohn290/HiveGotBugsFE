@@ -82,6 +82,12 @@ export const editSuggestion = (suggestion_id, body) => {
   return axiosInstance.patch(`/suggestions/${suggestion_id}/`, { body });
 };
 
+export const addSuggestion = (problem_id, username, body) => {
+  return axiosInstance
+    .post(`/problems/${problem_id}/suggestions`, { username, body })
+    .then(({ data: { suggestion } }) => suggestion);
+};
+
 export const editUserProfileByUsername = (username, body) => {
   console.log(body);
   return axiosInstance

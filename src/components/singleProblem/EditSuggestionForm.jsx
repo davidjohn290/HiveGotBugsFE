@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
 import { StyledHexButton } from "../../styled/lib";
+import { StyledErrorPage } from "../../styled/lib";
 
 class EditSuggestionForm extends Component {
   state = {
@@ -24,7 +25,17 @@ class EditSuggestionForm extends Component {
     } = this.props;
     const { body } = this.state;
 
-    body && api.editSuggestion(suggestion_id, body);
+    body &&
+      api.editSuggestion(suggestion_id, body).catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "editSuggestion",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
     editSuggestionOptimistic(suggestion_id, body);
     toggleEditForm();
   };
@@ -35,7 +46,9 @@ class EditSuggestionForm extends Component {
 
   render() {
     const { className } = this.props;
-    const { body } = this.state;
+    const { body, err } = this.state;
+
+    if (err) return <StyledErrorPage {...err} />;
 
     return (
       <form className={className} onSubmit={this.handleSubmit}>

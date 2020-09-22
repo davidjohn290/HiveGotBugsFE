@@ -34,8 +34,10 @@ class SuggestionsList extends React.Component {
       });
   };
 
-  addSuggestionOptimistic = (problem_id) => {
-    console.log("add suggestion optimistic called");
+  renderNewSuggestion = (newSuggestion) => {
+    this.setState(({ suggestions }) => {
+      return { suggestions: [newSuggestion, ...suggestions] };
+    });
   };
 
   deleteSuggestionOptimistic = (suggestion_id) => {
@@ -83,7 +85,8 @@ class SuggestionsList extends React.Component {
         <h2>Suggestions</h2>
         {username && (
           <StyledAddSuggestionForm
-            addSuggestionOptimistic={this.addSuggestionOptimistic}
+            problem_id={problem.problem_id}
+            renderNewSuggestion={this.renderNewSuggestion}
           />
         )}
         <ul className={className}>
