@@ -4,14 +4,14 @@ import Axios from "axios";
 class SingleMentor extends React.Component {
   state = {
     mentors: [],
-    isLoading: true
+    isLoading: true,
   };
 
   getAMentor() {
     return Axios.get(
       "https://hive-got-bugs.herokuapp.com/api/users?role=mentor"
     ).then((mentorInformation) => {
-      console.log(mentorInformation)
+      console.log(mentorInformation);
       this.setState(() => {
         return { mentors: mentorInformation.data.users, isLoading: false };
       });
@@ -23,9 +23,9 @@ class SingleMentor extends React.Component {
   }
 
   render() {
-    const { mentors, isLoading } = this.state
+    const { mentors, isLoading } = this.state;
 
-    if (isLoading) return <p>Is Loading...</p>
+    if (isLoading) return <p>Is Loading...</p>;
 
     return (
       <div className="mentorDetails">
