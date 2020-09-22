@@ -2,7 +2,7 @@ import React from "react";
 import { StyledErrorPage, StyledLoader } from "../../styled/lib";
 import { StyledSuggestionsList } from "../../styled/singleProblem";
 import { StyledSingleProblemCard } from "../../styled/singleProblem";
-
+import { navigate } from "@reach/router";
 import * as api from "../../utils/api";
 import { StyledEditProblemForm } from "../../styled/singleProblem";
 
@@ -58,10 +58,15 @@ class SingleProblem extends React.Component {
     });
   };
 
-  handleDeleteProblem = (problem_id) => {
+  handleDeleteProblem = () => {
+    const {
+      problem: { problem_id },
+    } = this.state;
     api
       .deleteProblem(problem_id)
-      .then(() => {})
+      .then(() => {
+        navigate("/");
+      })
       .catch(({ response }) => {
         this.setState({
           isLoading: false,
@@ -86,7 +91,7 @@ class SingleProblem extends React.Component {
         <StyledSingleProblemCard
           problem={problem}
           toggleEditForm={this.toggleEditForm}
-          handleDelete={this.handleDeleteProblem}
+          handleDeleteProblem={this.handleDeleteProblem}
         />
         {editFormVisible && (
           <StyledEditProblemForm
