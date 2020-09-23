@@ -21,6 +21,7 @@ class App extends Component {
 
   render() {
     // const err = { type: "general404", msg: "Page not found!", status: 404 };
+    console.log(this.state.username);
 
     return (
       <div className="app">

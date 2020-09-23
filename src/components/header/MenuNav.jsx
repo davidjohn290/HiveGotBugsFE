@@ -6,7 +6,7 @@ const MenuNav = ({ className }) => {
     <nav>
       <ul className={className}>
         <li>
-          <StyledHexButton to="/homepage">Home</StyledHexButton>
+          <StyledHexButton to="/">Home</StyledHexButton>
         </li>
         <li>
           <StyledHexButton to="/dashboard">Dashboard</StyledHexButton>
