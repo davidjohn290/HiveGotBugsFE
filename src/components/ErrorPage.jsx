@@ -12,6 +12,7 @@ const ErrorPage = (err) => {
     addSuggestion: "Could not add the suggestion!",
     editSuggestion: "Could not edit the suggestion!",
     markSolved: "Could not mark as solved!",
+    getMentor: "Could not get the mentor!",
   };
 
   return (

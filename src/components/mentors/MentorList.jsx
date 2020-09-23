@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import Loader from "../Loader";
-import { StyledLink } from "../../styled/lib";
-
-// import { Link } from "@reach/router";
-
+import { StyledLink, StyledLoader } from "../../styled/lib";
 import "./mentor.css";
 
 class MentorList extends Component {
@@ -29,7 +25,7 @@ class MentorList extends Component {
 
   render() {
     const { mentors, isLoading /*err*/ } = this.state;
-    if (isLoading) return <Loader />;
+    if (isLoading) return <StyledLoader />;
 
     return (
       <main className="main-mentor">
@@ -38,8 +34,10 @@ class MentorList extends Component {
             <img src={mentor.avatar_url} alt="" className="mentor-img" />
             <section className="mentor-bio">
               <h1>
-                <StyledLink to={`mentors/${mentor.username}`}>
+                <StyledLink to={`/${mentor.username}`}>
                   {mentor.name}
+                  <br />
+                  {mentor.username}
                 </StyledLink>
               </h1>
               <p>{mentor.description}</p>
