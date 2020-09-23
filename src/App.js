@@ -13,7 +13,7 @@ class App extends Component {
   setUser = (username) => {
     this.setState({ username });
   };
-  state = { username: null, setUser: this.setUser };
+  state = { username: "Destiny82", setUser: this.setUser };
 
   render() {
     // const err = { type: "general404", msg: "Page not found!", status: 404 };

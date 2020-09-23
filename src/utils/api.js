@@ -127,3 +127,19 @@ export const addUser = (username, { avatar_url }) => {
       return user;
     });
 };
+
+export const addProblemByUsername = (
+  username,
+  { difficulty, tech, title, body }
+) => {
+  return axiosInstance
+    .post(`/problems`, {
+      username,
+      difficulty,
+      tech,
+      title,
+      body,
+      solved: "false",
+    })
+    .then(({ data: { problem } }) => problem);
+};

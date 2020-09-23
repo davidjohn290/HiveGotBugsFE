@@ -7,9 +7,11 @@ import {
   StyledUserCard,
   StyledBugChart,
   StyledEditDashboard,
+  StyledAddProblem,
 } from "../../styled/dashboard";
 import { StyledHexButton } from "../../styled/lib";
 import { StyledProblemCard } from "../../styled/home";
+import { addProblemByUsername } from "../../utils/api";
 
 class Dashboard extends Component {
   state = {
@@ -20,6 +22,7 @@ class Dashboard extends Component {
     problems: [],
     toggleEdit: false,
     filter: false,
+    toggleProblem: false,
   };
 
   static contextType = UserContext;
@@ -66,6 +69,23 @@ class Dashboard extends Component {
       });
   };
 
+  addProblem = (username, body) => {
+    this.setState((currentState) => {
+      const newProblem = {
+        username: username,
+        difficulty: body.difficulty,
+        solved: false,
+        tech: body.tech,
+        title: body.title,
+        body: body.body,
+        created_at: "a minute ago",
+      };
+      return { problems: [newProblem, ...currentState.problems] };
+    });
+    console.log(this.state);
+    //addProblemByUsername(username, body);
+  };
+
   fetchProblems = (username, filter) => {
     this.setState({ isLoading: true });
     getProblemByUsername(username, filter)
@@ -96,6 +116,12 @@ class Dashboard extends Component {
     });
   };
 
+  toggleProblem = () => {
+    this.setState((currentState) => {
+      return { toggleProblem: !currentState.toggleProblem };
+    });
+  };
+
   render() {
     const {
       err,
@@ -105,6 +131,7 @@ class Dashboard extends Component {
       problems,
       toggleEdit,
       filter,
+      toggleProblem,
     } = this.state;
     const { className } = this.props;
 
@@ -144,8 +171,13 @@ class Dashboard extends Component {
               >
                 {!filter ? "Show Solved" : "Show Unsolved"}
               </StyledHexButton>
+              <StyledHexButton as="button" onClick={this.toggleProblem}>
+                {toggleProblem ? "Close" : "Add Problem"}
+              </StyledHexButton>
+              {toggleProblem && (
+                <StyledAddProblem updateProblemList={this.addProblem} />
+              )}
             </header>
-
             <ul>
               {problems.map((problem) => {
                 return (
