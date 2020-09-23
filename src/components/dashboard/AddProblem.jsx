@@ -59,10 +59,10 @@ class AddProblem extends Component {
           <label>
             Difficulty:
             <select id="difficulty" onChange={this.handleInput} required>
-              <option value="">e.g. 1 is the easiest</option>
-              <option value="0">1</option>
-              <option value="1">2</option>
-              <option value="2">3</option>
+              <option value="">Pick a difficulty</option>
+              <option value="0">Easy</option>
+              <option value="1">Medium</option>
+              <option value="2">Hard</option>
             </select>
           </label>
 
