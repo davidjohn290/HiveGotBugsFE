@@ -36,7 +36,15 @@ class AddProblem extends Component {
   };
 
   render() {
-    const { isLoading, title, body, submitted, techList } = this.state;
+    const {
+      isLoading,
+      title,
+      body,
+      submitted,
+      techList,
+      tech,
+      difficulty,
+    } = this.state;
     const { className } = this.props;
     if (isLoading) return <Loader />;
     return (
@@ -44,7 +52,7 @@ class AddProblem extends Component {
         <form className={className} onSubmit={this.handleSubmit}>
           <label>
             Tech used:
-            <select id="tech" onChange={this.handleInput} required>
+            <select id="tech" onChange={this.handleInput} value={tech} required>
               <option value=""></option>
               {techList.map((tech) => {
                 return (
@@ -58,7 +66,12 @@ class AddProblem extends Component {
 
           <label>
             Difficulty:
-            <select id="difficulty" onChange={this.handleInput} required>
+            <select
+              id="difficulty"
+              onChange={this.handleInput}
+              value={difficulty}
+              required
+            >
               <option value="">Pick a difficulty</option>
               <option value="0">Easy</option>
               <option value="1">Medium</option>
