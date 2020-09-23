@@ -66,12 +66,11 @@ class GitHubLogin extends Component {
   render() {
     const { isSignedIn } = this.state;
     return (
-      <main>
-        <button onClick={this.checkIfUserExists}>click me</button>
-        <button onClick={this.checkIfUserExists}>click me</button>
+
+      <div>
 
         <UserContext.Consumer>
-          {({ username, role }) =>
+          {() =>
             !isSignedIn ? (
               <StyledHexButton as="button" onClick={this.login}>
                 Log In
@@ -83,7 +82,8 @@ class GitHubLogin extends Component {
             )
           }
         </UserContext.Consumer>
-      </main>
+      </div>
+
     );
   }
 }
