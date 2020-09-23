@@ -111,3 +111,19 @@ export const getAMentor = (username) => {
     .get(`/users/${username}/`)
     .then(({ data: { user } }) => user);
 };
+
+export const addUser = (username, { avatar_url }) => {
+  return axiosInstance
+    .post("/users", {
+      username: username,
+      avatar_url: avatar_url,
+      name: "Not provided",
+      bug_points: 0,
+      bug_points_over_month: 0,
+      role: "user",
+      online_status: "true",
+    })
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};

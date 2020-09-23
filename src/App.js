@@ -13,12 +13,10 @@ class App extends Component {
   setUser = (username) => {
     this.setState({ username });
   };
-  state = { username: "Destiny82", setUser: this.setUser };
+  state = { username: null, setUser: this.setUser };
 
   render() {
-    console.log(this.state);
     // const err = { type: "general404", msg: "Page not found!", status: 404 };
-    console.log(this.state.username);
 
     return (
       <div className="app">

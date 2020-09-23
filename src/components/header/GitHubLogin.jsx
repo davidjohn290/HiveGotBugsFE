@@ -3,6 +3,7 @@ import firebase from "firebase";
 import apiKey from "../../firebaseAPI";
 import { StyledHexButton } from "../../styled/lib";
 import { UserContext } from "../../UserContext";
+import { getUserByUsername, addUser } from "../../utils/api";
 
 firebase.initializeApp({
   apiKey: apiKey,
@@ -15,7 +16,8 @@ class GitHubLogin extends Component {
   state = {
     isSignedIn: false,
     username: "",
-    image_url: "",
+    user: {},
+    failedLogin: true,
   };
 
   uiConfig = {
@@ -34,13 +36,13 @@ class GitHubLogin extends Component {
       .signInWithPopup(new firebase.auth.GithubAuthProvider())
       .then((userCredential) => {
         const { username, profile } = userCredential.additionalUserInfo;
-        const image_url = profile.avatar_url;
+        const avatar_url = profile.avatar_url;
         const { setUser } = this.context;
         setUser(username);
-        this.setState({ isSignedIn: true, username, image_url });
+        return { username, avatar_url };
       })
-      .catch((error) => {
-        console.log(error);
+      .then(({ username, avatar_url }) => {
+        this.checkIfUserExists(username, { avatar_url: avatar_url });
       });
   };
 
@@ -49,10 +51,23 @@ class GitHubLogin extends Component {
     this.setState({ isSignedIn: false });
   };
 
+  checkIfUserExists = (username, body) => {
+    getUserByUsername(username)
+      .then((user) => {
+        this.setState({ isSignedIn: true, username: user.username, user });
+      })
+      .catch((err) => {
+        addUser(username, body).then((user) => {
+          this.setState({ isSignedIn: true });
+        });
+      });
+  };
+
   render() {
     const { isSignedIn } = this.state;
     return (
       <main>
+        <button onClick={this.checkIfUserExists}>click me</button>
         <UserContext.Consumer>
           {({ username, role }) =>
             !isSignedIn ? (
