@@ -40,6 +40,8 @@ class MentorList extends Component {
               <h1>
                 <StyledLink to={`/${mentor.username}`}>
                   {mentor.name}
+                  <br />
+                  {mentor.username}
                 </StyledLink>
               </h1>
               <p>{mentor.description}</p>

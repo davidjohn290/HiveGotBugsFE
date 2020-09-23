@@ -3,14 +3,14 @@ import { getAMentor } from "../../utils/api";
 
 class SingleMentor extends React.Component {
   state = {
-    mentors: [],
+    mentor: null,
     isLoading: true,
   };
 
   fetchMentor = (username) => {
     getAMentor(username).then((mentorInformation) => {
       this.setState(() => {
-        return { mentors: mentorInformation, isLoading: false };
+        return { mentor: mentorInformation, isLoading: false };
       });
     });
   };
@@ -21,29 +21,30 @@ class SingleMentor extends React.Component {
   }
 
   render() {
-    const { mentors, isLoading } = this.state;
+    const { mentor, isLoading } = this.state;
+    const { className } = this.props;
 
     if (isLoading) return <p>Is Loading...</p>;
 
     return (
-      <div className="mentorDetails">
+      <main className={className}>
+        <h2>{mentor.name}</h2>
+        <h3>{mentor.username}</h3>
+        <img src={mentor.avatar_url} alt="Profile Img" />
 
-        <h3>{mentors.username}</h3>
-        <img src={mentors.avatar_url} alt="Profile Img" />
-
-        <ul className="skillsList">
-          <li>{mentors.skill1}</li>
-          <li>{mentors.skill2}</li>
-          <li>{mentors.skill3}</li>
-          <li>{mentors.skill4}</li>
+        <ul>
+          <li>{mentor.skill1}</li>
+          <li>{mentor.skill2}</li>
+          <li>{mentor.skill3}</li>
+          <li>{mentor.skill4}</li>
         </ul>
 
         <p>Bio</p>
-        <p>{mentors.description}</p>
+        <p>{mentor.description}</p>
 
         <p>Github Link:</p>
-        <a href={mentors.github_url}>{mentors.github_url}</a>
-      </div>
+        <a href={mentor.github_url}>{mentor.github_url}</a>
+      </main>
     );
   }
 }
