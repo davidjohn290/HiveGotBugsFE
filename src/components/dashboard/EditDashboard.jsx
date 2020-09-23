@@ -1,10 +1,7 @@
 import React, { Component } from "react";
 import { StyledHexButton } from "../../styled/lib";
-import {
-  getUserByUsername,
-  editUserProfileByUsername,
-  getTech,
-} from "../../utils/api";
+import * as api from "../../utils/api";
+
 class EditDashboard extends Component {
   state = {
     username: this.props.username,
@@ -20,8 +17,9 @@ class EditDashboard extends Component {
 
   componentDidMount() {
     const { username } = this.state;
-    getUserByUsername(username).then(
-      ({ description, github_url, skill1, skill2, skill3 }) => {
+    api
+      .getUserByUsername(username)
+      .then(({ description, github_url, skill1, skill2, skill3 }) => {
         this.setState({
           description,
           github_url,
@@ -30,12 +28,11 @@ class EditDashboard extends Component {
           skill3,
           isLoading: false,
         });
-      }
-    );
+      });
   }
 
   getAllTech = () => {
-    getTech().then((tech) => this.setState({ tech }));
+    api.getTech().then((tech) => this.setState({ tech }));
   };
 
   handleSubmit = (e) => {
@@ -48,7 +45,7 @@ class EditDashboard extends Component {
       skill3,
     } = this.state;
     e.preventDefault();
-    editUserProfileByUsername(username, {
+    api.editUserProfileByUsername(username, {
       description,
       github_url,
       skill1,

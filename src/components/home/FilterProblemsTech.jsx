@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-
 import ErrorPage from "../ErrorPage";
 
 class FilterProblemsTech extends Component {
@@ -38,22 +37,24 @@ class FilterProblemsTech extends Component {
 
     return (
       <section className={className}>
-        <label htmlFor="filter-by-tech">Filter by tech: </label>
-        <select
-          name="filter-by-tech"
-          id="filter-by-tech"
-          value={selectedTech}
-          onChange={handleTechChange}
-        >
-          <option value="">None</option>
-          {tech.map((tech) => {
-            return (
-              <option key={tech.slug} value={tech.slug}>
-                {tech.slug}
-              </option>
-            );
-          })}
-        </select>
+        <label htmlFor="filter-by-tech">
+          Filter by tech:{" "}
+          <select
+            name="filter-by-tech"
+            id="filter-by-tech"
+            value={selectedTech}
+            onChange={handleTechChange}
+          >
+            <option value="">None</option>
+            {tech.map((tech) => {
+              return (
+                <option key={tech.slug} value={tech.slug}>
+                  {tech.slug}
+                </option>
+              );
+            })}
+          </select>
+        </label>
       </section>
     );
   }

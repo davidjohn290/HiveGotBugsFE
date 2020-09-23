@@ -1,10 +1,12 @@
 import React from "react";
 import { StyledErrorPage, StyledLoader } from "../../styled/lib";
-import { StyledSuggestionsList } from "../../styled/singleProblem";
-import { StyledSingleProblemCard } from "../../styled/singleProblem";
+import {
+  StyledSuggestionsList,
+  StyledSingleProblemCard,
+  StyledEditProblemForm,
+} from "../../styled/singleProblem";
 import { navigate } from "@reach/router";
 import * as api from "../../utils/api";
-import { StyledEditProblemForm } from "../../styled/singleProblem";
 
 class SingleProblem extends React.Component {
   state = {
@@ -111,7 +113,6 @@ class SingleProblem extends React.Component {
             toggleEditForm={this.toggleEditForm}
           />
         )}
-
         <StyledSuggestionsList
           problem={problem}
           problem_id={problem_id}

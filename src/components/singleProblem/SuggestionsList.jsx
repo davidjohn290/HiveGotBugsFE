@@ -1,7 +1,9 @@
 import React from "react";
 import ErrorPage from "../ErrorPage";
-import { StyledSuggestionCard } from "../../styled/singleProblem";
-import { StyledAddSuggestionForm } from "../../styled/singleProblem";
+import {
+  StyledSuggestionCard,
+  StyledAddSuggestionForm,
+} from "../../styled/singleProblem";
 import { UserContext } from "../../UserContext";
 import * as api from "../../utils/api";
 
@@ -89,7 +91,7 @@ class SuggestionsList extends React.Component {
     if (err) return <ErrorPage {...err} />;
 
     return (
-      <sections>
+      <section>
         <h2>Suggestions</h2>
         {username && (
           <StyledAddSuggestionForm
@@ -112,7 +114,7 @@ class SuggestionsList extends React.Component {
             );
           })}
         </ul>
-      </sections>
+      </section>
     );
   }
 }
