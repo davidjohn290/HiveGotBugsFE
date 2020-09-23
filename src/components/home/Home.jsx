@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
+import removeFilters from "../home/removeFilters"
 import { StyledLoader } from "../../styled/lib";
 import { StyledErrorPage } from "../../styled/lib";
 import { StyledSortProblems } from "../../styled/home";
@@ -15,6 +16,7 @@ class Home extends Component {
     selectedDifficulty: "",
     isLoading: true,
     err: null,
+    removeFilters: false,
   };
 
   componentDidMount() {
@@ -113,6 +115,9 @@ class Home extends Component {
           handleTechChange={this.handleTechChange}
           selectedTech={selectedTech}
         />
+
+        <removeFilters/>
+
         <StyledFilterProblemsDifficulty
           handleDifficultyChange={this.handleDifficultyChange}
           selectedDifficulty={selectedDifficulty}

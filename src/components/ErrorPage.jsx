@@ -15,7 +15,7 @@ const ErrorPage = (err) => {
     getMentor: "Could not get the mentor!",
     getMentorList: "Could not get any mentors!",
     filterTech: "Could not find any tech with that filter!",
-    fetchProblems: "Could not get all the problems!"
+    fetchProblems: "Could not get all the problems!",
   };
 
   return (
@@ -32,4 +32,3 @@ const ErrorPage = (err) => {
 };
 
 export default ErrorPage;
- 
