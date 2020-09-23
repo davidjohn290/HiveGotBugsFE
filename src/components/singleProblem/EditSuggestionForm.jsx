@@ -2,38 +2,42 @@ import React, { Component } from "react";
 import * as api from "../../utils/api";
 import { StyledHexButton } from "../../styled/lib";
 import { StyledErrorPage } from "../../styled/lib";
-import { UserContext } from "../../UserContext";
 
-class AddSuggestionForm extends Component {
+class EditSuggestionForm extends Component {
   state = {
     body: "",
   };
 
-  static contextType = UserContext;
+  componentDidMount() {
+    const {
+      suggestion: { body },
+    } = this.props;
+    this.setState({ body });
+  }
 
   handleSubmit = (submitEvent) => {
-    const { renderNewSuggestion, problem_id } = this.props;
-    const { body } = this.state;
-    const { username } = this.context;
+    const { toggleEditForm, editSuggestionOptimistic } = this.props;
 
     submitEvent.preventDefault();
+
+    const {
+      suggestion: { suggestion_id },
+    } = this.props;
+    const { body } = this.state;
+
     if (body) {
-      api
-        .addSuggestion(problem_id, username, body)
-        .then((newSuggestion) => {
-          renderNewSuggestion(newSuggestion);
-        })
-        .catch(({ response }) => {
-          this.setState({
-            isLoading: false,
-            err: {
-              type: "addSuggestion",
-              msg: response.data.msg,
-              status: response.status,
-            },
-          });
+      api.editSuggestion(suggestion_id, { body }).catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "editSuggestion",
+            msg: response.data.msg,
+            status: response.status,
+          },
         });
-      this.setState({ body: "" });
+      });
+      editSuggestionOptimistic(suggestion_id, body);
+      toggleEditForm();
     }
   };
 
@@ -66,4 +70,4 @@ class AddSuggestionForm extends Component {
   }
 }
 
-export default AddSuggestionForm;
+export default EditSuggestionForm;

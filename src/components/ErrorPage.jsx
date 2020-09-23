@@ -9,6 +9,9 @@ const ErrorPage = (err) => {
     deleteProblem: "Could not delete the problem!",
     fetchSuggestions: "Could not fetch suggestions!",
     deleteSuggestion: "Could not delete the suggestion!",
+    addSuggestion: "Could not add the suggestion!",
+    editSuggestion: "Could not edit the suggestion!",
+    markSolved: "Could not mark as solved!",
   };
 
   return (

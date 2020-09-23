@@ -1,7 +1,3 @@
-// Add this.showEditProblem function(but don't write functionality yet)
-// Add Delete Problem button and handleDeleteProblem function
-// Add a form component to edit the problem
-
 import React, { Component } from "react";
 import { formatTimeString } from "../../utils/time";
 import { capitalizeFirstLetter } from "../../utils/capitalize";
@@ -23,7 +19,7 @@ class SingleProblemCard extends Component {
     const timeDifference = Date.now() - new Date(problem.created_at);
     const timeString = formatTimeString(timeDifference);
     const difficultyRef = ["Easy", "Medium", "Hard"];
-    const solved = problem.solved ? "Solved" : "Unsolved";
+    const solved = problem.solved === "true" ? "Solved" : "Unsolved";
     const difficulty = difficultyRef[problem.difficulty];
 
     return (
@@ -39,7 +35,9 @@ class SingleProblemCard extends Component {
           </>
         )}
 
-        <p>{solved}</p>
+        <p>
+          <strong>{solved}</strong>
+        </p>
         <p>Difficulty: {difficulty} </p>
         <p>Tech: {problem.tech} </p>
         <p>{`Posted by: ${problem.username} ${timeString}`}</p>

@@ -43,6 +43,18 @@ export const StyledBugChart = styled(BugChart)`
     font-size: 10pt;
     float: left;
   }
+  #chartList {
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-evenly;
+    max-height: 5cm;
+    max-width: 5cm;
+    text-decoration: none;
+    margin: auto;
+  }
+  li {
+    list-style: none;
+  }
 `;
 
 export const StyledDashboard = styled(Dashboard)`
