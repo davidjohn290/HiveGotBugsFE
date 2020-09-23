@@ -11,7 +11,7 @@ import {
 import { StyledHexButton } from "../../styled/lib";
 import { StyledProblemCard } from "../../styled/home";
 
-class Dashboard2 extends Component {
+class Dashboard extends Component {
   state = {
     isLoading: false,
     err: null,
@@ -162,4 +162,4 @@ class Dashboard2 extends Component {
   }
 }
 
-export default Dashboard2;
+export default Dashboard;
