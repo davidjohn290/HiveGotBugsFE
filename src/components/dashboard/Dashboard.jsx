@@ -141,16 +141,7 @@ class Dashboard extends Component {
     else
       return (
         <main className={className}>
-          <StyledUserCard
-            username={user.username}
-            memberSince={user.memberSince}
-            avatar_url={user.avatar_url}
-            bugPoints={user.bugPoints}
-            description={user.description}
-            skills={user.skills}
-            github_url={user.github_url}
-            role={user.role}
-          />
+          <StyledUserCard user={user} />
           <StyledBugChart username={username} />
           <section>
             <h2>Posted problems</h2>

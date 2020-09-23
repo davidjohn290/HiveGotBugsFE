@@ -6,15 +6,15 @@ import Header from "./components/header/Header";
 import MentorPage from "./components/singleMentor/MentorPage";
 import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
-// import { StyledMentorForm } from "./styled/mentor";
-import MentorForm from "./components/becomeAMentor/MentorForm2";
+import { StyledMentorForm } from "./styled/mentor";
 import MentorList from "./components/mentors/MentorList";
 
 class App extends Component {
+  state = { username: null, setUser: this.setUser };
+
   setUser = (username) => {
     this.setState({ username });
   };
-  state = { username: null, setUser: this.setUser };
 
   render() {
     // const err = { type: "general404", msg: "Page not found!", status: 404 };
@@ -26,7 +26,7 @@ class App extends Component {
           <Router>
             <StyledHome path="/" />
             <StyledSingleProblem path="/problem/:problem_id" />
-            <MentorForm path="/become-a-mentor" />
+            <StyledMentorForm path="/become-a-mentor" />
             <MentorPage path="/:username" />
             <StyledDashboard path="/dashboard" />
             <MentorList path="/mentors" />
