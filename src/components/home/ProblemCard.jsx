@@ -4,7 +4,6 @@ import { formatTimeString } from "../../utils/time";
 import { capitalizeFirstLetter } from "../../utils/capitalize";
 
 function ProblemCard({ problem, className }) {
-  console.log(problem.created_at);
   const timeDifference = Date.now() - new Date(problem.created_at);
   let timeString = formatTimeString(timeDifference);
   if (problem.created_at === "a minute ago") {
