@@ -38,7 +38,7 @@ class MentorList extends Component {
             <img src={mentor.avatar_url} alt="" className="mentor-img" />
             <section className="mentor-bio">
               <h1>
-                <StyledLink to={`mentors/${mentor.username}`}>
+                <StyledLink to={`/${mentor.username}`}>
                   {mentor.name}
                 </StyledLink>
               </h1>
