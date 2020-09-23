@@ -1,31 +1,41 @@
-import React from "react";
+import React, { Component } from "react";
 import { Router } from "@reach/router";
-import "./App.css";
-import "./css/problemsList.css";
-import "./css/problemCard.css";
-import "./css/singleProblem.css";
-import "./css/suggestions.css";
-import "./css/suggestionCard.css";
-import "./css/button.css";
-import Home from "./components/Home";
-import SingleProblem from "./components/SingleProblem";
-import Header from "./components/Header";
-import MentorForm from "./components/MentorForm";
-import Dashboard from "./components/Dashboard";
+import { StyledHome } from "./styled/home";
+import { StyledSingleProblem } from "./styled/singleProblem";
+import Header from "./components/header/Header";
+import MentorPage from "./components/singleMentor/MentorPage";
+import { StyledDashboard } from "./styled/dashboard";
+import { UserContext } from "./UserContext";
+import { StyledMentorForm } from "./styled/mentor";
+import MentorList from "./components/mentors/MentorList";
 
-function App() {
-  return (
-    <div className="app">
-      <Header />
+class App extends Component {
+  setUser = (username) => {
+    this.setState({ username });
+  };
+  state = { username: "Destiny82", setUser: this.setUser };
 
-      <Router>
-        <Home path="/" />
-        <MentorForm path="/become-a-mentor" />
-        <SingleProblem path="/problem" />
-        <Dashboard path="/dashboard" />
-      </Router>
-    </div>
-  );
+  render() {
+    console.log(this.state);
+    // const err = { type: "general404", msg: "Page not found!", status: 404 };
+    console.log(this.state.username);
+
+    return (
+      <div className="app">
+        <UserContext.Provider value={this.state}>
+          <Header />
+          <Router>
+            <StyledHome path="/" />
+            <StyledSingleProblem path="/problem/:problem_id" />
+            <StyledMentorForm path="/become-a-mentor" />
+            <MentorPage path="/:username" />
+            <StyledDashboard path="/dashboard" />
+            <MentorList path="/mentors" />
+          </Router>
+        </UserContext.Provider>
+      </div>
+    );
+  }
 }
 
 export default App;

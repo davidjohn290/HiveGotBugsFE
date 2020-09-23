@@ -1,8 +1,8 @@
-.hexagon {
+/* .hexagon {
   position: relative;
-  width: 250px; 
+  width: 250px;
   height: 144.34px;
-  background-color: #A6CBA0;
+  background-color: #a6cba0;
   margin: 72.17px 0;
 }
 
@@ -18,13 +18,13 @@
 
 .hexagon:before {
   bottom: 100%;
-  border-bottom: 72.17px solid #A6CBA0;
+  border-bottom: 72.17px solid #a6cba0;
 }
 
 .hexagon:after {
   top: 100%;
   width: 0;
-  border-top: 72.17px solid #A6CBA0;
+  border-top: 72.17px solid #a6cba0;
 }
 
 .hexagon p {
@@ -33,4 +33,4 @@
 
 #title {
   margin-top: 15px;
-}
+} */
