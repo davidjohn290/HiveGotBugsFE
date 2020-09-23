@@ -17,6 +17,7 @@ const ErrorPage = (err) => {
     filterTech: "Could not find any tech with that filter!",
     getUser: "Could not get the user!",
     fetchProblems: "Could not get the problems!",
+    getTech: "Could not get any tech!",
   };
 
   return (
