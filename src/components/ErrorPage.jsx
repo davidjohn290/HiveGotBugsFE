@@ -13,6 +13,9 @@ const ErrorPage = (err) => {
     editSuggestion: "Could not edit the suggestion!",
     markSolved: "Could not mark as solved!",
     getMentor: "Could not get the mentor!",
+    getMentorList: "Could not get any mentors!",
+    filterTech: "Could not find any tech with that filter!",
+    fetchProblems: "Could not get all the problems!"
   };
 
   return (
@@ -29,3 +32,4 @@ const ErrorPage = (err) => {
 };
 
 export default ErrorPage;
+ 
