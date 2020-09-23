@@ -26,6 +26,7 @@ class Dashboard extends Component {
     problems: [],
     filter: false,
     toggleEdit: false,
+    tech: [],
   };
 
   componentDidUpdate(prevProps, prevState) {

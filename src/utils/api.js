@@ -100,6 +100,12 @@ export const incrementBugPoints = (username) => {
     .then(({ data: { suggestion } }) => suggestion);
 };
 
+export const getProblemByUsernameWithoutFilter = (username) => {
+  return axiosInstance
+    .get(`/problems?username=${username}`)
+    .then(({ data: { problems } }) => problems);
+};
+
 export const getAMentor = (username) => {
   return axiosInstance
     .get(`/users/${username}/`)
