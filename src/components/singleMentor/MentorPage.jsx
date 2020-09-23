@@ -9,7 +9,6 @@ class SingleMentor extends React.Component {
 
   fetchMentor = (username) => {
     getAMentor(username).then((mentorInformation) => {
-      console.log(mentorInformation)
       this.setState(() => {
         return { mentors: mentorInformation, isLoading: false };
       });
@@ -17,7 +16,7 @@ class SingleMentor extends React.Component {
   };
 
   componentDidMount() {
-    const { username } = this.props
+    const { username } = this.props;
     this.fetchMentor(username);
   }
 
@@ -28,23 +27,22 @@ class SingleMentor extends React.Component {
 
     return (
       <div className="mentorDetails">
-        {/* {console.log(mentors)}
 
-        <h3>{mentors[0].username}</h3>
-        <img src={mentors[0].avatar_url} alt="Profile Img" />
+        <h3>{mentors.username}</h3>
+        <img src={mentors.avatar_url} alt="Profile Img" />
 
         <ul className="skillsList">
-          <li>{mentors[0].skill1}</li>
-          <li>{mentors[0].skill2}</li>
-          <li>{mentors[0].skill3}</li>
-          <li>{mentors[0].skill4}</li>
+          <li>{mentors.skill1}</li>
+          <li>{mentors.skill2}</li>
+          <li>{mentors.skill3}</li>
+          <li>{mentors.skill4}</li>
         </ul>
 
         <p>Bio</p>
-        <p>{mentors[0].description}</p>
+        <p>{mentors.description}</p>
 
         <p>Github Link:</p>
-        <p>{mentors[0].github_url}</p> */}
+        <a href={mentors.github_url}>{mentors.github_url}</a>
       </div>
     );
   }
