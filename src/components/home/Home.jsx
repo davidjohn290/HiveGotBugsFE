@@ -62,11 +62,11 @@ class Home extends Component {
       .catch(({ response }) => {
         this.setState({
           isLoading: false,
-          // err: {
-          //   type: "fetchProblems",
-          //   msg: response.data.msg,
-          //   status: response.status,
-          // },
+          err: {
+            type: "fetchProblems",
+            msg: response.data.msg,
+            status: response.status,
+          },
         });
       });
   }
