@@ -10,26 +10,18 @@ import { StyledMentorForm } from "./styled/mentor";
 import MentorList from "./components/mentors/MentorList";
 
 class App extends Component {
-  state = { username: null };
-
-  toggleLogin = () => {
-    this.setState(({ username }) => {
-      if (username) return { username: null };
-      else return { username: "Destiny82" };
-    });
+  setUser = (username) => {
+    this.setState({ username });
   };
+  state = { username: "Destiny82", setUser: this.setUser };
 
   render() {
+    console.log(this.state);
     // const err = { type: "general404", msg: "Page not found!", status: 404 };
 
     return (
       <div className="app">
-        <UserContext.Provider
-          value={{
-            username: this.state.username,
-            toggleLogin: this.toggleLogin,
-          }}
-        >
+        <UserContext.Provider value={this.state}>
           <Header />
           <Router>
             <StyledHome path="/" />

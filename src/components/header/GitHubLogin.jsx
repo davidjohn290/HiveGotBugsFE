@@ -1,9 +1,11 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faGithub } from "@fortawesome/free-brands-svg-icons";
-import { GithubLoginButton } from "react-social-login-buttons";
+// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+// import { faGithub } from "@fortawesome/free-brands-svg-icons";
+// import { GithubLoginButton } from "react-social-login-buttons";
 import apiKey from "../../firebaseAPI";
+import { StyledHexButton } from "../../styled/lib";
+import { UserContext } from "../../UserContext";
 
 firebase.initializeApp({
   apiKey: apiKey,
@@ -11,6 +13,8 @@ firebase.initializeApp({
 });
 
 class GitHubLogin extends Component {
+  static contextType = UserContext;
+
   state = {
     isSignedIn: false,
     username: "",
@@ -34,8 +38,9 @@ class GitHubLogin extends Component {
       .then((userCredential) => {
         const { username, profile } = userCredential.additionalUserInfo;
         const image_url = profile.avatar_url;
+        const { setUser } = this.context;
+        setUser(username);
         this.setState({ isSignedIn: true, username, image_url });
-        console.log(this.state);
       })
       .catch((error) => {
         console.log(error);
@@ -48,20 +53,35 @@ class GitHubLogin extends Component {
   };
 
   render() {
+    const { isSignedIn } = this.state;
     return (
       <div>
-        {this.state.isSignedIn ? (
+        <UserContext.Consumer>
+          {({ username, role }) =>
+            !isSignedIn ? (
+              <StyledHexButton as="button" onClick={this.login}>
+                Log In
+              </StyledHexButton>
+            ) : (
+              <StyledHexButton as="button" onClick={this.signOut}>
+                Log out
+              </StyledHexButton>
+            )
+          }
+        </UserContext.Consumer>
+
+        {/* {this.state.isSignedIn ? (
           <span>
             <div>Signed in</div>
             <button onClick={this.signOut}>Sign out</button>
           </span>
         ) : (
           <button onClick={this.login}>login</button>
-        )}
-        <FontAwesomeIcon icon={faGithub} size="2x" />
-        <div>
+        )} */}
+        {/* <FontAwesomeIcon icon={faGithub} size="2x" /> */}
+        {/* <div>
           <GithubLoginButton />
-        </div>
+        </div> */}
       </div>
     );
   }
