@@ -36,7 +36,6 @@ class MentorList extends Component {
     const { mentors, isLoading, err } = this.state;
 
     if (err) return <ErrorPage {...err} />;
-
     if (isLoading) return <StyledLoader />;
 
     return (

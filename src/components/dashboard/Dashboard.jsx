@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import { getUserByUsername, getProblemByUsername } from "../../utils/api";
+import * as api from "../../utils/api";
 import { UserContext } from "../../UserContext";
-import { StyledLoader } from "../../styled/lib";
 import ErrorPage from "../ErrorPage";
 import {
   StyledUserCard,
@@ -9,9 +8,8 @@ import {
   StyledEditDashboard,
   StyledAddProblem,
 } from "../../styled/dashboard";
-import { StyledHexButton } from "../../styled/lib";
+import { StyledHexButton, StyledLoader } from "../../styled/lib";
 import { StyledProblemCard } from "../../styled/home";
-import { addProblemByUsername } from "../../utils/api";
 
 class Dashboard extends Component {
   state = {
@@ -53,7 +51,8 @@ class Dashboard extends Component {
 
   fetchUser = (username) => {
     this.setState({ isLoading: true });
-    getUserByUsername(username)
+    api
+      .getUserByUsername(username)
       .then((user) => {
         this.setState({ user, isLoading: false });
       })
@@ -82,12 +81,13 @@ class Dashboard extends Component {
       };
       return { problems: [newProblem, ...currentState.problems] };
     });
-    addProblemByUsername(username, body);
+    api.addProblemByUsername(username, body);
   };
 
   fetchProblems = (username, filter) => {
     this.setState({ isLoading: true });
-    getProblemByUsername(username, filter)
+    api
+      .getProblemByUsername(username, filter)
       .then((problems) => {
         this.setState({ problems, isLoading: false });
       })
@@ -136,23 +136,25 @@ class Dashboard extends Component {
 
     if (err) return <ErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
-
     if (!username) return <p>Please log in first!</p>;
     else
       return (
         <main className={className}>
           <StyledUserCard user={user} />
           <StyledBugChart username={username} />
+
           <section>
             <h2>Posted problems</h2>
             <header className="dashboardButtons">
-              <StyledHexButton
-                as="button"
-                id="editButton"
-                onClick={this.toggleShowEdit}
-              >
-                {!toggleEdit ? "Edit" : "Close Edit"}
-              </StyledHexButton>
+              {user.role === "mentor" && (
+                <StyledHexButton
+                  as="button"
+                  id="editButton"
+                  onClick={this.toggleShowEdit}
+                >
+                  {!toggleEdit ? "Edit" : "Close Edit"}
+                </StyledHexButton>
+              )}
               {toggleEdit && <StyledEditDashboard username={username} />}
               <StyledHexButton
                 as="button"

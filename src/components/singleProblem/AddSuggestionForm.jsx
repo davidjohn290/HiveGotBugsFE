@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import { StyledHexButton } from "../../styled/lib";
-import { StyledErrorPage } from "../../styled/lib";
+import { StyledHexButton, StyledErrorPage } from "../../styled/lib";
 import { UserContext } from "../../UserContext";
 
 class AddSuggestionForm extends Component {
@@ -49,15 +48,17 @@ class AddSuggestionForm extends Component {
 
     return (
       <form className={className} onSubmit={this.handleSubmit}>
-        <label htmlFor="body">Suggestion: </label>
-        <textarea
-          id="body"
-          type="text"
-          maxLength="280"
-          placeholder=""
-          value={body}
-          onChange={this.handleChangeBody}
-        />
+        <label htmlFor="body">
+          Suggestion:{" "}
+          <textarea
+            id="body"
+            type="text"
+            maxLength="280"
+            placeholder=""
+            value={body}
+            onChange={this.handleChangeBody}
+          />
+        </label>
         <StyledHexButton as="button" type="submit">
           Submit
         </StyledHexButton>

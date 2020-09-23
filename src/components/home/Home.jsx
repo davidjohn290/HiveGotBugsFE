@@ -1,11 +1,12 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import { StyledLoader } from "../../styled/lib";
-import { StyledErrorPage } from "../../styled/lib";
-import { StyledSortProblems } from "../../styled/home";
-import { StyledFilterProblemsTech } from "../../styled/home";
-import { StyledFilterProblemsDifficulty } from "../../styled/home";
-import { StyledProblemsList } from "../../styled/home";
+import { StyledLoader, StyledErrorPage } from "../../styled/lib";
+import {
+  StyledSortProblems,
+  StyledFilterProblemsTech,
+  StyledFilterProblemsDifficulty,
+  StyledProblemsList,
+} from "../../styled/home";
 
 class Home extends Component {
   state = {

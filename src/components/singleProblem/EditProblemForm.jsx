@@ -86,58 +86,62 @@ class EditProblemForm extends Component {
 
     return (
       <form className={className} onSubmit={this.handleSubmit}>
-        <label htmlFor="difficulty">Difficulty: </label>
-        <select
-          name="difficulty"
-          id="difficulty"
-          value={difficultyRef[difficulty]}
-          onChange={this.handleChangeDifficulty}
-        >
-          <option key="easy" value="easy">
-            Easy
-          </option>
-          <option key="medium" value="medium">
-            Medium
-          </option>
-          <option key="hard" value="hard">
-            Hard
-          </option>
-        </select>
-
-        <label htmlFor="tech">Tech: </label>
-        <select
-          name="tech"
-          id="tech"
-          value={tech}
-          onChange={this.handleChangeTech}
-        >
-          {techList.map((tech) => {
-            return (
-              <option key={tech.slug} value={tech.slug}>
-                {tech.slug}
-              </option>
-            );
-          })}
-        </select>
-
-        <label htmlFor="title">Title</label>
-        <input
-          type="text"
-          id="title"
-          value={title}
-          onChange={this.handleChangeTitle}
-        />
-
-        <label htmlFor="body">Body</label>
-        <textarea
-          id="body"
-          type="text"
-          maxLength="280"
-          placeholder=""
-          value={body}
-          onChange={this.handleChangeBody}
-        />
-
+        <label htmlFor="difficulty">
+          Difficulty:
+          <select
+            name="difficulty"
+            id="difficulty"
+            value={difficultyRef[difficulty]}
+            onChange={this.handleChangeDifficulty}
+          >
+            <option key="easy" value="easy">
+              Easy
+            </option>
+            <option key="medium" value="medium">
+              Medium
+            </option>
+            <option key="hard" value="hard">
+              Hard
+            </option>
+          </select>
+        </label>
+        <label htmlFor="tech">
+          Tech:
+          <select
+            name="tech"
+            id="tech"
+            value={tech}
+            onChange={this.handleChangeTech}
+          >
+            {techList.map((tech) => {
+              return (
+                <option key={tech.slug} value={tech.slug}>
+                  {tech.slug}
+                </option>
+              );
+            })}
+          </select>
+        </label>
+        <label htmlFor="title">
+          Title
+          <input
+            type="text"
+            id="title"
+            value={title}
+            onChange={this.handleChangeTitle}
+          />
+        </label>
+        <label htmlFor="body">
+          Body
+          <textarea
+            id="body"
+            type="text"
+            maxLength="280"
+            placeholder=""
+            value={body}
+            onChange={this.handleChangeBody}
+          />
+        </label>
         <StyledHexButton as="button" type="submit">
           Submit
         </StyledHexButton>

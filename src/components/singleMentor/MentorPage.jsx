@@ -1,5 +1,5 @@
 import React from "react";
-import { getAMentor } from "../../utils/api";
+import * as api from "../../utils/api";
 import { StyledLoader } from "../../styled/lib";
 import ErrorPage from "../ErrorPage";
 
@@ -11,7 +11,8 @@ class SingleMentor extends React.Component {
   };
 
   fetchMentor = (username) => {
-    getAMentor(username)
+    api
+      .getAMentor(username)
       .then((mentorInformation) => {
         this.setState(() => {
           return { mentor: mentorInformation, isLoading: false };

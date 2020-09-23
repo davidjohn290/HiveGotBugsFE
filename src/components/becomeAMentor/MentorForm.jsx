@@ -114,13 +114,13 @@ class MentorForm extends Component {
     if (err) return <ErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
     if (!username) return <p>Please log in first!</p>;
-    // // if (user.bug_points < 10)
-    //   return (
-    //     <p>
-    //       You don't have enough bug points to become a mentor right now. Check
-    //       back once you've earned at least 10 bug points!
-    //     </p>
-    //   );
+    if (user.bug_points < 10)
+      return (
+        <p>
+          You don't have enough bug points to become a mentor right now. Check
+          back once you've earned at least 10 bug points!
+        </p>
+      );
 
     return (
       <section className={className}>
