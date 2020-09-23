@@ -82,8 +82,7 @@ class Dashboard extends Component {
       };
       return { problems: [newProblem, ...currentState.problems] };
     });
-    console.log(this.state);
-    //addProblemByUsername(username, body);
+    addProblemByUsername(username, body);
   };
 
   fetchProblems = (username, filter) => {
