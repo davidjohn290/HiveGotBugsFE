@@ -104,7 +104,7 @@ class BugChart extends Component {
     };
     if (isLoading) return <p>Bug chart is loading...</p>;
     return (
-      <div className={className}>
+      <section className={className}>
         <button onClick={this.getTechOfProblems}>click me</button>
         <header>
           <StyledHexButton
@@ -139,7 +139,7 @@ class BugChart extends Component {
             </li>
           </ul>
         ) : null}
-      </div>
+      </section>
     );
   }
 }

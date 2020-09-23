@@ -11,24 +11,26 @@ function ProblemCard({ problem, className }) {
   const difficulty = difficultyRef[problem.difficulty];
 
   return (
-    <li className={className}>
-      <article>
-        <p className={"content"}>
-          <span className="negative_hexagon"></span>
-          {solved} <br /> Difficulty: {difficulty} <br />
-          Tech: {problem.tech} <br />
-          {`Posted by: ${problem.username} ${timeString}`}
-          <StyledLink to={`/problem/${problem.problem_id}`}>
-            <h2>{capitalizeFirstLetter(problem.title)}</h2>
-          </StyledLink>
-          {problem.body.slice(0, 100) + "... "}
-          <br />
-          <StyledLink to={`/problem/${problem.problem_id}`}>
-            Read more
-          </StyledLink>
-        </p>
-      </article>
-    </li>
+    <React.Fragment>
+      <li className={className}>
+        <article>
+          <p className={"content"}>
+            <span className="negative_hexagon"></span>
+            {solved} <br /> Difficulty: {difficulty} <br />
+            Tech: {problem.tech} <br />
+            {`Posted by: ${problem.username} ${timeString}`}
+            <StyledLink to={`/problem/${problem.problem_id}`}>
+              <h2>{capitalizeFirstLetter(problem.title)}</h2>
+            </StyledLink>
+            {problem.body.slice(0, 100) + "... "}
+            <br />
+            <StyledLink to={`/problem/${problem.problem_id}`}>
+              Read more
+            </StyledLink>
+          </p>
+        </article>
+      </li>
+    </React.Fragment>
   );
 }
 

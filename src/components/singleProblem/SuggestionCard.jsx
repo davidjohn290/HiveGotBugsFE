@@ -70,7 +70,7 @@ class SuggestionCard extends Component {
     if (err) return <ErrorPage {...err} />;
 
     return (
-      <>
+      <React.Fragment>
         <li className={className}>
           {username === suggestion.username && (
             <>
@@ -107,7 +107,7 @@ class SuggestionCard extends Component {
             />
           )}
         </li>
-      </>
+      </React.Fragment>
     );
   }
 }
