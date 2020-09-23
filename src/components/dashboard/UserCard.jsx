@@ -12,7 +12,7 @@ const UserCard = ({
   role,
 }) => {
   return (
-    <div className={className}>
+    <article className={className}>
       <header>
         <h2>Dashboard</h2>
         <h3>Welcome {username}</h3>
@@ -29,7 +29,7 @@ const UserCard = ({
           </>
         ) : null}
       </header>
-    </div>
+    </article>
   );
 };
 

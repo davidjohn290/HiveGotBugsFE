@@ -1,8 +1,5 @@
 import React, { Component } from "react";
 import firebase from "firebase";
-// import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-// import { faGithub } from "@fortawesome/free-brands-svg-icons";
-// import { GithubLoginButton } from "react-social-login-buttons";
 import apiKey from "../../firebaseAPI";
 import { StyledHexButton } from "../../styled/lib";
 import { UserContext } from "../../UserContext";
@@ -55,7 +52,7 @@ class GitHubLogin extends Component {
   render() {
     const { isSignedIn } = this.state;
     return (
-      <div>
+      <main>
         <UserContext.Consumer>
           {({ username, role }) =>
             !isSignedIn ? (
@@ -69,20 +66,7 @@ class GitHubLogin extends Component {
             )
           }
         </UserContext.Consumer>
-
-        {/* {this.state.isSignedIn ? (
-          <span>
-            <div>Signed in</div>
-            <button onClick={this.signOut}>Sign out</button>
-          </span>
-        ) : (
-          <button onClick={this.login}>login</button>
-        )} */}
-        {/* <FontAwesomeIcon icon={faGithub} size="2x" /> */}
-        {/* <div>
-          <GithubLoginButton />
-        </div> */}
-      </div>
+      </main>
     );
   }
 }

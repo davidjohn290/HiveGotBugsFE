@@ -16,12 +16,12 @@ class ToggleViewer extends Component {
     const { label } = this.props;
     const { isVisible } = this.state;
     return (
-      <div>
+      <section>
         <StyledHexButton as="button" onclick={this.toggleViewer} label={label}>
           {label}
         </StyledHexButton>
         {isVisible && this.props.children}
-      </div>
+      </section>
     );
   }
 }
