@@ -35,7 +35,7 @@ class App extends Component {
             <StyledHome path="/" />
             <StyledSingleProblem path="/problem/:problem_id" />
             <StyledMentorForm path="/become-a-mentor" />
-            <MentorPage path="/:mentorID" />
+            <MentorPage path="/:username" />
             <StyledDashboard path="/dashboard" />
             <MentorList path="/mentors" />
           </Router>

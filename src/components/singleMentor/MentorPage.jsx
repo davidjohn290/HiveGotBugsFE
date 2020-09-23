@@ -1,5 +1,5 @@
 import React from "react";
-import Axios from "axios";
+import { getAMentor } from "../../utils/api";
 
 class SingleMentor extends React.Component {
   state = {
@@ -7,19 +7,18 @@ class SingleMentor extends React.Component {
     isLoading: true,
   };
 
-  getAMentor() {
-    return Axios.get(
-      "https://hive-got-bugs.herokuapp.com/api/users?role=mentor"
-    ).then((mentorInformation) => {
-      console.log(mentorInformation);
+  fetchMentor = (username) => {
+    getAMentor(username).then((mentorInformation) => {
+      console.log(mentorInformation)
       this.setState(() => {
-        return { mentors: mentorInformation.data.users, isLoading: false };
+        return { mentors: mentorInformation, isLoading: false };
       });
     });
-  }
+  };
 
   componentDidMount() {
-    this.getAMentor();
+    const { username } = this.props
+    this.fetchMentor(username);
   }
 
   render() {
@@ -29,7 +28,7 @@ class SingleMentor extends React.Component {
 
     return (
       <div className="mentorDetails">
-        {console.log(mentors)}
+        {/* {console.log(mentors)}
 
         <h3>{mentors[0].username}</h3>
         <img src={mentors[0].avatar_url} alt="Profile Img" />
@@ -45,7 +44,7 @@ class SingleMentor extends React.Component {
         <p>{mentors[0].description}</p>
 
         <p>Github Link:</p>
-        <p>{mentors[0].github_url}</p>
+        <p>{mentors[0].github_url}</p> */}
       </div>
     );
   }

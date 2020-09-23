@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from "axios"; 
 
 const axiosInstance = axios.create({
   baseURL: "https://hive-got-bugs.herokuapp.com/api",
@@ -99,3 +99,9 @@ export const incrementBugPoints = (username) => {
     .patch(`/users/${username}/`, { inc_bug_points: 1 })
     .then(({ data: { suggestion } }) => suggestion);
 };
+
+export const getAMentor = (username) => {
+  return axiosInstance.get(
+    `/users/${username}/`
+  ).then(({ data: { user } }) => user);
+}
