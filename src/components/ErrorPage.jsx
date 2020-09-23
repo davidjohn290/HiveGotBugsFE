@@ -16,6 +16,8 @@ const ErrorPage = (err) => {
     getMentorList: "Could not get any mentors!",
     filterTech: "Could not find any tech with that filter!",
     fetchProblems: "Could not get all the problems!"
+    getUser: "Could not get the user!",
+    fetchProblems: "Could not get the problems",
   };
 
   return (
