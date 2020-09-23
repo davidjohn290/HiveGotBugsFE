@@ -127,6 +127,15 @@ export const StyledEditDashboard = styled(EditDashboard)`
     margin-top: 6px;
     margin-bottom: 16px;
   }
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
 
   textarea {
     margin-bottom: 16px;
