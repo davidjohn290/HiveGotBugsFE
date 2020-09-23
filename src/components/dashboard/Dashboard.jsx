@@ -1,44 +1,88 @@
 import React, { Component } from "react";
 import { getUserByUsername, getProblemByUsername } from "../../utils/api";
 import { UserContext } from "../../UserContext";
+import { StyledLoader } from "../../styled/lib";
+import ErrorPage from "../ErrorPage";
 import {
   StyledUserCard,
   StyledBugChart,
   StyledEditDashboard,
 } from "../../styled/dashboard";
-import { StyledProblemCard } from "../../styled/home";
 import { StyledHexButton } from "../../styled/lib";
+import { StyledProblemCard } from "../../styled/home";
 
 class Dashboard extends Component {
+  state = {
+    isLoading: false,
+    err: null,
+    user: {},
+    username: null,
+    problems: [],
+    toggleEdit: false,
+    filter: false,
+  };
+
   static contextType = UserContext;
 
-  state = {
-    isLoading: true,
-    username: this.context.username,
-    avatar_url: "",
-    role: "user",
-    memberSince: "",
-    BugPoints: 0,
-    BugPointsLastMonth: 0,
-    description: "",
-    skills: [],
-    github_url: "",
-    problems: [],
-    filter: false,
-    toggleEdit: false,
-    tech: [],
-  };
+  componentDidMount() {
+    const { username } = this.context;
+    const { filter } = this.state;
+
+    this.setState({ username });
+    if (username) {
+      this.fetchUser(username);
+      this.fetchProblems(username, filter);
+    }
+  }
 
   componentDidUpdate(prevProps, prevState) {
     const { username } = this.context;
     const { filter } = this.state;
-    if (prevState.username !== username || prevState.filter !== filter) {
-      this.LoginUser(username);
-      getProblemByUsername(username, filter).then((problems) => {
-        this.setState({ problems });
-      });
+
+    if (username !== prevState.username || prevState.filter !== filter) {
+      this.setState({ username });
+      if (username) {
+        this.fetchUser(username);
+        this.fetchProblems(username, filter);
+      }
     }
   }
+
+  fetchUser = (username) => {
+    this.setState({ isLoading: true });
+    getUserByUsername(username)
+      .then((user) => {
+        this.setState({ user, isLoading: false });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "fetchUser",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
+  };
+
+  fetchProblems = (username, filter) => {
+    this.setState({ isLoading: true });
+    getProblemByUsername(username, filter)
+      .then((problems) => {
+        this.setState({ problems, isLoading: false });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "fetchProblems",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
+  };
 
   showSolved = () => {
     this.setState((currentState) => {
@@ -52,84 +96,69 @@ class Dashboard extends Component {
     });
   };
 
-  LoginUser = (username) => {
-    getUserByUsername(username).then((user) => {
-      this.setState({
-        avatar_url: user.avatar_url,
-        role: user.role,
-        memberSince: user.created_at,
-        bugPoints: user.bug_points,
-        bugPointsLastMonth: user.bug_points_over_month,
-        description: user.description,
-        skills: [user.skill1, user.skill2, user.skill3],
-        github_url: user.github_url,
-        isLoading: false,
-        username: user.username,
-      });
-    });
-  };
-
   render() {
-    const { className } = this.props;
     const {
+      err,
       isLoading,
-      avatar_url,
-      memberSince,
-      bugPoints,
-      description,
-      skills,
-      github_url,
+      user,
       username,
-      role,
       problems,
-      filter,
       toggleEdit,
+      filter,
     } = this.state;
+    const { className } = this.props;
 
-    if (isLoading) return <h3>Please login to see your dashboard</h3>;
-    return (
-      <div className={className}>
-        <StyledUserCard
-          username={username}
-          memberSince={memberSince}
-          avatar_url={avatar_url}
-          bugPoints={bugPoints}
-          description={description}
-          skills={skills}
-          github_url={github_url}
-          role={role}
-        />
-        <StyledBugChart username={username} />
-        <section>
-          <h2>Posted problems</h2>
-          <header className="dashboardButtons">
-            <StyledHexButton
-              as="button"
-              id="editButton"
-              onClick={this.toggleShowEdit}
-            >
-              {!toggleEdit ? "Edit" : "Close Edit"}
-            </StyledHexButton>
-            {toggleEdit && <StyledEditDashboard username={username} />}
-            <StyledHexButton
-              as="button"
-              onClick={this.showSolved}
-              id="solvedButton"
-            >
-              {!filter ? "Show Solved" : "Show Unsolved"}
-            </StyledHexButton>
-          </header>
+    if (err) return <ErrorPage {...err} />;
+    if (isLoading) return <StyledLoader />;
 
-          <ul>
-            {problems.map((problem) => {
-              return (
-                <StyledProblemCard key={problem.problem_id} problem={problem} />
-              );
-            })}
-          </ul>
-        </section>
-      </div>
-    );
+    if (!username) return <p>Please log in first!</p>;
+    else
+      return (
+        <main className={className}>
+          <StyledUserCard
+            username={user.username}
+            memberSince={user.memberSince}
+            avatar_url={user.avatar_url}
+            bugPoints={user.bugPoints}
+            description={user.description}
+            skills={user.skills}
+            github_url={user.github_url}
+            role={user.role}
+          />
+          <StyledBugChart username={username} />
+          <section>
+            <h2>Posted problems</h2>
+            <header className="dashboardButtons">
+              <StyledHexButton
+                as="button"
+                id="editButton"
+                onClick={this.toggleShowEdit}
+              >
+                {!toggleEdit ? "Edit" : "Close Edit"}
+              </StyledHexButton>
+              {toggleEdit && <StyledEditDashboard username={username} />}
+              <StyledHexButton
+                as="button"
+                onClick={this.showSolved}
+                id="solvedButton"
+              >
+                {!filter ? "Show Solved" : "Show Unsolved"}
+              </StyledHexButton>
+            </header>
+
+            <ul>
+              {problems.map((problem) => {
+                return (
+                  <StyledProblemCard
+                    key={problem.problem_id}
+                    problem={problem}
+                  />
+                );
+              })}
+            </ul>
+          </section>
+        </main>
+      );
   }
 }
 

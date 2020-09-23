@@ -3,20 +3,29 @@ import * as api from "../../utils/api";
 import { StyledLink, StyledLoader } from "../../styled/lib";
 import "./mentor.css";
 
+import ErrorPage from "../ErrorPage";
+
 class MentorList extends Component {
   state = {
     mentors: [],
     isLoading: true,
-    //err: null,
+    err: null,
   };
 
   componentDidMount() {
-    this.getMentors().then((mentors) => {
-      this.setState({ mentors: mentors, isLoading: false /*err: null*/ });
-    });
-    // .catch((err) => {
-    //   this.setState({ err });
-    // });
+    this.getMentors()
+      .then((mentors) => {
+        this.setState({ mentors: mentors, isLoading: false, err: null });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          err: {
+            type: "getMentorList",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
   }
 
   getMentors = () => {
@@ -24,7 +33,10 @@ class MentorList extends Component {
   };
 
   render() {
-    const { mentors, isLoading /*err*/ } = this.state;
+    const { mentors, isLoading, err } = this.state;
+
+    if (err) return <ErrorPage {...err} />;
+
     if (isLoading) return <StyledLoader />;
 
     return (

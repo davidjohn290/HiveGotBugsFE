@@ -7,7 +7,7 @@ import {
 } from "../../utils/api";
 class EditDashboard extends Component {
   state = {
-    username: "Merlin70",
+    username: this.props.username,
     description: "",
     github_url: "",
     skill1: "",
@@ -74,7 +74,7 @@ class EditDashboard extends Component {
       tech,
       isLoading,
     } = this.state;
-    console.log(this.state);
+
     if (isLoading) return <p>Loading...</p>;
     return (
       <div>
