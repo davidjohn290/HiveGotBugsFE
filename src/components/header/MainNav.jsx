@@ -25,7 +25,7 @@ class MainNav extends Component {
     const { menuIsVisible, searchIsVisible } = this.state;
     const { className } = this.props;
     return (
-      <>
+      <React.Fragment>
         <nav className={className}>
           <Icon />
           <ul>
@@ -46,7 +46,7 @@ class MainNav extends Component {
         </nav>
         {menuIsVisible && <StyledMenuNav />}
         {searchIsVisible && <Search />}
-      </>
+      </React.Fragment>
     );
   }
 }
