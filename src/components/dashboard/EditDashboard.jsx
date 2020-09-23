@@ -9,6 +9,7 @@ class EditDashboard extends Component {
     skill1: "",
     skill2: "",
     skill3: "",
+    tech: [],
     submitted: false,
   };
 
@@ -26,6 +27,10 @@ class EditDashboard extends Component {
       }
     );
   }
+
+  // getAllTech = () => {
+  //   getTech().then((tech) => this.setState({ tech }));
+  // };
 
   handleSubmit = (e) => {
     const {

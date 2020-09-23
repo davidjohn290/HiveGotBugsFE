@@ -105,3 +105,9 @@ export const getProblemByUsernameWithoutFilter = (username) => {
     .get(`/problems?username=${username}`)
     .then(({ data: { problems } }) => problems);
 };
+
+export const getAMentor = (username) => {
+  return axiosInstance
+    .get(`/users/${username}/`)
+    .then(({ data: { user } }) => user);
+};
