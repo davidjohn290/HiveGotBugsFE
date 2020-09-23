@@ -1,18 +1,31 @@
 import React from "react";
 import { getAMentor } from "../../utils/api";
+import { StyledLoader } from "../../styled/lib";
+import ErrorPage from "../ErrorPage";
 
 class SingleMentor extends React.Component {
   state = {
     mentor: null,
     isLoading: true,
+    err: null,
   };
 
   fetchMentor = (username) => {
-    getAMentor(username).then((mentorInformation) => {
-      this.setState(() => {
-        return { mentor: mentorInformation, isLoading: false };
+    getAMentor(username)
+      .then((mentorInformation) => {
+        this.setState(() => {
+          return { mentor: mentorInformation, isLoading: false };
+        });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          err: {
+            type: "getMentor",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
       });
-    });
   };
 
   componentDidMount() {
@@ -21,10 +34,11 @@ class SingleMentor extends React.Component {
   }
 
   render() {
-    const { mentor, isLoading } = this.state;
+    const { mentor, isLoading, err } = this.state;
     const { className } = this.props;
 
-    if (isLoading) return <p>Is Loading...</p>;
+    if (err) return <ErrorPage {...err} />;
+    if (isLoading) return <StyledLoader />;
 
     return (
       <main className={className}>
@@ -36,7 +50,6 @@ class SingleMentor extends React.Component {
           <li>{mentor.skill1}</li>
           <li>{mentor.skill2}</li>
           <li>{mentor.skill3}</li>
-          <li>{mentor.skill4}</li>
         </ul>
 
         <p>Bio</p>
