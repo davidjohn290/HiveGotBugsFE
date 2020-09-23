@@ -66,7 +66,9 @@ class GitHubLogin extends Component {
   render() {
     const { isSignedIn } = this.state;
     return (
+
       <div>
+
         <UserContext.Consumer>
           {() =>
             !isSignedIn ? (
@@ -81,6 +83,7 @@ class GitHubLogin extends Component {
           }
         </UserContext.Consumer>
       </div>
+
     );
   }
 }

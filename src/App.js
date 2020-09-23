@@ -6,7 +6,8 @@ import Header from "./components/header/Header";
 import MentorPage from "./components/singleMentor/MentorPage";
 import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
-import { StyledMentorForm } from "./styled/mentor";
+// import { StyledMentorForm } from "./styled/mentor";
+import MentorForm from "./components/becomeAMentor/MentorForm2";
 import MentorList from "./components/mentors/MentorList";
 
 class App extends Component {
@@ -25,7 +26,7 @@ class App extends Component {
           <Router>
             <StyledHome path="/" />
             <StyledSingleProblem path="/problem/:problem_id" />
-            <StyledMentorForm path="/become-a-mentor" />
+            <MentorForm path="/become-a-mentor" />
             <MentorPage path="/:username" />
             <StyledDashboard path="/dashboard" />
             <MentorList path="/mentors" />
