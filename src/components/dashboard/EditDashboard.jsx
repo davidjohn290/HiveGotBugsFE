@@ -77,7 +77,7 @@ class EditDashboard extends Component {
 
     if (isLoading) return <p>Loading...</p>;
     return (
-      <div>
+      <section>
         <form className={className} onSubmit={this.handleSubmit}>
           <label>
             Skill 1:
@@ -161,7 +161,7 @@ class EditDashboard extends Component {
 
           {submitted && "Your details have been changed"}
         </form>
-      </div>
+      </section>
     );
   }
 }

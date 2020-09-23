@@ -89,7 +89,7 @@ class SuggestionsList extends React.Component {
     if (err) return <ErrorPage {...err} />;
 
     return (
-      <>
+      <sections>
         <h2>Suggestions</h2>
         {username && (
           <StyledAddSuggestionForm
@@ -112,7 +112,7 @@ class SuggestionsList extends React.Component {
             );
           })}
         </ul>
-      </>
+      </sections>
     );
   }
 }
