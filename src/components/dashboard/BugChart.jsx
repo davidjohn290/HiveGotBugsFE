@@ -53,7 +53,6 @@ class BugChart extends Component {
     const {
       isLoading,
       toggleShow,
-      bugPointsOverMonth,
       bugPoints,
       techTally,
       solvedTally,

@@ -39,7 +39,7 @@ class Dashboard extends Component {
     const { username } = this.context;
     const { filter } = this.state;
 
-    if (username !== prevState.username) {
+    if (username !== prevState.username || prevState.filter !== filter) {
       this.setState({ username });
       if (username) {
         this.fetchUser(username);

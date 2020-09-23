@@ -3,7 +3,8 @@ import { StyledHexButton } from "../../styled/lib";
 import Search from "./Search";
 import { StyledMenuNav } from "../../styled/header";
 import Icon from "./Icon";
-import Login from "./Login";
+// import Login from "./Login";
+import GitHubLogin from "./GitHubLogin";
 
 class MainNav extends Component {
   state = { searchIsVisible: false, menuIsVisible: false };
@@ -39,7 +40,7 @@ class MainNav extends Component {
               </StyledHexButton>
             </li>
             <li>
-              <Login />
+              <GitHubLogin />
             </li>
           </ul>
         </nav>

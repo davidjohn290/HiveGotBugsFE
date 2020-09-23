@@ -1,6 +1,10 @@
 import React, { Component } from "react";
 import { StyledHexButton } from "../../styled/lib";
-import { getUserByUsername, editUserProfileByUsername } from "../../utils/api";
+import {
+  getUserByUsername,
+  editUserProfileByUsername,
+  getTech,
+} from "../../utils/api";
 class EditDashboard extends Component {
   state = {
     username: this.props.username,
@@ -11,6 +15,7 @@ class EditDashboard extends Component {
     skill3: "",
     tech: [],
     submitted: false,
+    isLoading: true,
   };
 
   componentDidMount() {
@@ -23,14 +28,15 @@ class EditDashboard extends Component {
           skill1,
           skill2,
           skill3,
+          isLoading: false,
         });
       }
     );
   }
 
-  // getAllTech = () => {
-  //   getTech().then((tech) => this.setState({ tech }));
-  // };
+  getAllTech = () => {
+    getTech().then((tech) => this.setState({ tech }));
+  };
 
   handleSubmit = (e) => {
     const {
@@ -65,40 +71,67 @@ class EditDashboard extends Component {
       skill2,
       skill3,
       submitted,
+      tech,
+      isLoading,
     } = this.state;
+
+    if (isLoading) return <p>Loading...</p>;
     return (
       <div>
         <form className={className} onSubmit={this.handleSubmit}>
           <label>
             Skill 1:
-            <input
-              type="text"
+            <select
               id="skill1"
-              value={skill1}
               onChange={this.handleInput}
-            />
+              onClick={this.getAllTech}
+            >
+              <option value="skill1">{skill1}</option>
+              {tech.map((item) => {
+                return (
+                  <option value={item.slug} key={item.slug}>
+                    {item.slug}
+                  </option>
+                );
+              })}
+            </select>
           </label>
 
           <label>
             Skill 2:
-            <input
-              type="text"
+            <select
               id="skill2"
-              value={skill2}
               onChange={this.handleInput}
-            />
+              onClick={this.getAllTech}
+            >
+              <option value="skill1">{skill2}</option>
+              {tech.map((item) => {
+                return (
+                  <option value={item.slug} key={item.slug}>
+                    {item.slug}
+                  </option>
+                );
+              })}
+            </select>
           </label>
 
           <label>
             Skill 3:
-            <input
-              type="text"
+            <select
               id="skill3"
-              value={skill3}
               onChange={this.handleInput}
-            />
+              onClick={this.getAllTech}
+            >
+              <option value="skill1">{skill3}</option>
+              {tech.map((item) => {
+                return (
+                  <option value={item.slug} key={item.slug}>
+                    {item.slug}
+                  </option>
+                );
+              })}
+            </select>
           </label>
-
           <label>
             Github username:
             <input
@@ -114,7 +147,7 @@ class EditDashboard extends Component {
             <textarea
               cols="30"
               rows="8"
-              id="descriptiom"
+              id="description"
               type="text"
               maxLength="280"
               value={description}
