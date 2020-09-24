@@ -7,7 +7,7 @@ import MentorPage from "./components/singleMentor/MentorPage";
 import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
 import { StyledMentorForm } from "./styled/becomeAMentor";
-import MentorList from "./components/mentors/MentorList";
+import { StyledMentorList } from "./styled/mentors";
 import ErrorPage from "./components/ErrorPage";
 
 class App extends Component {
@@ -33,10 +33,10 @@ class App extends Component {
             <StyledMentorForm path="/become-a-mentor" />
             <MentorPage path="/:username" />
             <StyledDashboard path="/dashboard" />
-            <MentorList path="/mentors" />
+            <StyledMentorList path="/mentors" />
             <ErrorPage default {...err} />
-          </Router>
-        </UserContext.Provider>
+          </Router>{" "}
+        </UserContext.Provider>{" "}
       </div>
     );
   }
