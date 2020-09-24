@@ -7,28 +7,24 @@ import ProblemsList from "../components/home/ProblemsList";
 import ProblemCard from "../components/home/ProblemCard";
 
 // <main>
-export const StyledHome = styled(Home)
-`
+export const StyledHome = styled(Home)`
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
 // <section>
-export const StyledSortProblems = styled(SortProblems)
-`
+export const StyledSortProblems = styled(SortProblems)`
   margin: 0.6em;
 `;
 
 // <section>
-export const StyledFilterProblemsTech = styled(FilterProblemsTech)
-`
+export const StyledFilterProblemsTech = styled(FilterProblemsTech)`
   margin: 0.6em;
 `;
 
 // <section>
-export const StyledFilterProblemsDifficulty = styled(FilterProblemsDifficulty)
-`
+export const StyledFilterProblemsDifficulty = styled(FilterProblemsDifficulty)`
   margin: 0.6em;
 
   p {
@@ -39,8 +35,7 @@ export const StyledFilterProblemsDifficulty = styled(FilterProblemsDifficulty)
 `;
 
 // <ul>
-export const StyledProblemsList = styled(ProblemsList)
-`
+export const StyledProblemsList = styled(ProblemsList)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -48,8 +43,7 @@ export const StyledProblemsList = styled(ProblemsList)
 `;
 
 // <li>
-export const StyledProblemCard = styled(ProblemCard)
-`
+export const StyledProblemCard = styled(ProblemCard)`
   list-style-type: none;
   padding-left: 1em;
   padding-right: 1em;
