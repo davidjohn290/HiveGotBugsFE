@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import ErrorPage from "../ErrorPage";
+import { StyledErrorPage } from "../../styled/lib";
 
 class FilterProblemsTech extends Component {
   state = {
@@ -33,7 +33,7 @@ class FilterProblemsTech extends Component {
     const { handleTechChange, selectedTech, className } = this.props;
     const { tech, err } = this.state;
 
-    if (err) return <ErrorPage {...err} />;
+    if (err) return <StyledErrorPage {...err} />;
 
     return (
       <section className={className}>
