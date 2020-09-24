@@ -18,6 +18,7 @@ const ErrorPage = (err) => {
     getUser: "Could not get the user!",
     fetchProblems: "Could not get the problems!",
     getTech: "Could not get any tech!",
+    addProblem: "Could not add the problem",
   };
 
   return (

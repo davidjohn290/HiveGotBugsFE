@@ -16,12 +16,23 @@ class AddProblem extends Component {
     title: "",
     body: "",
     submitted: false,
+    err: null,
   };
 
   componentDidMount() {
     api
       .getTech()
-      .then((tech) => this.setState({ techList: tech, isLoading: false }));
+      .then((tech) => this.setState({ techList: tech, isLoading: false }))
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "getTech",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
   }
 
   handleSubmit = (e) => {

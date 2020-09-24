@@ -1,8 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
 import { UserContext } from "../../UserContext";
-import ErrorPage from "../ErrorPage";
-import { StyledHexButton } from "../../styled/lib";
+import { StyledHexButton, StyledErrorPage } from "../../styled/lib";
 
 class EditProblemForm extends Component {
   state = {
@@ -63,10 +62,9 @@ class EditProblemForm extends Component {
       api
         .patchProblem(problem.problem_id, editedProblem)
         .catch(({ response }) => {
-          console.log(response);
           this.setState({
             err: {
-              type: "editProblem",
+              type: "addProblem",
               msg: response.data.msg,
               status: response.status,
             },
@@ -82,7 +80,7 @@ class EditProblemForm extends Component {
     const { techList, difficulty, tech, title, body, err } = this.state;
     const { className } = this.props;
     const difficultyRef = ["easy", "medium", "hard"];
-    if (err) return <ErrorPage {...err} />;
+    if (err) return <StyledErrorPage {...err} />;
 
     return (
       <form className={className} onSubmit={this.handleSubmit}>

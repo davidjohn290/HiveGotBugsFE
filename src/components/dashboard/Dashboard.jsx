@@ -1,14 +1,17 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
 import { UserContext } from "../../UserContext";
-import ErrorPage from "../ErrorPage";
 import {
   StyledUserCard,
   StyledBugChart,
   StyledEditDashboard,
   StyledAddProblem,
 } from "../../styled/dashboard";
-import { StyledHexButton, StyledLoader } from "../../styled/lib";
+import {
+  StyledHexButton,
+  StyledLoader,
+  StyledErrorPage,
+} from "../../styled/lib";
 import { StyledProblemCard } from "../../styled/home";
 
 class Dashboard extends Component {
@@ -82,7 +85,15 @@ class Dashboard extends Component {
       };
       return { problems: [newProblem, ...currentState.problems] };
     });
-    api.addProblemByUsername(username, body);
+    api.addProblemByUsername(username, body).catch(({ response }) => {
+      this.setState({
+        err: {
+          type: "editProblem",
+          msg: response.data.msg,
+          status: response.status,
+        },
+      });
+    });
   };
 
   fetchProblems = (username, filter) => {
@@ -139,7 +150,7 @@ class Dashboard extends Component {
     } = this.state;
     const { className } = this.props;
 
-    if (err) return <ErrorPage {...err} />;
+    if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
     if (!username) return <p>Please log in first!</p>;
     else
