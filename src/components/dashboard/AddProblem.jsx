@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import Loader from "../Loader";
 import { UserContext } from "../../UserContext";
 import * as api from "../../utils/api";
-import { StyledHexButton } from "../../styled/lib";
+import {
+  StyledLoader,
+  StyledHexButton,
+  StyledErrorPage,
+} from "../../styled/lib";
 
 class AddProblem extends Component {
   static contextType = UserContext;
@@ -56,9 +59,12 @@ class AddProblem extends Component {
       techList,
       tech,
       difficulty,
+      err,
     } = this.state;
     const { className } = this.props;
-    if (isLoading) return <Loader />;
+
+    if (isLoading) return <StyledLoader />;
+    if (err) return <StyledErrorPage {...err} />;
     return (
       <form className={className} onSubmit={this.handleSubmit}>
         <label>
