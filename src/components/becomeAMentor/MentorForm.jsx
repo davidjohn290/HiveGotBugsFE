@@ -229,8 +229,8 @@ class MentorForm extends Component {
             <button type="submit">Submit</button>
           </form>
         ) : (
-            <p>Your request has been submitted!</p>
-          )}
+          <p>Your request has been submitted!</p>
+        )}
       </section>
     );
   }
