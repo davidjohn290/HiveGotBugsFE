@@ -8,11 +8,8 @@ import {
   StyledFilterProblemsDifficulty,
   StyledProblemsList,
 } from "../../styled/home";
-import { UserContext } from "../../UserContext";
 
 class Home extends Component {
-  static contextType = UserContext;
-
   state = {
     problems: [],
     selectedSort: "newest",
@@ -77,8 +74,8 @@ class Home extends Component {
       });
   }
 
-  handleRemoveFilter = (username) => {
-    api.getProblemByUsernameWithoutFilter(username).then((problems) => {
+  handleRemoveFilter = () => {
+    api.removeFilter().then((problems) => {
       this.setState({ problems, selectedTech: "", removeFilter: false });
     });
   };
@@ -114,7 +111,6 @@ class Home extends Component {
       removeFilter,
     } = this.state;
     const { className } = this.props;
-    const { username } = this.context;
 
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
@@ -131,10 +127,7 @@ class Home extends Component {
           selectedTech={selectedTech}
         />
         {removeFilter && (
-          <RemoveFilters
-            username={username}
-            handleRemoveFilter={this.handleRemoveFilter}
-          />
+          <RemoveFilters handleRemoveFilter={this.handleRemoveFilter} />
         )}
 
         <StyledFilterProblemsDifficulty
