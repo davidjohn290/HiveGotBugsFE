@@ -1,10 +1,9 @@
 import React, { Component } from "react";
 import { formatTimeString } from "../../utils/time";
 import { UserContext } from "../../UserContext";
-import { StyledHexButton } from "../../styled/lib";
+import { StyledHexButton, StyledErrorPage } from "../../styled/lib";
 import { StyledEditSuggestionForm } from "../../styled/singleProblem";
 import * as api from "../../utils/api";
-import ErrorPage from "../ErrorPage";
 
 class SuggestionCard extends Component {
   state = { editFormVisible: false, err: null };
@@ -67,7 +66,7 @@ class SuggestionCard extends Component {
       username !== suggestion.username &&
       problem.solved === "false";
 
-    if (err) return <ErrorPage {...err} />;
+    if (err) return <StyledErrorPage {...err} />;
 
     return (
       <li className={className}>

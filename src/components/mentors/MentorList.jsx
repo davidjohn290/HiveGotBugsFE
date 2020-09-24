@@ -31,12 +31,13 @@ class MentorList extends Component {
 
   render() {
     const { mentors, isLoading, err } = this.state;
+    const { className } = this.props;
 
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
 
     return (
-      <main className="main-mentor">
+      <main className={className}>
         {mentors.map((mentor) => (
           <section key={mentor.username} className="mentorCards">
             <img src={mentor.avatar_url} alt="" className="mentor-img" />
