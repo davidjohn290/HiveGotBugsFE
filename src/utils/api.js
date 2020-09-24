@@ -143,3 +143,9 @@ export const addProblemByUsername = (
     })
     .then(({ data: { problem } }) => problem);
 };
+
+export const removeFilter = () => {
+  return axiosInstance.get("/problems").then(({ data: { problems } }) => {
+    return problems;
+  });
+};
