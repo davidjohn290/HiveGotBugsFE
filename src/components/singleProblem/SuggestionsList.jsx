@@ -24,14 +24,14 @@ class SuggestionsList extends React.Component {
       .then((suggestions) => {
         this.setState({ suggestions, isLoading: false });
       })
-      .catch(({ response }) => {
+      .catch(() => {
         this.setState({
           isLoading: false,
-          err: {
-            type: "fetchSuggestions",
-            msg: response.data.msg,
-            status: response.status,
-          },
+          //   err: {
+          //     type: "fetchSuggestions",
+          //     msg: response.data.msg,
+          //     status: response.status,
+          //   },
         });
       });
   };
