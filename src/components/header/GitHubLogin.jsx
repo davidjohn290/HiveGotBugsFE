@@ -34,6 +34,7 @@ class GitHubLogin extends Component {
       })
       .then(() => {
         setUsername(username);
+        this.setState({ err: null });
       })
       .catch(() => {
         api
@@ -52,7 +53,10 @@ class GitHubLogin extends Component {
     firebase
       .auth()
       .signOut()
-      .then(setUsername(null))
+      .then(() => {
+        setUsername(null);
+        this.setState({ err: null });
+      })
       .catch(() => {
         this.setState({ err: true });
       });

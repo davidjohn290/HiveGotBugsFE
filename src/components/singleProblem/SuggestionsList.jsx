@@ -88,6 +88,7 @@ class SuggestionsList extends React.Component {
     const { className, problem, problemSolvedOptimistic } = this.props;
     const { suggestions, err } = this.state;
     const { username } = this.context;
+
     if (err) return <ErrorPage {...err} />;
 
     return (
