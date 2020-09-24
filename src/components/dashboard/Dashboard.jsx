@@ -21,6 +21,7 @@ class Dashboard extends Component {
     toggleEdit: false,
     filter: false,
     toggleProblem: false,
+    enableProblems: false,
   };
 
   static contextType = UserContext;
@@ -89,6 +90,9 @@ class Dashboard extends Component {
     api
       .getProblemByUsername(username, filter)
       .then((problems) => {
+        if (problems.length > 0) {
+          this.setState({ enableProblems: true });
+        }
         this.setState({ problems, isLoading: false });
       })
       .catch(({ response }) => {
@@ -131,6 +135,7 @@ class Dashboard extends Component {
       toggleEdit,
       filter,
       toggleProblem,
+      enableProblems,
     } = this.state;
     const { className } = this.props;
 
@@ -145,6 +150,7 @@ class Dashboard extends Component {
 
           <section>
             <h2>Posted problems</h2>
+            {!enableProblems && <p>Your added problems will appear here!</p>}
             <header className="dashboardButtons">
               {user.role === "mentor" && (
                 <StyledHexButton
@@ -156,13 +162,15 @@ class Dashboard extends Component {
                 </StyledHexButton>
               )}
               {toggleEdit && <StyledEditDashboard username={username} />}
-              <StyledHexButton
-                as="button"
-                onClick={this.showSolved}
-                id="solvedButton"
-              >
-                {!filter ? "Show Solved" : "Show Unsolved"}
-              </StyledHexButton>
+              {enableProblems && (
+                <StyledHexButton
+                  as="button"
+                  onClick={this.showSolved}
+                  id="solvedButton"
+                >
+                  {!filter ? "Show Solved" : "Show Unsolved"}
+                </StyledHexButton>
+              )}
               <StyledHexButton as="button" onClick={this.toggleProblem}>
                 {toggleProblem ? "Close" : "Add Problem"}
               </StyledHexButton>
