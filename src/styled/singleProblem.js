@@ -14,37 +14,155 @@ export const StyledSingleProblem = styled(SingleProblem)`
 
 // <article>
 export const StyledSingleProblemCard = styled(SingleProblemCard)`
-  border-style: solid;
-  border-width: 2px;
-  border-color: red;
+  background-color: gray;
+  padding: 1em;
+  max-width: 60%;
+  margin: 1.5em auto;
+
+  @media only screen and (max-width: 600px) {
+    max-width: 80%;
+  }
+
+  --notchSize: 30px;
+  clip-path: polygon(
+    0% var(--notchSize),
+    var(--notchSize) 0%,
+    calc(100% - var(--notchSize)) 0%,
+    100% var(--notchSize),
+    100% calc(100% - var(--notchSize)),
+    calc(100% - var(--notchSize)) 100%,
+    var(--notchSize) 100%,
+    0% calc(100% - var(--notchSize))
+  );
 `;
 
 // <form>
 export const StyledEditProblemForm = styled(EditProblemForm)`
-  border-style: solid;
-  border-width: 2px;
-  border-color: blue;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+
+  label {
+    display: flex;
+    gap: 0.3em;
+    justify-content: space-between;
+  }
+`;
+
+// <section>
+export const StyledSuggestionsList = styled(SuggestionsList)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: gray;
+  padding: 1em;
+  max-width: 60%;
+  margin: 1.5em auto;
+
+  @media only screen and (max-width: 600px) {
+    max-width: 80%;
+  }
+
+  --notchSize: 30px;
+  clip-path: polygon(
+    0% var(--notchSize),
+    var(--notchSize) 0%,
+    calc(100% - var(--notchSize)) 0%,
+    100% var(--notchSize),
+    100% calc(100% - var(--notchSize)),
+    calc(100% - var(--notchSize)) 100%,
+    var(--notchSize) 100%,
+    0% calc(100% - var(--notchSize))
+  );
+
+  ul {
+    padding: 0em;
+    width: 100%;
+  }
 `;
 
 // <form>
 export const StyledAddSuggestionForm = styled(AddSuggestionForm)`
-  border-style: solid;
-  border-width: 2px;
-  border-color: green;
-`;
+  width: 100%;
+  margin: auto;
 
-// <ul>
-export const StyledSuggestionsList = styled(SuggestionsList)`
-  padding: 0px;
+  h3 {
+    margin: 0em;
+  }
+
+  form {
+    display: flex;
+    align-items: center;
+    max-width: 100%;
+  }
+
+  textarea {
+    margin: 0.3em;
+    width: 100%;
+  }
 `;
 
 // <li>
 export const StyledSuggestionCard = styled(SuggestionCard)`
+  display: flex;
+  flex-direction: column;
   list-style-type: none;
-  border-style: solid;
-  border-width: 2px;
-  border-color: black;
+  background-color: white;
+  color: #272c35;
+  margin: 1em auto;
+  max-width: 100%;
+  padding: 0.3em;
+
+  --notchSize: 10px;
+  clip-path: polygon(
+    0% var(--notchSize),
+    var(--notchSize) 0%,
+    calc(100% - var(--notchSize)) 0%,
+    100% var(--notchSize),
+    100% calc(100% - var(--notchSize)),
+    calc(100% - var(--notchSize)) 100%,
+    var(--notchSize) 100%,
+    0% calc(100% - var(--notchSize))
+  );
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+
+    .textLeft {
+      font-size: 9pt;
+    }
+
+    .textCenter {
+      font-size: 9pt;
+      margin: auto;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 0.3em;
+    }
+  }
+
+  /* p {
+    overflow-wrap: anywhere;
+  } */
 `;
 
 // <form>
-export const StyledEditSuggestionForm = styled(EditSuggestionForm)``;
+export const StyledEditSuggestionForm = styled(EditSuggestionForm)`
+  display: flex;
+  align-items: flex-end;
+  text-align: center;
+  align-items: center;
+  width: 100%;
+  margin: auto;
+
+  textarea {
+    margin: 0.3em;
+    width: 100%;
+  }
+`;

@@ -13,8 +13,13 @@ import ErrorPage from "./components/ErrorPage";
 class App extends Component {
   state = { username: null, err: null };
 
+  componentDidMount() {
+    this.setUsername(localStorage.getItem("username"));
+  }
+
   setUsername = (username) => {
     this.setState({ username });
+    localStorage.setItem("username", username);
   };
 
   render() {

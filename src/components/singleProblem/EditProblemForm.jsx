@@ -122,7 +122,7 @@ class EditProblemForm extends Component {
           </select>
         </label>
         <label htmlFor="title">
-          Title
+          Title:
           <input
             type="text"
             id="title"
@@ -131,7 +131,7 @@ class EditProblemForm extends Component {
           />
         </label>
         <label htmlFor="body">
-          Body
+          Body:
           <textarea
             id="body"
             type="text"
