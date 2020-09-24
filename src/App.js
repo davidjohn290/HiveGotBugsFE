@@ -11,7 +11,7 @@ import { StyledMentorList } from "./styled/mentors";
 import ErrorPage from "./components/ErrorPage";
 
 class App extends Component {
-  state = { username: null, err: null };
+  state = { username: "davidjohn290", err: null };
 
   setUsername = (username) => {
     this.setState({ username });

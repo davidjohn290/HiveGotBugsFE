@@ -6,6 +6,7 @@ import {
   StyledErrorPage,
   StyledPleaseLogin,
 } from "../../styled/lib";
+import "../../css/becomeAMentor.css";
 const githubRegex = require("regex-username");
 
 class MentorForm extends Component {
@@ -129,7 +130,7 @@ class MentorForm extends Component {
 
     if (user.bug_points < 10)
       return (
-        <p>
+        <p id="becomeAMentorPTag">
           You don't have enough bug points to become a mentor right now. Check
           back once you've earned at least 10 bug points!
         </p>

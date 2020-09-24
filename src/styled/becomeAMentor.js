@@ -21,6 +21,10 @@ export const StyledMentorForm = styled(MentorForm)`
     margin-top: 0;
   }
 
+  p {
+    text-align: center;
+  }
+
   header {
     padding-bottom: 1cm;
   }
