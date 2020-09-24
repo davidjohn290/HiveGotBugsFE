@@ -115,21 +115,20 @@ class BugChart extends Component {
       techTally,
       solvedTally,
       err,
-      enableChart,
     } = this.state;
 
     const techLabel = Object.keys(techTally);
     const techData = Object.values(techTally);
-    const problemData = Object.values(solvedTally);
+    let problemData = Object.values(solvedTally);
     let problemLabels = ["unsolved", "solved"];
     if (bugPoints === 0) {
       problemLabels = [];
+      problemData = [];
     }
     const techChartData = {
       labels: techLabel,
       datasets: [
         {
-          label: "Summary of tech used for problems",
           backgroundColor: [
             "#de1738",
             "#36A2EB",
@@ -150,7 +149,6 @@ class BugChart extends Component {
       labels: problemLabels,
       datasets: [
         {
-          label: "Bug points every 30 days",
           backgroundColor: [
             "#de1738",
             "#36A2EB",
@@ -173,41 +171,44 @@ class BugChart extends Component {
 
     return (
       <section className={className}>
+        <StyledHexButton as="p" id="bugPoints">
+          Total Points: {bugPoints}
+        </StyledHexButton>
+        {toggleShow && (
+          <ul id="chartList">
+            {techData.length > 0 && (
+              <li>
+                <Doughnut
+                  data={techChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                  }}
+                />
+              </li>
+            )}
+            {bugPoints > 0 && (
+              <li>
+                <Doughnut
+                  data={problemChartData}
+                  options={{
+                    responsive: true,
+                    maintainAspectRatio: false,
+                  }}
+                />
+              </li>
+            )}
+          </ul>
+        )}
         <header>
-          {enableChart && (
-            <StyledHexButton
-              as="button"
-              onClick={this.toggleShow}
-              id="toggleChart"
-            >
-              {toggleShow ? "Hide Chart" : "Show Chart"}
-            </StyledHexButton>
-          )}
-          <StyledHexButton as="p" id="bugPoints">
-            Total Points: {bugPoints}
+          <StyledHexButton
+            as="button"
+            onClick={this.toggleShow}
+            id="toggleChart"
+          >
+            {toggleShow ? "Hide Chart" : "Show Chart"}
           </StyledHexButton>
         </header>
-
-        {toggleShow ? (
-          <ul id="chartList">
-            <li>
-              <Doughnut
-                data={techChartData}
-                options={{
-                  maintainAspectRatio: false,
-                }}
-              />
-            </li>
-            <li>
-              <Doughnut
-                data={problemChartData}
-                options={{
-                  maintainAspectRatio: false,
-                }}
-              />
-            </li>
-          </ul>
-        ) : null}
       </section>
     );
   }

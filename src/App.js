@@ -13,9 +13,9 @@ import ErrorPage from "./components/ErrorPage";
 class App extends Component {
   state = { username: "Destiny82", err: null };
 
-  componentDidMount() {
-    this.setUsername(localStorage.getItem("username"));
-  }
+  // componentDidMount() {
+  //   this.setUsername(localStorage.getItem("username"));
+  // }
 
   setUsername = (username) => {
     this.setState({ username });
