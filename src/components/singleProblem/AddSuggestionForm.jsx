@@ -1,6 +1,9 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import { StyledHexButton, StyledErrorPage } from "../../styled/lib";
+import {
+  StyledErrorPage,
+  SmallStyledHexButton,
+} from "../../styled/lib";
 import { UserContext } from "../../UserContext";
 
 class AddSuggestionForm extends Component {
@@ -47,10 +50,11 @@ class AddSuggestionForm extends Component {
     if (err) return <StyledErrorPage {...err} />;
 
     return (
-      <form className={className} onSubmit={this.handleSubmit}>
-        <label htmlFor="body">
-          Suggestion:{" "}
+      <section className={className}>
+        <h3>Add suggestion</h3>
+        <form className={className} onSubmit={this.handleSubmit}>
           <textarea
+            aria-label="add suggestion"
             id="body"
             type="text"
             maxLength="280"
@@ -58,11 +62,11 @@ class AddSuggestionForm extends Component {
             value={body}
             onChange={this.handleChangeBody}
           />
-        </label>
-        <StyledHexButton as="button" type="submit">
-          Submit
-        </StyledHexButton>
-      </form>
+          <SmallStyledHexButton as="button" type="submit">
+            Submit
+          </SmallStyledHexButton>
+        </form>
+      </section>
     );
   }
 }

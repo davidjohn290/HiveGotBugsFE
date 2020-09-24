@@ -3,6 +3,7 @@ import { formatTimeString } from "../../utils/time";
 import { capitalizeFirstLetter } from "../../utils/capitalize";
 import { StyledHexButton } from "../../styled/lib";
 import { UserContext } from "../../UserContext";
+import { StyledEditProblemForm } from "../../styled/singleProblem";
 
 class SingleProblemCard extends Component {
   static contextType = UserContext;
@@ -14,6 +15,8 @@ class SingleProblemCard extends Component {
       toggleEditForm,
       handleDeleteProblem,
       className,
+      editProblemOptimistic,
+      editFormVisible,
     } = this.props;
 
     const timeDifference = Date.now() - new Date(problem.created_at);
@@ -35,14 +38,21 @@ class SingleProblemCard extends Component {
           </>
         )}
 
+        <h2>{capitalizeFirstLetter(problem.title)}</h2>
         <p>
           <strong>{solved}</strong>
         </p>
-        <p>Difficulty: {difficulty} </p>
-        <p>Tech: {problem.tech} </p>
+        <p>
+          Difficulty: {difficulty} | Tech: {problem.tech}{" "}
+        </p>
         <p>{`Posted by: ${problem.username} ${timeString}`}</p>
-        <h2>{capitalizeFirstLetter(problem.title)}</h2>
         <p>{problem.body}</p>
+        {editFormVisible && (
+          <StyledEditProblemForm
+            problem={problem}
+            editProblemOptimistic={editProblemOptimistic}
+          />
+        )}
       </article>
     );
   }

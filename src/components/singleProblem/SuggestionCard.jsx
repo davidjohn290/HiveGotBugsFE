@@ -1,7 +1,12 @@
 import React, { Component } from "react";
 import { formatTimeString } from "../../utils/time";
 import { UserContext } from "../../UserContext";
-import { StyledHexButton, StyledErrorPage } from "../../styled/lib";
+import {
+  StyledHexButton,
+  StyledErrorPage,
+  SmallStyledHexButton,
+  TinyStyledHexButton,
+} from "../../styled/lib";
 import { StyledEditSuggestionForm } from "../../styled/singleProblem";
 import * as api from "../../utils/api";
 
@@ -61,36 +66,58 @@ class SuggestionCard extends Component {
     const timeDifference = Date.now() - new Date(suggestion.created_at);
     const timeString = formatTimeString(timeDifference);
 
-    const canShowSolveButton =
+    const isOwnProblem =
       username === problem.username &&
       username !== suggestion.username &&
       problem.solved === "false";
+
+    const isOwnSuggestion = username === suggestion.username;
 
     if (err) return <StyledErrorPage {...err} />;
 
     return (
       <li className={className}>
-        {username === suggestion.username && (
-          <>
-            <StyledHexButton as="button" onClick={this.toggleEditForm}>
-              Edit
-            </StyledHexButton>
-            <StyledHexButton
-              as="button"
-              onClick={() => {
-                deleteSuggestionOptimistic(suggestion.suggestion_id);
-              }}
-            >
-              Delete
-            </StyledHexButton>
-          </>
-        )}
-        {canShowSolveButton && (
-          <StyledHexButton as="button" onClick={this.handleSolve}>
-            Solved my problem?
-          </StyledHexButton>
-        )}
-        <p>{`Suggested by: ${suggestion.username} ${timeString}`}</p>
+        <header>
+          <p
+            className={
+              isOwnProblem || isOwnSuggestion ? "textLeft" : "textCenter"
+            }
+          >
+            {`Suggested by: ${suggestion.username} ${timeString}`}
+          </p>
+          <div className="buttons">
+            {isOwnSuggestion && (
+              <>
+                <TinyStyledHexButton
+                  as="button"
+                  fontSize={"8pt"}
+                  onClick={this.toggleEditForm}
+                >
+                  Edit
+                </TinyStyledHexButton>
+                <TinyStyledHexButton
+                  as="button"
+                  fontSize={"8pt"}
+                  onClick={() => {
+                    deleteSuggestionOptimistic(suggestion.suggestion_id);
+                  }}
+                >
+                  Delete
+                </TinyStyledHexButton>
+              </>
+            )}
+            {isOwnProblem && (
+              <TinyStyledHexButton
+                as="button"
+                fontSize={"7.5pt"}
+                onClick={this.handleSolve}
+              >
+                Solved?
+              </TinyStyledHexButton>
+            )}
+          </div>
+        </header>
+
         <p>{suggestion.body}</p>
         {suggestion.approved_by && (
           <p>
