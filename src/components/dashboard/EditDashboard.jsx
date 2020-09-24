@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { StyledHexButton } from "../../styled/lib";
+import { StyledHexButton, StyledErrorPage } from "../../styled/lib";
 import * as api from "../../utils/api";
 
 class EditDashboard extends Component {
@@ -13,6 +13,7 @@ class EditDashboard extends Component {
     tech: [],
     submitted: false,
     isLoading: true,
+    err: null,
   };
 
   componentDidMount() {
@@ -28,11 +29,33 @@ class EditDashboard extends Component {
           skill3,
           isLoading: false,
         });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "getUser",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
       });
   }
 
   getAllTech = () => {
-    api.getTech().then((tech) => this.setState({ tech }));
+    api
+      .getTech()
+      .then((tech) => this.setState({ tech }))
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "getTech",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
   };
 
   handleSubmit = (e) => {
@@ -45,13 +68,24 @@ class EditDashboard extends Component {
       skill3,
     } = this.state;
     e.preventDefault();
-    api.editUserProfileByUsername(username, {
-      description,
-      github_url,
-      skill1,
-      skill2,
-      skill3,
-    });
+    api
+      .editUserProfileByUsername(username, {
+        description,
+        github_url,
+        skill1,
+        skill2,
+        skill3,
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "editUser",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
     this.setState({ submitted: true });
   };
 
@@ -70,9 +104,12 @@ class EditDashboard extends Component {
       submitted,
       tech,
       isLoading,
+      err,
     } = this.state;
 
     if (isLoading) return <p>Loading...</p>;
+    if (err) return <StyledErrorPage {...err} />;
+
     return (
       <section>
         <form className={className} onSubmit={this.handleSubmit}>

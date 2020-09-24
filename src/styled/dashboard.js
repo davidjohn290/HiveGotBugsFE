@@ -6,8 +6,7 @@ import EditDashboard from "../components/dashboard/EditDashboard";
 import AddProblem from "../components/dashboard/AddProblem";
 
 // <article>
-export const StyledUserCard = styled(UserCard)
-`
+export const StyledUserCard = styled(UserCard)`
   h2 {
     text-align: center;
   }
@@ -33,8 +32,7 @@ export const StyledUserCard = styled(UserCard)
 `;
 
 // <section>
-export const StyledBugChart = styled(BugChart)
-`
+export const StyledBugChart = styled(BugChart)`
   header {
     margin: 10%;
   }
@@ -62,8 +60,7 @@ export const StyledBugChart = styled(BugChart)
   }
 `;
 //<main>
-export const StyledDashboard = styled(Dashboard)
-`
+export const StyledDashboard = styled(Dashboard)`
   .dashboardButtons {
     display: flex;
     justify-content: space-between;
@@ -96,8 +93,7 @@ export const StyledDashboard = styled(Dashboard)
   }
 `;
 // <form>
-export const StyledEditDashboard = styled(EditDashboard)
-`
+export const StyledEditDashboard = styled(EditDashboard)`
   font-size: 0.5cm;
   border: black 1px solid;
   width: auto;
@@ -155,8 +151,7 @@ export const StyledEditDashboard = styled(EditDashboard)
 `;
 
 // <form>
-export const StyledAddProblem = styled(AddProblem)
-`
+export const StyledAddProblem = styled(AddProblem)`
   font-size: 0.5cm;
   border: black 1px solid;
   width: auto;
