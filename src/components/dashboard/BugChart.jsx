@@ -18,6 +18,7 @@ class BugChart extends Component {
     username: null,
     toggleShow: true,
     err: null,
+    enableChart: false,
   };
 
   componentDidMount() {
@@ -45,6 +46,9 @@ class BugChart extends Component {
     api
       .getUserByUsername(username)
       .then((user) => {
+        if (user.bug_points > 0) {
+          this.setState({ enableChart: true });
+        }
         this.setState({
           bugPointsOverMonth: user.bug_points_over_month,
           bugPoints: user.bug_points,
@@ -109,11 +113,16 @@ class BugChart extends Component {
       techTally,
       solvedTally,
       err,
+      enableChart,
     } = this.state;
 
     const techLabel = Object.keys(techTally);
     const techData = Object.values(techTally);
     const problemData = Object.values(solvedTally);
+    let problemLabels = ["unsolved", "solved"];
+    if (bugPoints === 0) {
+      problemLabels = [];
+    }
     const techChartData = {
       labels: techLabel,
       datasets: [
@@ -136,7 +145,7 @@ class BugChart extends Component {
       ],
     };
     const problemChartData = {
-      labels: ["unsolved", "solved"],
+      labels: problemLabels,
       datasets: [
         {
           label: "Bug points every 30 days",
@@ -162,15 +171,17 @@ class BugChart extends Component {
     return (
       <section className={className}>
         <header>
-          <StyledHexButton
-            as="button"
-            onClick={this.toggleShow}
-            id="toggleChart"
-          >
-            {toggleShow ? "Hide Chart" : "Show Chart"}
-          </StyledHexButton>
+          {enableChart && (
+            <StyledHexButton
+              as="button"
+              onClick={this.toggleShow}
+              id="toggleChart"
+            >
+              {toggleShow ? "Hide Chart" : "Show Chart"}
+            </StyledHexButton>
+          )}
           <StyledHexButton as="p" id="bugPoints">
-            Total: {bugPoints}
+            Total Points: {bugPoints}
           </StyledHexButton>
         </header>
 
