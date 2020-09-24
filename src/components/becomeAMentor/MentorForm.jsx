@@ -1,7 +1,11 @@
 import React, { Component } from "react";
 import { UserContext } from "../../UserContext";
 import * as api from "../../utils/api";
-import { StyledLoader, StyledErrorPage } from "../../styled/lib";
+import {
+  StyledLoader,
+  StyledErrorPage,
+  StyledPleaseLogin,
+} from "../../styled/lib";
 const githubRegex = require("regex-username");
 
 class MentorForm extends Component {
@@ -121,7 +125,8 @@ class MentorForm extends Component {
 
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
-    if (!username) return <p>Please log in first!</p>;
+    if (!username) return <StyledPleaseLogin />;
+
     if (user.bug_points < 10)
       return (
         <p>

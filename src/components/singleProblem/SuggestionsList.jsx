@@ -19,21 +19,9 @@ class SuggestionsList extends React.Component {
 
   fetchSuggestions = (problem_id) => {
     this.setState({ isLoading: true });
-    api
-      .getSuggestions(problem_id)
-      .then((suggestions) => {
-        this.setState({ suggestions, isLoading: false });
-      })
-      .catch(() => {
-        this.setState({
-          isLoading: false,
-          //   err: {
-          //     type: "fetchSuggestions",
-          //     msg: response.data.msg,
-          //     status: response.status,
-          //   },
-        });
-      });
+    api.getSuggestions(problem_id).then((suggestions) => {
+      this.setState({ suggestions, isLoading: false });
+    });
   };
 
   renderNewSuggestion = (newSuggestion) => {

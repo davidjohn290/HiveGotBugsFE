@@ -80,6 +80,7 @@ class EditProblemForm extends Component {
     const { techList, difficulty, tech, title, body, err } = this.state;
     const { className } = this.props;
     const difficultyRef = ["easy", "medium", "hard"];
+
     if (err) return <StyledErrorPage {...err} />;
 
     return (

@@ -3,11 +3,11 @@ import { Router } from "@reach/router";
 import { StyledHome } from "./styled/home";
 import { StyledSingleProblem } from "./styled/singleProblem";
 import Header from "./components/header/Header";
-import MentorPage from "./components/singleMentor/MentorPage";
+import { StyledSingleMentor } from "./styled/singleMentor";
 import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
 import { StyledMentorForm } from "./styled/becomeAMentor";
-import MentorList from "./components/mentors/MentorList";
+import { StyledMentorList } from "./styled/mentors";
 import ErrorPage from "./components/ErrorPage";
 
 class App extends Component {
@@ -31,12 +31,12 @@ class App extends Component {
             <StyledHome path="/" />
             <StyledSingleProblem path="/problem/:problem_id" />
             <StyledMentorForm path="/become-a-mentor" />
-            <MentorPage path="/:username" />
+            <StyledSingleMentor path="/:username" />
             <StyledDashboard path="/dashboard" />
-            <MentorList path="/mentors" />
+            <StyledMentorList path="/mentors" />
             <ErrorPage default {...err} />
           </Router>
-        </UserContext.Provider>
+        </UserContext.Provider>{" "}
       </div>
     );
   }

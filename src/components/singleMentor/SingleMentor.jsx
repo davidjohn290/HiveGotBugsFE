@@ -1,7 +1,6 @@
 import React from "react";
 import * as api from "../../utils/api";
-import { StyledLoader } from "../../styled/lib";
-import ErrorPage from "../ErrorPage";
+import { StyledLoader, StyledErrorPage } from "../../styled/lib";
 
 class SingleMentor extends React.Component {
   state = {
@@ -38,7 +37,7 @@ class SingleMentor extends React.Component {
     const { mentor, isLoading, err } = this.state;
     const { className } = this.props;
 
-    if (err) return <ErrorPage {...err} />;
+    if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
 
     return (

@@ -11,6 +11,7 @@ import {
   StyledHexButton,
   StyledLoader,
   StyledErrorPage,
+  StyledPleaseLogin,
 } from "../../styled/lib";
 import { StyledProblemCard } from "../../styled/home";
 
@@ -150,56 +151,53 @@ class Dashboard extends Component {
 
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
-    if (!username) return <p>Please log in first!</p>;
-    else
-      return (
-        <main className={className}>
-          <StyledUserCard user={user} />
-          <StyledBugChart username={username} />
+    if (!username) return <StyledPleaseLogin />;
 
-          <section>
-            <h2>Posted problems</h2>
-            {!enableProblems && <p>Your added problems will appear here!</p>}
-            <header className="dashboardButtons">
-              {user.role === "mentor" && (
-                <StyledHexButton
-                  as="button"
-                  id="editButton"
-                  onClick={this.toggleShowEdit}
-                >
-                  {!toggleEdit ? "Edit" : "Close Edit"}
-                </StyledHexButton>
-              )}
-              {toggleEdit && <StyledEditDashboard username={username} />}
-              {enableProblems && (
-                <StyledHexButton
-                  as="button"
-                  onClick={this.showSolved}
-                  id="solvedButton"
-                >
-                  {!filter ? "Show Solved" : "Show Unsolved"}
-                </StyledHexButton>
-              )}
-              <StyledHexButton as="button" onClick={this.toggleProblem}>
-                {toggleProblem ? "Close" : "Add Problem"}
+    return (
+      <main className={className}>
+        <StyledUserCard user={user} />
+        <StyledBugChart username={username} />
+
+        <section>
+          <h2>Posted problems</h2>
+          {!enableProblems && <p>Your added problems will appear here!</p>}
+          <header className="dashboardButtons">
+            {user.role === "mentor" && (
+              <StyledHexButton
+                as="button"
+                id="editButton"
+                onClick={this.toggleShowEdit}
+              >
+                {!toggleEdit ? "Edit" : "Close Edit"}
               </StyledHexButton>
-              {toggleProblem && (
-                <StyledAddProblem updateProblemList={this.addProblem} />
-              )}
-            </header>
-            <ul>
-              {problems.map((problem) => {
-                return (
-                  <StyledProblemCard
-                    key={problem.problem_id}
-                    problem={problem}
-                  />
-                );
-              })}
-            </ul>
-          </section>
-        </main>
-      );
+            )}
+            {toggleEdit && <StyledEditDashboard username={username} />}
+            {enableProblems && (
+              <StyledHexButton
+                as="button"
+                onClick={this.showSolved}
+                id="solvedButton"
+              >
+                {!filter ? "Show Solved" : "Show Unsolved"}
+              </StyledHexButton>
+            )}
+            <StyledHexButton as="button" onClick={this.toggleProblem}>
+              {toggleProblem ? "Close" : "Add Problem"}
+            </StyledHexButton>
+            {toggleProblem && (
+              <StyledAddProblem updateProblemList={this.addProblem} />
+            )}
+          </header>
+          <ul>
+            {problems.map((problem) => {
+              return (
+                <StyledProblemCard key={problem.problem_id} problem={problem} />
+              );
+            })}
+          </ul>
+        </section>
+      </main>
+    );
   }
 }
 

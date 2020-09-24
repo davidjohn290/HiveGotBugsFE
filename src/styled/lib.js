@@ -2,6 +2,7 @@ import styled from "styled-components";
 import { Link } from "@reach/router";
 import Loader from "../components/Loader";
 import ErrorPage from "../components/ErrorPage";
+import PleaseLogin from "../components/PleaseLogin";
 
 // <Link>, sometimes overridden as <Button>
 export const StyledHexButton = styled(Link)`
@@ -77,3 +78,5 @@ export const StyledLoader = styled(Loader)`
 `;
 
 export const StyledErrorPage = styled(ErrorPage)``;
+
+export const StyledPleaseLogin = styled(PleaseLogin)``;
