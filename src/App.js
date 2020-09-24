@@ -11,10 +11,15 @@ import { StyledMentorList } from "./styled/mentors";
 import ErrorPage from "./components/ErrorPage";
 
 class App extends Component {
-  state = { username: "davidjohn290", err: null };
+  state = { username: "Destiny82", err: null };
+
+  // componentDidMount() {
+  //   this.setUsername(localStorage.getItem("username"));
+  // }
 
   setUsername = (username) => {
     this.setState({ username });
+    localStorage.setItem("username", username);
   };
 
   render() {

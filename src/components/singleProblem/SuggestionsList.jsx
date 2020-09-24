@@ -79,7 +79,7 @@ class SuggestionsList extends React.Component {
     if (err) return <ErrorPage {...err} />;
 
     return (
-      <section>
+      <section className={className}>
         <h2>Suggestions</h2>
         {username && (
           <StyledAddSuggestionForm
@@ -87,7 +87,7 @@ class SuggestionsList extends React.Component {
             renderNewSuggestion={this.renderNewSuggestion}
           />
         )}
-        <ul className={className}>
+        <ul>
           {suggestions.map((suggestion) => {
             return (
               <StyledSuggestionCard

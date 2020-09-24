@@ -178,6 +178,7 @@ class EditDashboard extends Component {
 
           <label>
             Bio:
+            <br />
             <textarea
               cols="30"
               rows="8"
@@ -192,7 +193,7 @@ class EditDashboard extends Component {
           <StyledHexButton as="button" type="submit">
             Submit
           </StyledHexButton>
-
+          <br />
           {submitted && "Your details have been changed"}
         </form>
       </section>

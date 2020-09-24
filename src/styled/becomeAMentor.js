@@ -5,28 +5,22 @@ import MentorForm from "../components/becomeAMentor/MentorForm";
 // <section>
 export const StyledMentorForm = styled(MentorForm)`
   font-size: 0.5cm;
-  border: black 1px solid;
   width: auto;
   height: auto;
   background-color: grey;
-  padding: 30px;
   margin-bottom: 25px;
   border-radius: 8px;
-  margin: auto;
+  margin: 10%;
   text-align: center;
 
   h2 {
     font-weight: bold;
     text-align: center;
-    margin-top: 0;
-  }
-
-  p {
-    text-align: center;
+    margin-top: 0px;
   }
 
   header {
-    padding-bottom: 1cm;
+    margin-top: 10px;
   }
 
   form {
@@ -34,6 +28,10 @@ export const StyledMentorForm = styled(MentorForm)`
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
+  }
+
+  label {
+    vertical-align: middle;
   }
 
   input {
@@ -45,8 +43,22 @@ export const StyledMentorForm = styled(MentorForm)`
     margin-top: 6px;
     margin-bottom: 16px;
   }
+  select {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-top: 6px;
+    margin-bottom: 16px;
+  }
 
   textarea {
     margin-bottom: 16px;
+  }
+
+  button {
+    margin: auto;
+    margin-top: 10px;
   }
 `;

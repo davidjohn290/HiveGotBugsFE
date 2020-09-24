@@ -97,6 +97,11 @@ export const StyledDashboard = styled(Dashboard)`
     margin-bottom: 2cm;
   }
 
+  #editButton {
+    margin: 10%;
+    margin-bottom: 2cm;
+  }
+
   h2 {
     text-align: center;
     margin: auto;
@@ -118,23 +123,22 @@ export const StyledDashboard = styled(Dashboard)`
 // <form>
 export const StyledEditDashboard = styled(EditDashboard)`
   font-size: 0.5cm;
-  border: black 1px solid;
   width: auto;
   height: auto;
   background-color: grey;
-  padding: 30px;
   margin-bottom: 25px;
   border-radius: 8px;
-  margin: auto;
+  margin: 10%;
   text-align: center;
+
   h2 {
     font-weight: bold;
     text-align: center;
-    margin-top: 0;
+    margin-top: 0px;
   }
 
   header {
-    padding-bottom: 1cm;
+    margin-top: 10px;
   }
 
   form {
@@ -142,6 +146,10 @@ export const StyledEditDashboard = styled(EditDashboard)`
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
+  }
+
+  label {
+    vertical-align: middle;
   }
 
   input {
@@ -200,6 +208,9 @@ export const StyledAddProblem = styled(AddProblem)`
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
+  }
+  label {
+    text-align: left;
   }
 
   label {

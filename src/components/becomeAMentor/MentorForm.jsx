@@ -5,6 +5,7 @@ import {
   StyledLoader,
   StyledErrorPage,
   StyledPleaseLogin,
+  StyledHexButton,
 } from "../../styled/lib";
 import "../../css/becomeAMentor.css";
 const githubRegex = require("regex-username");
@@ -121,7 +122,6 @@ class MentorForm extends Component {
       isLoading,
       user,
       username,
-      validUsername,
     } = this.state;
 
     if (err) return <StyledErrorPage {...err} />;
@@ -146,29 +146,18 @@ class MentorForm extends Component {
           </p>
         </header>
         {!submitted ? (
-          <form className="form" onSubmit={this.onSubmit}>
-            <label htmlFor="bio">
-              Bio:
-              <textarea
-                value={formValues.bio}
-                id="bio"
-                name="bio"
-                cols="25"
-                rows="8"
-                placeholder="Write here..."
-                required
-                onChange={this.onInput}
-              />
-            </label>
-            <label htmlFor="skill1">
+          <form className={className} onSubmit={this.onSubmit}>
+            <label>
               Skill 1:
               <select
-                id="skill1"
                 name="skill1"
                 onChange={this.onInput}
                 value={formValues.skill1}
+                required
               >
-                <option value="">None</option>
+                <option value="" hidden>
+                  Pick your skills
+                </option>
                 {tech.map((item) => {
                   return (
                     <option value={item.slug} key={item.slug}>
@@ -178,15 +167,17 @@ class MentorForm extends Component {
                 })}
               </select>
             </label>
-            <label htmlFor="id">
+            <label>
               Skill 2:
               <select
-                id="skill2"
                 name="skill2"
                 onChange={this.onInput}
                 value={formValues.skill2}
+                required
               >
-                <option value="">None</option>
+                <option value="" hidden>
+                  Pick your skills
+                </option>
                 {tech.map((item) => {
                   return (
                     <option value={item.slug} key={item.slug}>
@@ -196,15 +187,17 @@ class MentorForm extends Component {
                 })}
               </select>
             </label>
-            <label htmlFor="skill3">
+            <label>
               Skill 3:
               <select
-                id="skill3"
                 name="skill3"
                 onChange={this.onInput}
                 value={formValues.skill3}
+                required
               >
-                <option value="">None</option>
+                <option value="" hidden>
+                  Pick your skills
+                </option>
                 {tech.map((item) => {
                   return (
                     <option value={item.slug} key={item.slug}>
@@ -215,10 +208,9 @@ class MentorForm extends Component {
               </select>
             </label>
 
-            <label htmlFor="github">
+            <label>
               Github Username:
               <input
-                id="github"
                 type="text"
                 name="github"
                 placeholder="Write here..."
@@ -227,8 +219,23 @@ class MentorForm extends Component {
                 onChange={this.onInput}
               />
             </label>
-            {!validUsername && <p>Invalid username</p>}
-            <button type="submit">Submit</button>
+
+            <label>
+              Bio:
+              <br />
+              <textarea
+                value={formValues.bio}
+                name="bio"
+                cols="25"
+                rows="8"
+                placeholder="Write here..."
+                required
+                onChange={this.onInput}
+              />
+            </label>
+            {/* {!validUsername && <p>Invalid username</p>} */}
+            <StyledHexButton as="button">Submit</StyledHexButton>
+            <br />
           </form>
         ) : (
           <p>Your request has been submitted!</p>
