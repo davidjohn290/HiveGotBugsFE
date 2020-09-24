@@ -74,27 +74,25 @@ class Dashboard extends Component {
   };
 
   addProblem = (username, body) => {
-    this.setState((currentState) => {
-      const newProblem = {
-        username: username,
-        difficulty: body.difficulty,
-        solved: false,
-        tech: body.tech,
-        title: body.title,
-        body: body.body,
-        created_at: "a minute ago",
-      };
-      return { problems: [newProblem, ...currentState.problems] };
-    });
-    api.addProblemByUsername(username, body).catch(({ response }) => {
-      this.setState({
-        err: {
-          type: "editProblem",
-          msg: response.data.msg,
-          status: response.status,
-        },
+    api
+      .addProblemByUsername(username, body)
+      .then((problem) => {
+        this.setState((currentState) => {
+          return {
+            problems: [problem, ...currentState.problems],
+            enableProblems: true,
+          };
+        });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          err: {
+            type: "editProblem",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
       });
-    });
   };
 
   fetchProblems = (username, filter) => {
