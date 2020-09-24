@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 import MentorForm from "../components/becomeAMentor/MentorForm";
 
+// <section>
 export const StyledMentorForm = styled(MentorForm)`
   font-size: 0.5cm;
   border: black 1px solid;

@@ -1,8 +1,11 @@
 import React, { Component } from "react";
-import Loader from "../Loader";
 import { UserContext } from "../../UserContext";
 import * as api from "../../utils/api";
-import { StyledHexButton } from "../../styled/lib";
+import {
+  StyledLoader,
+  StyledHexButton,
+  StyledErrorPage,
+} from "../../styled/lib";
 
 class AddProblem extends Component {
   static contextType = UserContext;
@@ -16,12 +19,23 @@ class AddProblem extends Component {
     title: "",
     body: "",
     submitted: false,
+    err: null,
   };
 
   componentDidMount() {
     api
       .getTech()
-      .then((tech) => this.setState({ techList: tech, isLoading: false }));
+      .then((tech) => this.setState({ techList: tech, isLoading: false }))
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "getTech",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
   }
 
   handleSubmit = (e) => {
@@ -45,9 +59,12 @@ class AddProblem extends Component {
       techList,
       tech,
       difficulty,
+      err,
     } = this.state;
     const { className } = this.props;
-    if (isLoading) return <Loader />;
+
+    if (isLoading) return <StyledLoader />;
+    if (err) return <StyledErrorPage {...err} />;
     return (
       <form className={className} onSubmit={this.handleSubmit}>
         <label>

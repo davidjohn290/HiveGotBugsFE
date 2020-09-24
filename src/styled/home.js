@@ -136,33 +136,4 @@ export const StyledProblemCard = styled(ProblemCard)`
       0% -2%
     );
   }
-  /* flex-basis: 0;
-  position: relative;
-  display: block;
-  list-style-type: none;
-  text-align: center;
-  width: 100%;
-
-  img {
-    display: block;
-    width: 328px;
-  }
-
-  article {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -60%);
-    width: 100%;
-  }
-
-  p.header {
-    width: 66%;
-    margin: auto;
-    font-size: 11pt;
-  }
-  p,
-  h2 {
-    margin: 0.5em;
-  } */
 `;

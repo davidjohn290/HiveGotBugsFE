@@ -1,10 +1,12 @@
 import React, { Component } from "react";
 import { Doughnut } from "react-chartjs-2";
-import { StyledHexButton } from "../../styled/lib";
 import * as api from "../../utils/api";
 import { UserContext } from "../../UserContext";
-import { StyledLoader } from "../../styled/lib";
-import ErrorPage from "../ErrorPage";
+import {
+  StyledLoader,
+  StyledErrorPage,
+  StyledHexButton,
+} from "../../styled/lib";
 
 class BugChart extends Component {
   static contextType = UserContext;
@@ -166,8 +168,9 @@ class BugChart extends Component {
       ],
     };
 
-    if (err) return <ErrorPage {...err} />;
+    if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
+
     return (
       <section className={className}>
         <header>

@@ -5,6 +5,7 @@ import Dashboard from "../components/dashboard/Dashboard";
 import EditDashboard from "../components/dashboard/EditDashboard";
 import AddProblem from "../components/dashboard/AddProblem";
 
+// <article>
 export const StyledUserCard = styled(UserCard)`
   h2 {
     text-align: center;
@@ -30,6 +31,7 @@ export const StyledUserCard = styled(UserCard)`
   }
 `;
 
+// <section>
 export const StyledBugChart = styled(BugChart)`
   header {
     margin: 10%;
@@ -57,7 +59,7 @@ export const StyledBugChart = styled(BugChart)`
     list-style: none;
   }
 `;
-
+//<main>
 export const StyledDashboard = styled(Dashboard)`
   .dashboardButtons {
     display: flex;
@@ -90,7 +92,7 @@ export const StyledDashboard = styled(Dashboard)`
     margin: auto;
   }
 `;
-
+// <form>
 export const StyledEditDashboard = styled(EditDashboard)`
   font-size: 0.5cm;
   border: black 1px solid;
@@ -148,6 +150,7 @@ export const StyledEditDashboard = styled(EditDashboard)`
   }
 `;
 
+// <form>
 export const StyledAddProblem = styled(AddProblem)`
   font-size: 0.5cm;
   border: black 1px solid;

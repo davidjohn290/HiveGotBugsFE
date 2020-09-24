@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import { StyledLink, StyledLoader } from "../../styled/lib";
-import "./mentor.css";
-
-import ErrorPage from "../ErrorPage";
+import { StyledLink, StyledLoader, StyledErrorPage } from "../../styled/lib";
 
 class MentorList extends Component {
   state = {
@@ -35,7 +32,7 @@ class MentorList extends Component {
   render() {
     const { mentors, isLoading, err } = this.state;
 
-    if (err) return <ErrorPage {...err} />;
+    if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
 
     return (
@@ -61,7 +58,6 @@ class MentorList extends Component {
             </section>
             <section className="mentor-stats">
               <p>{mentor.bug_points}</p>
-              {/* <p>{mentor.github_url}</p> */}
               <p>{mentor.online_status}</p>
             </section>
           </section>
