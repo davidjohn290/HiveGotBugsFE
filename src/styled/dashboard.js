@@ -178,6 +178,9 @@ export const StyledAddProblem = styled(AddProblem)`
     text-align: center;
     justify-content: space-evenly;
   }
+  label {
+    text-align: left;
+  }
 
   input {
     width: 100%;

@@ -5,6 +5,7 @@ import {
   StyledLoader,
   StyledErrorPage,
   StyledPleaseLogin,
+  StyledMentorForm,
 } from "../../styled/lib";
 const githubRegex = require("regex-username");
 
@@ -145,20 +146,7 @@ class MentorForm extends Component {
           </p>
         </header>
         {!submitted ? (
-          <form className="form" onSubmit={this.onSubmit}>
-            <label htmlFor="bio">
-              Bio:
-              <textarea
-                value={formValues.bio}
-                id="bio"
-                name="bio"
-                cols="25"
-                rows="8"
-                placeholder="Write here..."
-                required
-                onChange={this.onInput}
-              />
-            </label>
+          <form className="form " onSubmit={this.onSubmit}>
             <label htmlFor="skill1">
               Skill 1:
               <select
@@ -215,23 +203,34 @@ class MentorForm extends Component {
             </label>
 
             <label htmlFor="github">
-              Github Username:
               <input
                 id="github"
                 type="text"
                 name="github"
-                placeholder="Write here..."
+                placeholder="Github Username:"
                 required
                 value={formValues.github}
                 onChange={this.onInput}
               />
             </label>
-            {!validUsername && <p>Invalid username</p>}
+            <label htmlFor="bio">
+              <textarea
+                value={formValues.bio}
+                id="bio"
+                name="bio"
+                cols="25"
+                rows="8"
+                placeholder=" Bio:"
+                required
+                onChange={this.onInput}
+              />
+            </label>
+            {/* {!validUsername && <p>Invalid username</p>} */}
             <button type="submit">Submit</button>
           </form>
         ) : (
-          <p>Your request has been submitted!</p>
-        )}
+            <p>Your request has been submitted!</p>
+          )}
       </section>
     );
   }
