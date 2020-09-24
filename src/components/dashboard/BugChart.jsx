@@ -1,34 +1,90 @@
 import React, { Component } from "react";
 import { Doughnut } from "react-chartjs-2";
 import { StyledHexButton } from "../../styled/lib";
-import { getUserByUsername } from "../../utils/api";
-import { getProblemByUsernameWithoutFilter } from "../../utils/api";
+import * as api from "../../utils/api";
+import { UserContext } from "../../UserContext";
+import { StyledLoader } from "../../styled/lib";
+import ErrorPage from "../ErrorPage";
 
 class BugChart extends Component {
+  static contextType = UserContext;
+
   state = {
     isLoading: true,
     bugPointsOverMonth: 0,
     bugPoints: 0,
     techTally: {},
     solvedTally: {},
-    username: "Destiny82",
+    username: null,
     toggleShow: true,
+    err: null,
+    enableChart: false,
   };
 
   componentDidMount() {
-    const { username } = this.state;
-    getUserByUsername(username).then((user) => {
-      this.setState({
-        isLoading: false,
-        bugPointsOverMonth: user.bug_points_over_month,
-        bugPoints: user.bug_points,
-      });
-    });
-    getProblemByUsernameWithoutFilter(username).then((problems) => {
-      this.getTallyOfProblems(problems, "tech", "techTally");
-      this.getTallyOfProblems(problems, "solved", "solvedTally");
-    });
+    const { username } = this.context;
+    this.setState({ username });
+    if (username) {
+      this.fetchUser(username);
+      this.fetchProblem(username);
+    }
   }
+
+  componentDidUpdate(prevProps, prevState) {
+    const { username } = this.context;
+    if (username !== prevState.username) {
+      this.setState({ username });
+      if (username) {
+        this.fetchUser(username);
+        this.fetchProblem(username);
+      }
+    }
+  }
+
+  fetchUser = (username) => {
+    this.setState({ isLoading: true });
+    api
+      .getUserByUsername(username)
+      .then((user) => {
+        if (user.bug_points > 0) {
+          this.setState({ enableChart: true });
+        }
+        this.setState({
+          bugPointsOverMonth: user.bug_points_over_month,
+          bugPoints: user.bug_points,
+          isLoading: false,
+        });
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "fetchUser",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
+  };
+
+  fetchProblem = (username) => {
+    api
+      .getProblemByUsernameWithoutFilter(username)
+      .then((problems) => {
+        this.getTallyOfProblems(problems, "tech", "techTally");
+        this.getTallyOfProblems(problems, "solved", "solvedTally");
+      })
+      .catch(({ response }) => {
+        this.setState({
+          isLoading: false,
+          err: {
+            type: "fetchSingleProblem",
+            msg: response.data.msg,
+            status: response.status,
+          },
+        });
+      });
+  };
 
   getTallyOfProblems = (problems, propTally, stateProp) => {
     const tallyObj = {};
@@ -53,14 +109,20 @@ class BugChart extends Component {
     const {
       isLoading,
       toggleShow,
-      bugPointsOverMonth,
       bugPoints,
       techTally,
       solvedTally,
+      err,
+      enableChart,
     } = this.state;
+
     const techLabel = Object.keys(techTally);
     const techData = Object.values(techTally);
     const problemData = Object.values(solvedTally);
+    let problemLabels = ["unsolved", "solved"];
+    if (bugPoints === 0) {
+      problemLabels = [];
+    }
     const techChartData = {
       labels: techLabel,
       datasets: [
@@ -83,7 +145,7 @@ class BugChart extends Component {
       ],
     };
     const problemChartData = {
-      labels: ["unsolved", "solved"],
+      labels: problemLabels,
       datasets: [
         {
           label: "Bug points every 30 days",
@@ -103,20 +165,23 @@ class BugChart extends Component {
         },
       ],
     };
-    if (isLoading) return <p>Bug chart is loading...</p>;
+
+    if (err) return <ErrorPage {...err} />;
+    if (isLoading) return <StyledLoader />;
     return (
-      <div className={className}>
-        <button onClick={this.getTechOfProblems}>click me</button>
+      <section className={className}>
         <header>
-          <StyledHexButton
-            as="button"
-            onClick={this.toggleShow}
-            id="toggleChart"
-          >
-            {toggleShow ? "Hide Chart" : "Show Chart"}
-          </StyledHexButton>
+          {enableChart && (
+            <StyledHexButton
+              as="button"
+              onClick={this.toggleShow}
+              id="toggleChart"
+            >
+              {toggleShow ? "Hide Chart" : "Show Chart"}
+            </StyledHexButton>
+          )}
           <StyledHexButton as="p" id="bugPoints">
-            Total: {bugPoints}
+            Total Points: {bugPoints}
           </StyledHexButton>
         </header>
 
@@ -140,7 +205,7 @@ class BugChart extends Component {
             </li>
           </ul>
         ) : null}
-      </div>
+      </section>
     );
   }
 }

@@ -1,11 +1,18 @@
 import React from "react";
+import { StyledHexButton } from "../../styled/lib";
 
-const removeFilters = () => {
+const RemoveFilters = ({ handleRemoveFilter, username }) => {
+  const handleInvokeRemoveFilter = () => {
+    handleRemoveFilter(username);
+  };
+
   return (
     <section>
-      <button htmlFor="remove-filters">Remove Filters</button>
+      <StyledHexButton as="button" onClick={handleInvokeRemoveFilter}>
+        Clear Filter
+      </StyledHexButton>
     </section>
   );
 };
 
-export default removeFilters;
+export default RemoveFilters;

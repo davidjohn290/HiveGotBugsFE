@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import { StyledHexButton } from "../../styled/lib";
-import Search from "./Search";
 import { StyledMenuNav } from "../../styled/header";
 import Icon from "./Icon";
-import Login from "./Login";
+import GitHubLogin from "./GitHubLogin";
 
 class MainNav extends Component {
   state = { searchIsVisible: false, menuIsVisible: false };
@@ -21,7 +20,7 @@ class MainNav extends Component {
   };
 
   render() {
-    const { menuIsVisible, searchIsVisible } = this.state;
+    const { menuIsVisible } = this.state;
     const { className } = this.props;
     return (
       <>
@@ -34,17 +33,11 @@ class MainNav extends Component {
               </StyledHexButton>
             </li>
             <li>
-              <StyledHexButton as="button" onClick={this.toggleSearch}>
-                Search
-              </StyledHexButton>
-            </li>
-            <li>
-              <Login />
+              <GitHubLogin />
             </li>
           </ul>
         </nav>
         {menuIsVisible && <StyledMenuNav />}
-        {searchIsVisible && <Search />}
       </>
     );
   }

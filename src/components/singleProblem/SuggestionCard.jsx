@@ -70,44 +70,42 @@ class SuggestionCard extends Component {
     if (err) return <ErrorPage {...err} />;
 
     return (
-      <>
-        <li className={className}>
-          {username === suggestion.username && (
-            <>
-              <StyledHexButton as="button" onClick={this.toggleEditForm}>
-                Edit
-              </StyledHexButton>
-              <StyledHexButton
-                as="button"
-                onClick={() => {
-                  deleteSuggestionOptimistic(suggestion.suggestion_id);
-                }}
-              >
-                Delete
-              </StyledHexButton>
-            </>
-          )}
-          {canShowSolveButton && (
-            <StyledHexButton as="button" onClick={this.handleSolve}>
-              Solved my problem?
+      <li className={className}>
+        {username === suggestion.username && (
+          <>
+            <StyledHexButton as="button" onClick={this.toggleEditForm}>
+              Edit
             </StyledHexButton>
-          )}
-          <p>{`Suggested by: ${suggestion.username} ${timeString}`}</p>
-          <p>{suggestion.body}</p>
-          {suggestion.approved_by && (
-            <p>
-              <strong>This suggestion solved the problem!</strong>
-            </p>
-          )}
-          {editFormVisible && (
-            <StyledEditSuggestionForm
-              suggestion={suggestion}
-              editSuggestionOptimistic={editSuggestionOptimistic}
-              toggleEditForm={this.toggleEditForm}
-            />
-          )}
-        </li>
-      </>
+            <StyledHexButton
+              as="button"
+              onClick={() => {
+                deleteSuggestionOptimistic(suggestion.suggestion_id);
+              }}
+            >
+              Delete
+            </StyledHexButton>
+          </>
+        )}
+        {canShowSolveButton && (
+          <StyledHexButton as="button" onClick={this.handleSolve}>
+            Solved my problem?
+          </StyledHexButton>
+        )}
+        <p>{`Suggested by: ${suggestion.username} ${timeString}`}</p>
+        <p>{suggestion.body}</p>
+        {suggestion.approved_by && (
+          <p>
+            <strong>This suggestion solved the problem!</strong>
+          </p>
+        )}
+        {editFormVisible && (
+          <StyledEditSuggestionForm
+            suggestion={suggestion}
+            editSuggestionOptimistic={editSuggestionOptimistic}
+            toggleEditForm={this.toggleEditForm}
+          />
+        )}
+      </li>
     );
   }
 }

@@ -43,15 +43,15 @@ export const getAllMentors = () => {
   });
 };
 
-export const makeUserAMentor = (username, { bio, skills, github }) => {
+export const makeUserAMentor = (username, formValues) => {
   return axiosInstance
     .patch(`/users/${username}`, {
       role: "mentor",
-      description: bio,
-      skill1: skills[0],
-      skill2: skills[1],
-      skill3: skills[2],
-      github_url: `www.github.com/${github}`,
+      description: formValues.bio,
+      skill1: formValues.skill1,
+      skill2: formValues.skill2,
+      skill3: formValues.skill3,
+      github_url: `www.github.com/${formValues.github}`,
     })
     .then(({ data: user }) => user);
 };
@@ -110,4 +110,36 @@ export const getAMentor = (username) => {
   return axiosInstance
     .get(`/users/${username}/`)
     .then(({ data: { user } }) => user);
+};
+
+export const addUser = (username, { avatar_url }) => {
+  return axiosInstance
+    .post("/users", {
+      username: username,
+      avatar_url: avatar_url,
+      name: "Not provided",
+      bug_points: 0,
+      bug_points_over_month: 0,
+      role: "user",
+      online_status: "true",
+    })
+    .then(({ data: { user } }) => {
+      return user;
+    });
+};
+
+export const addProblemByUsername = (
+  username,
+  { difficulty, tech, title, body }
+) => {
+  return axiosInstance
+    .post(`/problems`, {
+      username,
+      difficulty,
+      tech,
+      title,
+      body,
+      solved: "false",
+    })
+    .then(({ data: { problem } }) => problem);
 };

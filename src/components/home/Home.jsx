@@ -1,14 +1,18 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import removeFilters from "../home/removeFilters";
-import { StyledLoader } from "../../styled/lib";
-import { StyledErrorPage } from "../../styled/lib";
-import { StyledSortProblems } from "../../styled/home";
-import { StyledFilterProblemsTech } from "../../styled/home";
-import { StyledFilterProblemsDifficulty } from "../../styled/home";
-import { StyledProblemsList } from "../../styled/home";
+import RemoveFilters from "./RemoveFilters";
+import { StyledLoader, StyledErrorPage } from "../../styled/lib";
+import {
+  StyledSortProblems,
+  StyledFilterProblemsTech,
+  StyledFilterProblemsDifficulty,
+  StyledProblemsList,
+} from "../../styled/home";
+import { UserContext } from "../../UserContext";
 
 class Home extends Component {
+  static contextType = UserContext;
+
   state = {
     problems: [],
     selectedSort: "newest",
@@ -16,7 +20,7 @@ class Home extends Component {
     selectedDifficulty: "",
     isLoading: true,
     err: null,
-    removeFilters: false,
+    removeFilter: false,
   };
 
   componentDidMount() {
@@ -73,21 +77,30 @@ class Home extends Component {
       });
   }
 
+  handleRemoveFilter = (username) => {
+    api.getProblemByUsernameWithoutFilter(username).then((problems) => {
+      this.setState({ problems, selectedTech: "", removeFilter: false });
+    });
+  };
+
   handleSortChange = (event) => {
     const { value } = event.target;
-    this.setState({ selectedSort: value });
+    this.setState({ selectedSort: value, removeFilter: true });
   };
 
   handleTechChange = (event) => {
     const { value } = event.target;
-    this.setState({ selectedTech: value });
+    this.setState({ selectedTech: value, removeFilter: true });
   };
 
   handleDifficultyChange = (event) => {
     const { value } = event.target;
-    if (value === "easy") this.setState({ selectedDifficulty: 0 });
-    if (value === "medium") this.setState({ selectedDifficulty: 1 });
-    if (value === "hard") this.setState({ selectedDifficulty: 2 });
+    if (value === "easy")
+      this.setState({ selectedDifficulty: 0, removeFilter: true });
+    if (value === "medium")
+      this.setState({ selectedDifficulty: 1, removeFilter: true });
+    if (value === "hard")
+      this.setState({ selectedDifficulty: 2, removeFilter: true });
   };
 
   render() {
@@ -98,8 +111,10 @@ class Home extends Component {
       selectedDifficulty,
       isLoading,
       err,
+      removeFilter,
     } = this.state;
     const { className } = this.props;
+    const { username } = this.context;
 
     if (err) return <StyledErrorPage {...err} />;
     if (isLoading) return <StyledLoader />;
@@ -115,8 +130,12 @@ class Home extends Component {
           handleTechChange={this.handleTechChange}
           selectedTech={selectedTech}
         />
-
-        <removeFilters />
+        {removeFilter && (
+          <RemoveFilters
+            username={username}
+            handleRemoveFilter={this.handleRemoveFilter}
+          />
+        )}
 
         <StyledFilterProblemsDifficulty
           handleDifficultyChange={this.handleDifficultyChange}
