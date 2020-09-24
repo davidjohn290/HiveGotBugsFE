@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import removeFilters from "../home/removeFilters"
+import removeFilters from "../home/removeFilters";
 import { StyledLoader } from "../../styled/lib";
 import { StyledErrorPage } from "../../styled/lib";
 import { StyledSortProblems } from "../../styled/home";
@@ -116,7 +116,7 @@ class Home extends Component {
           selectedTech={selectedTech}
         />
 
-        <removeFilters/>
+        <removeFilters />
 
         <StyledFilterProblemsDifficulty
           handleDifficultyChange={this.handleDifficultyChange}
