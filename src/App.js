@@ -11,7 +11,7 @@ import MentorList from "./components/mentors/MentorList";
 import ErrorPage from "./components/ErrorPage";
 
 class App extends Component {
-  state = { username: "Destiny82", err: null };
+  state = { username: null, err: null };
 
   setUsername = (username) => {
     this.setState({ username });
