@@ -30,6 +30,7 @@ export const StyledUserCard = styled(UserCard)`
   }
 `;
 
+// <section>
 export const StyledBugChart = styled(BugChart)`
   header {
     margin: 10%;
@@ -148,6 +149,7 @@ export const StyledEditDashboard = styled(EditDashboard)`
   }
 `;
 
+// <form>
 export const StyledAddProblem = styled(AddProblem)`
   font-size: 0.5cm;
   border: black 1px solid;

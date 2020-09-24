@@ -6,7 +6,7 @@ import Header from "./components/header/Header";
 import MentorPage from "./components/singleMentor/MentorPage";
 import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
-import { StyledMentorForm } from "./styled/mentor";
+import { StyledMentorForm } from "./styled/becomeAMentor";
 import MentorList from "./components/mentors/MentorList";
 import ErrorPage from "./components/ErrorPage";
 
