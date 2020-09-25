@@ -24,6 +24,10 @@ export const StyledSingleMentor = styled(SingleMentor)`
 
   .nameSkillsContainer {
     display: flex;
-    align-self: center;
+    flex-direction: row;
+
+    margin: auto;
+    width: 15%;
+    padding: 10px;
   }
 `;
