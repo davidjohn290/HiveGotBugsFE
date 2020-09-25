@@ -8,13 +8,18 @@ import { StyledDashboard } from "./styled/dashboard";
 import { UserContext } from "./UserContext";
 import { StyledMentorForm } from "./styled/becomeAMentor";
 import { StyledMentorList } from "./styled/mentors";
-import ErrorPage from "./components/ErrorPage";
+import { StyledErrorPage } from "./styled/lib";
 
 class App extends Component {
   state = { username: null, err: null };
 
+  componentDidMount() {
+    this.setUsername(localStorage.getItem("username"));
+  }
+
   setUsername = (username) => {
     this.setState({ username });
+    localStorage.setItem("username", username);
   };
 
   render() {
@@ -34,7 +39,7 @@ class App extends Component {
             <StyledSingleMentor path="/:username" />
             <StyledDashboard path="/dashboard" />
             <StyledMentorList path="/mentors" />
-            <ErrorPage default {...err} />
+            <StyledErrorPage default {...err} />
           </Router>
         </UserContext.Provider>{" "}
       </div>

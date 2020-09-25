@@ -11,14 +11,24 @@ const UserCard = ({ user, className }) => {
         <img src={user.avatar_url} alt={user.username} />
         {user.role === "mentor" ? (
           <>
-            <h4>Bio:</h4>
-            <h4>{user.description}</h4>
-            <h4>
-              Skills: {user.skill1}, {user.skill2}, {user.skill3}{" "}
-            </h4>
-            <h4>Github URL: {user.github_url}</h4>
+            <br />
+            <label>
+              Bio:
+              <h4>{user.description}</h4>
+            </label>
+            <label>
+              Skills:
+              <h4>
+                {user.skill1}, {user.skill2}, {user.skill3}{" "}
+              </h4>
+            </label>
+            <label>
+              Github URL:
+              <h4>{user.github_url}</h4>
+            </label>
           </>
         ) : null}
+        <br />
       </header>
     </article>
   );

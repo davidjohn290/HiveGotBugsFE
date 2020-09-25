@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
 import { UserContext } from "../../UserContext";
-import { StyledHexButton, StyledErrorPage } from "../../styled/lib";
+import { SmallStyledHexButton, StyledErrorPage } from "../../styled/lib";
 
 class EditProblemForm extends Component {
   state = {
@@ -88,6 +88,7 @@ class EditProblemForm extends Component {
         <label htmlFor="difficulty">
           Difficulty:
           <select
+            className="formElement"
             name="difficulty"
             id="difficulty"
             value={difficultyRef[difficulty]}
@@ -107,6 +108,7 @@ class EditProblemForm extends Component {
         <label htmlFor="tech">
           Tech:
           <select
+            className="formElement"
             name="tech"
             id="tech"
             value={tech}
@@ -122,8 +124,9 @@ class EditProblemForm extends Component {
           </select>
         </label>
         <label htmlFor="title">
-          Title
+          Title:
           <input
+            className="formElement"
             type="text"
             id="title"
             value={title}
@@ -131,8 +134,9 @@ class EditProblemForm extends Component {
           />
         </label>
         <label htmlFor="body">
-          Body
+          Body:{" "}
           <textarea
+            className="formElement"
             id="body"
             type="text"
             maxLength="280"
@@ -141,9 +145,13 @@ class EditProblemForm extends Component {
             onChange={this.handleChangeBody}
           />
         </label>
-        <StyledHexButton as="button" type="submit">
+        <SmallStyledHexButton
+          as="button"
+          type="submit"
+          backgroundColor="rgb(0, 124, 146)"
+        >
           Submit
-        </StyledHexButton>
+        </SmallStyledHexButton>
       </form>
     );
   }

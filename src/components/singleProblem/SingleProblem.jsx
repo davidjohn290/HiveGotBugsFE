@@ -3,7 +3,6 @@ import { StyledErrorPage, StyledLoader } from "../../styled/lib";
 import {
   StyledSuggestionsList,
   StyledSingleProblemCard,
-  StyledEditProblemForm,
 } from "../../styled/singleProblem";
 import { navigate } from "@reach/router";
 import * as api from "../../utils/api";
@@ -105,14 +104,9 @@ class SingleProblem extends React.Component {
           problem={problem}
           toggleEditForm={this.toggleEditForm}
           handleDeleteProblem={this.handleDeleteProblem}
+          editProblemOptimistic={this.editProblemOptimistic}
+          editFormVisible={editFormVisible}
         />
-        {editFormVisible && (
-          <StyledEditProblemForm
-            problem={problem}
-            editProblemOptimistic={this.editProblemOptimistic}
-            toggleEditForm={this.toggleEditForm}
-          />
-        )}
         <StyledSuggestionsList
           problem={problem}
           problem_id={problem_id}

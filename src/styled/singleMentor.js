@@ -22,12 +22,4 @@ export const StyledSingleMentor = styled(SingleMentor)`
     color: lightblue;
   }
 
-  .nameSkillsContainer {
-    display: flex;
-    flex-direction: row;
-
-    margin: auto;
-    width: 15%;
-    padding: 10px;
-  }
 `;
