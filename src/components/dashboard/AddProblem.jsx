@@ -42,7 +42,13 @@ class AddProblem extends Component {
     e.preventDefault();
     const { updateProblemList } = this.props;
     const { username, tech, difficulty, title, body } = this.state;
-    this.setState({ submitted: true });
+    this.setState({
+      submitted: true,
+      tech: "",
+      difficulty: "",
+      title: "",
+      body: "",
+    });
     updateProblemList(username, { tech, difficulty, title, body });
   };
 
@@ -133,7 +139,7 @@ class AddProblem extends Component {
           Submit
         </StyledHexButton>
         <br />
-        {submitted && "Your Problem has been posted!"}
+        <p>{submitted && "Your Problem has been posted!"}</p>
       </form>
     );
   }

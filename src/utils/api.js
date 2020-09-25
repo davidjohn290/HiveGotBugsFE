@@ -46,12 +46,13 @@ export const getAllMentors = () => {
 export const makeUserAMentor = (username, formValues) => {
   return axiosInstance
     .patch(`/users/${username}`, {
+      name: formValues.name,
       role: "mentor",
       description: formValues.bio,
       skill1: formValues.skill1,
       skill2: formValues.skill2,
       skill3: formValues.skill3,
-      github_url: `www.github.com/${formValues.github}`,
+      github_url: `https://github.com/${formValues.github}`,
     })
     .then(({ data: user }) => user);
 };
