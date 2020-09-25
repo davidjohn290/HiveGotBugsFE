@@ -141,6 +141,9 @@ export const StyledDashboard = styled(Dashboard)`
     text-decoration: underline;
     font-family: monospace;
   }
+  p {
+    text-align: center;
+  }
   ul {
     display: flex;
     padding: 0;

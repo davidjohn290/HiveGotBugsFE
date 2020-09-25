@@ -1,6 +1,7 @@
 import React from "react";
 import * as api from "../../utils/api";
 import { StyledLoader, StyledErrorPage } from "../../styled/lib";
+import { StyledMentorImage } from "../../styled/mentorImage";
 
 class SingleMentor extends React.Component {
   state = {
@@ -42,20 +43,25 @@ class SingleMentor extends React.Component {
 
     return (
       <main as="SingleMentor" className={className}>
-        <h2>{mentor.name}</h2>
-        <h4>{mentor.username}</h4>
-
+        <div className="headerAndBio">
+          <h2>{mentor.name}</h2>
+          <h4>{mentor.username}</h4>
+        </div>
+        <section>
+          <StyledMentorImage url={mentor.avatar_url} />
+        </section>
+        <br />
         <div className="nameSkillsContainer">
-          <img src={mentor.avatar_url} alt="Profile Img" />
           <p>{mentor.skill1}</p>
           <p>{mentor.skill2}</p>
           <p>{mentor.skill3}</p>
         </div>
-
-        <h3>Bio</h3>
+        <div className="headerAndBio">
+          <h3>Bio</h3>
+        </div>
         <p>{mentor.description}</p>
 
-        <p>Github Link:</p>
+        <h3>Github Link:</h3>
         <a href={mentor.github_url}>{mentor.github_url}</a>
       </main>
     );
