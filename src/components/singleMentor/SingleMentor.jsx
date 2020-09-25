@@ -41,18 +41,18 @@ class SingleMentor extends React.Component {
     if (isLoading) return <StyledLoader />;
 
     return (
-      <main className={className}>
+      <main as="SingleMentor" className={className}>
         <h2>{mentor.name}</h2>
-        <h3>{mentor.username}</h3>
-        <img src={mentor.avatar_url} alt="Profile Img" />
+        <h4>{mentor.username}</h4>
 
-        <ul>
-          <li>{mentor.skill1}</li>
-          <li>{mentor.skill2}</li>
-          <li>{mentor.skill3}</li>
-        </ul>
+        <div className="nameSkillsContainer">
+          <img src={mentor.avatar_url} alt="Profile Img" />
+            <p>{mentor.skill1}</p>
+            <p>{mentor.skill2}</p>
+            <p>{mentor.skill3}</p>
+        </div>
 
-        <p>Bio</p>
+        <h3>Bio</h3>
         <p>{mentor.description}</p>
 
         <p>Github Link:</p>
