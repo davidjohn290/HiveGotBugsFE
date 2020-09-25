@@ -28,7 +28,7 @@ export const StyledMentorList = styled(MentorList)`
     flex-direction: column;
     place-items: center;
     padding: 0.5rem 1rem;
-    margin: 3.5rem 0 1rem 0;
+    margin: 50px 0 1rem 0;
     color: white;
   }
 

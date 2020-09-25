@@ -167,24 +167,25 @@ class BugChart extends Component {
         <StyledHexButton as="p" id="bugPoints">
           Total Points: {bugPoints}
         </StyledHexButton>
-        <header>
-          {bugPoints === 0 && (
-            <StyledHexButton
-              as="button"
-              onClick={this.toggleShow}
-              id="toggleChart"
-            >
-              {toggleShow ? "Hide Chart" : "Show Chart"}
-            </StyledHexButton>
-          )}
-        </header>
+
+        {techData.length > 0 && (
+          <StyledHexButton
+            as="button"
+            onClick={this.toggleShow}
+            id="toggleChart"
+          >
+            {toggleShow ? "Hide Charts" : "Show Charts"}
+          </StyledHexButton>
+        )}
+
         {toggleShow && (
           <ul id="chartList">
             {techData.length > 0 && (
               <li>
-                {bugPoints === 0 && (
-                  <p>Summary of tech used for each problem</p>
-                )}
+                <p className="chartLabel">
+                  Summary of tech used for each problem
+                </p>
+
                 <Doughnut
                   data={techChartData}
                   options={{
@@ -196,7 +197,9 @@ class BugChart extends Component {
             )}
             {problemData.length > 0 && (
               <li>
-                <p>Total amount of solved problems versus unsolved</p>
+                <p className="chartLabel">
+                  Total amount of solved problems versus unsolved
+                </p>
                 <Doughnut
                   data={problemChartData}
                   options={{

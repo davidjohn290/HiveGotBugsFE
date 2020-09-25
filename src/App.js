@@ -14,7 +14,9 @@ class App extends Component {
   state = { username: null, err: null };
 
   componentDidMount() {
-    this.setUsername(localStorage.getItem("username"));
+    const storedUser = localStorage.getItem("username");
+    if (storedUser === "null") this.setUsername(null);
+    else this.setUsername(storedUser);
   }
 
   setUsername = (username, avatar_url) => {

@@ -75,14 +75,16 @@ class Home extends Component {
   }
 
   handleRemoveFilter = () => {
-    api.removeFilter().then((problems) => {
-      this.setState({ problems, selectedTech: "", removeFilter: false });
+    this.setState({
+      selectedTech: "",
+      selectedDifficulty: "",
+      removeFilter: false,
     });
   };
 
   handleSortChange = (event) => {
     const { value } = event.target;
-    this.setState({ selectedSort: value, removeFilter: true });
+    this.setState({ selectedSort: value });
   };
 
   handleTechChange = (event) => {

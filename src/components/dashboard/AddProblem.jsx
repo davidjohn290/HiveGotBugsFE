@@ -138,8 +138,9 @@ class AddProblem extends Component {
         <StyledHexButton as="button" type="submit">
           Submit
         </StyledHexButton>
-        <br />
-        <p>{submitted && "Your Problem has been posted!"}</p>
+        <p className="submitted">
+          {submitted && "Your Problem has been posted!"}
+        </p>
       </form>
     );
   }
