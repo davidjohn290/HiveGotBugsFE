@@ -12,6 +12,7 @@ export const StyledLoader = styled(Loader)`
 
 export const StyledErrorPage = styled(ErrorPage)``;
 
+// <p>
 export const StyledPleaseLogin = styled(PleaseLogin)``;
 
 // <Link>, sometimes overridden as <Button>
