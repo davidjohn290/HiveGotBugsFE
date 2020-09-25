@@ -12,7 +12,23 @@ export const StyledLoader = styled(Loader)`
 
 export const StyledErrorPage = styled(ErrorPage)``;
 
-export const StyledPleaseLogin = styled(PleaseLogin)``;
+export const StyledPleaseLogin = styled(PleaseLogin)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 10%;
+
+  h3 {
+    margin-top: 10%;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+`;
 
 // <Link>, sometimes overridden as <Button>
 export const StyledHexButton = styled(Link)`
