@@ -41,7 +41,6 @@ class MentorList extends Component {
       <main className={className}>
         {mentors.map((mentor) => (
           <section key={mentor.username} className="mentorCards">
-            {/* <img src={mentor.avatar_url} alt="" className="mentor-img" /> */}
             <StyledMentorImage url={mentor.avatar_url} />
             <section className="mentor-bio">
               <h1>
