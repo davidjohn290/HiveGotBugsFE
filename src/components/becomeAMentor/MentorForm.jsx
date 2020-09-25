@@ -1,3 +1,4 @@
+import { Link } from "@reach/router";
 import React, { Component } from "react";
 import { UserContext } from "../../UserContext";
 import * as api from "../../utils/api";
@@ -8,6 +9,7 @@ import {
   StyledHexButton,
 } from "../../styled/lib";
 import "../../css/becomeAMentor.css";
+
 const githubRegex = require("regex-username");
 
 class MentorForm extends Component {
@@ -148,6 +150,15 @@ class MentorForm extends Component {
           back once you've earned at least 10 bug points!
         </p>
       );
+
+    if (user.role === "mentor") {
+      return (
+        <p id="becomeAMentorPTag">
+          You are already a mentor. Visit your{" "}
+          <Link to="/dashboard">dashboard</Link> to see your profile!
+        </p>
+      );
+    }
 
     return (
       <section className={className}>
