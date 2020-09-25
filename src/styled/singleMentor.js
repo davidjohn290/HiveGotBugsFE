@@ -21,5 +21,4 @@ export const StyledSingleMentor = styled(SingleMentor)`
   a {
     color: lightblue;
   }
-
 `;

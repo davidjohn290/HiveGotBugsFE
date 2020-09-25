@@ -56,19 +56,20 @@ export const StyledProblemCard = styled(ProblemCard)`
     height: 100%;
   }
 
-  .content {
+  .container {
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background-color: #da995c;
     color: rgb(39, 44, 53);
     margin: 0px;
     padding: 0px;
     font-size: 10pt;
-  }
-
-  h2 {
-    margin: 0.1em;
+    background-color: ${(props) => {
+      const { difficulty } = props;
+      if (difficulty === 0) return "#8cc56f";
+      if (difficulty === 1) return "#da995c";
+      if (difficulty === 2) return "#ed6270";
+    }};
   }
 
   /* Make a hexagonal container using negative space */
@@ -135,5 +136,9 @@ export const StyledProblemCard = styled(ProblemCard)`
       101% -2%,
       0% -2%
     );
+  }
+
+  h2 {
+    margin: 0.1em;
   }
 `;

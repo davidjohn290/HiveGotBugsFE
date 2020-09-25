@@ -41,8 +41,8 @@ class Icon extends Component {
     return (
       <Link to="/">
         <img
-          width="80px"
-          height="80px"
+          width="63px"
+          height="63px"
           src={logo}
           alt="Bug Icon"
           onMouseEnter={this.handleMouseEnter}

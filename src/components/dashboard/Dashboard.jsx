@@ -184,7 +184,11 @@ class Dashboard extends Component {
           <ul>
             {problems.map((problem) => {
               return (
-                <StyledProblemCard key={problem.problem_id} problem={problem} />
+                <StyledProblemCard
+                  key={problem.problem_id}
+                  problem={problem}
+                  difficulty={problem.difficulty}
+                />
               );
             })}
           </ul>
