@@ -7,7 +7,7 @@ const UserCard = ({ user, className }) => {
       <header>
         <h2>Dashboard</h2>
         <h3>Welcome {user.username}</h3>
-        <h4>Became a member: {moment(user.memberSince).fromNow()}</h4>
+        <h4>Became a member: {moment(user.created_at).fromNow()}</h4>
         <img src={user.avatar_url} alt={user.username} />
         {user.role === "mentor" ? (
           <>
