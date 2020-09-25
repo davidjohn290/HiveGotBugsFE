@@ -10,10 +10,52 @@ export const StyledLoader = styled(Loader)`
   align-items: center;
 `;
 
-export const StyledErrorPage = styled(ErrorPage)``;
+export const StyledErrorPage = styled(ErrorPage)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 10%;
 
-// <p>
-export const StyledPleaseLogin = styled(PleaseLogin)``;
+  h3 {
+    margin-top: 10%;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+
+  span {
+    color: #ed6270;
+  }
+
+  label {
+    text-align: center;
+    margin-top: 3%;
+    display: flex;
+    justify-content: center;
+  }
+`;
+
+export const StyledPleaseLogin = styled(PleaseLogin)`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  flex-direction: column;
+  margin: 10%;
+
+  h3 {
+    margin-top: 10%;
+    text-align: center;
+  }
+
+  p {
+    text-align: center;
+  }
+`;
 
 // <Link>, sometimes overridden as <Button>
 export const StyledHexButton = styled(Link)`

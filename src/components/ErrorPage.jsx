@@ -1,8 +1,9 @@
 import React from "react";
-import { Link } from "@reach/router";
+import logoNormal from "../img/logoNormal.svg";
+import { StyledHexButton } from "../styled/lib";
 
 const ErrorPage = (err) => {
-  const { type, msg, status } = err;
+  const { type, msg, status, className } = err;
   const errRef = {
     fetchSingleProblem: "Could not get the problem!",
     editProblem: "Could not edit the problem!",
@@ -24,14 +25,16 @@ const ErrorPage = (err) => {
   };
 
   return (
-    <header>
-      <p>
+    <header className={className}>
+      <img width="100px" height="100px" src={logoNormal} alt="Bug logo" />
+      <h3>
         Sorry! {errRef[type]} Here's some more information: <br />
-      </p>
+      </h3>
       <p>
-        Status: {status} | Message: {msg}
+        Status: <span>{status}</span> | Message: <span>{msg}</span>
       </p>
-      <Link to="/">Go home</Link>
+      <p>Go to the Homepage</p>
+      <StyledHexButton to="/">Homepage</StyledHexButton>
     </header>
   );
 };

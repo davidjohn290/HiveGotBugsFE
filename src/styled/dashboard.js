@@ -96,7 +96,6 @@ export const StyledBugChart = styled(BugChart)`
   }
 `;
 
-
 //<main>
 export const StyledDashboard = styled(Dashboard)`
   .dashboardButtons {
