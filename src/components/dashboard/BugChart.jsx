@@ -184,7 +184,9 @@ class BugChart extends Component {
           <ul id="chartList">
             {techData.length > 0 && (
               <li>
-                <p>Summary of tech used for each problem</p>
+                <p className="chartLabel">
+                  Summary of tech used for each problem
+                </p>
 
                 <Doughnut
                   data={techChartData}
@@ -197,7 +199,9 @@ class BugChart extends Component {
             )}
             {problemData.length > 0 && (
               <li>
-                <p>Total amount of solved problems versus unsolved</p>
+                <p className="chartLabel">
+                  Total amount of solved problems versus unsolved
+                </p>
                 <Doughnut
                   data={problemChartData}
                   options={{

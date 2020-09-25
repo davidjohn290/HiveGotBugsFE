@@ -63,10 +63,11 @@ export const StyledBugChart = styled(BugChart)`
     justify-content: center;
     margin: 10%;
   }
-  p {
+  .chartLabel {
     text-align: center;
     font-size: 12px;
     margin-bottom: 5%;
+    margin-top: 0%;
   }
   #bugPoints {
     font-family: monospace;
@@ -92,7 +93,7 @@ export const StyledBugChart = styled(BugChart)`
   li {
     list-style: none;
     margin: 0;
-    padding: 1cm;
+    padding: 0.5cm;
   }
 
   canvas {
@@ -117,7 +118,7 @@ export const StyledDashboard = styled(Dashboard)`
 
   #solvedButton {
     margin: 10%;
-    margin-bottom: 2cm;
+    margin-bottom: 1cm;
   }
 
   #addButton {
@@ -127,7 +128,7 @@ export const StyledDashboard = styled(Dashboard)`
 
   #editButton {
     margin: 10%;
-    margin-bottom: 2cm;
+    margin-bottom: 1cm;
   }
 
   h2 {
@@ -286,5 +287,9 @@ export const StyledAddProblem = styled(AddProblem)`
   button {
     margin: auto;
     margin-top: 10px;
+  }
+
+  .submitted {
+    padding-top: 1em;
   }
 `;
