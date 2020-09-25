@@ -133,6 +133,14 @@ export const StyledDashboard = styled(Dashboard)`
     margin-bottom: 1cm;
     text-decoration: underline;
   }
+
+  h3 {
+    text-align: center;
+    margin: auto;
+    margin-bottom: 20px;
+    text-decoration: underline;
+    font-family: monospace;
+  }
   ul {
     display: flex;
     padding: 0;

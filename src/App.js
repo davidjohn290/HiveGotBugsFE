@@ -17,8 +17,8 @@ class App extends Component {
     this.setUsername(localStorage.getItem("username"));
   }
 
-  setUsername = (username) => {
-    this.setState({ username });
+  setUsername = (username, avatar_url) => {
+    this.setState({ username, avatar_url });
     localStorage.setItem("username", username);
   };
 

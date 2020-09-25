@@ -21,6 +21,7 @@ export const StyledMentorList = styled(MentorList)`
   .mentorCards {
     width: 260px;
     background: grey;
+    border:2px solid rgb(0,124,146);
     box-shadow: 0 4px 6px -1px rgba(15, 15, 15, 0.219),
       0 2px 4px -1px rgba(15, 15, 15, 0.219);
     border-radius: 8px;
@@ -35,14 +36,14 @@ export const StyledMentorList = styled(MentorList)`
 }
   }
 
-  .mentor-img {
+  /* .mentor-img {
     margin: -70px;
     border: 2px solid rgb(0, 124, 146);
     border-radius: 50%;
     box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
       0 4px 6px -2px rgb(0, 124, 146);
       
-  }
+  } */
 
   .mentor-bio {
     display: block;
@@ -93,4 +94,8 @@ export const StyledMentorList = styled(MentorList)`
     font-weight: 700;
     text-align: center;
   }
+
+  
+
+  
 `;

@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
 import { StyledLink, StyledLoader, StyledErrorPage } from "../../styled/lib";
+import { StyledMentorImage } from "../../styled/mentorImage";
 
 class MentorList extends Component {
   state = {
@@ -40,7 +41,8 @@ class MentorList extends Component {
       <main className={className}>
         {mentors.map((mentor) => (
           <section key={mentor.username} className="mentorCards">
-            <img src={mentor.avatar_url} alt="" className="mentor-img" />
+            {/* <img src={mentor.avatar_url} alt="" className="mentor-img" /> */}
+            <StyledMentorImage url={mentor.avatar_url} />
             <section className="mentor-bio">
               <h1>
                 <StyledLink to={`/${mentor.username}`}>

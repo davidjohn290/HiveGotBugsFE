@@ -67,6 +67,7 @@ class AddProblem extends Component {
     if (err) return <StyledErrorPage {...err} />;
     return (
       <form className={className} onSubmit={this.handleSubmit}>
+        <h3>Add a problem</h3>
         <label>
           Tech used:
           <select id="tech" onChange={this.handleInput} value={tech} required>
@@ -131,7 +132,7 @@ class AddProblem extends Component {
         <StyledHexButton as="button" type="submit">
           Submit
         </StyledHexButton>
-
+        <br />
         {submitted && "Your Problem has been posted!"}
       </form>
     );
