@@ -11,7 +11,7 @@ import { StyledMentorList } from "./styled/mentors";
 import ErrorPage from "./components/ErrorPage";
 
 class App extends Component {
-  state = { username: "Destiny82", err: null };
+  state = { username: null, err: null };
 
   // componentDidMount() {
   //   this.setUsername(localStorage.getItem("username"));
