@@ -57,12 +57,6 @@ export const StyledBugChart = styled(BugChart)`
   flex-direction: column;
   align-items: center;
 
-  header {
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    margin: 10%;
-  }
   .chartLabel {
     text-align: center;
     font-size: 12px;
@@ -76,6 +70,7 @@ export const StyledBugChart = styled(BugChart)`
   #toggleChart {
     font-family: monospace;
     font-size: 10pt;
+    margin: 3em;
   }
 
   #chartList {

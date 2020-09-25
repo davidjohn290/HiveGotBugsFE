@@ -168,16 +168,14 @@ class BugChart extends Component {
           Total Points: {bugPoints}
         </StyledHexButton>
 
-        {bugPoints === 0 && (
-          <header>
-            <StyledHexButton
-              as="button"
-              onClick={this.toggleShow}
-              id="toggleChart"
-            >
-              {toggleShow ? "Hide Chart" : "Show Chart"}
-            </StyledHexButton>
-          </header>
+        {techData.length > 0 && (
+          <StyledHexButton
+            as="button"
+            onClick={this.toggleShow}
+            id="toggleChart"
+          >
+            {toggleShow ? "Hide Charts" : "Show Charts"}
+          </StyledHexButton>
         )}
 
         {toggleShow && (

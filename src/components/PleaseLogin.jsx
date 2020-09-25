@@ -9,7 +9,7 @@ const PleaseLogin = ({ className }) => {
       </>
 
       <h3>Please login first!</h3>
-      <p>oops! Please login and become a member to be able to view this page</p>
+      <p>Oops! Please login and become a member to be able to view this page</p>
     </section>
   );
 };
