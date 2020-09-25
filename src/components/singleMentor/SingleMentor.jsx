@@ -47,9 +47,9 @@ class SingleMentor extends React.Component {
 
         <div className="nameSkillsContainer">
           <img src={mentor.avatar_url} alt="Profile Img" />
-            <p>{mentor.skill1}</p>
-            <p>{mentor.skill2}</p>
-            <p>{mentor.skill3}</p>
+          <p>{mentor.skill1}</p>
+          <p>{mentor.skill2}</p>
+          <p>{mentor.skill3}</p>
         </div>
 
         <h3>Bio</h3>
