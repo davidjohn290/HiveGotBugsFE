@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import RemoveFilters from "./RemoveFilters";
+import RemoveFilters from "./removeFilters";
 import { StyledLoader, StyledErrorPage } from "../../styled/lib";
 import {
   StyledSortProblems,
