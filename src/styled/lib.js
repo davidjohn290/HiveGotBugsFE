@@ -56,6 +56,7 @@ export const SmallStyledHexButton = styled(StyledHexButton)`
   height: 28.87px;
   margin: 14.43px 0;
   font-size: 9pt;
+  background-color: ${(props) => props.backgroundColor};
 
   :before,
   :after {
@@ -63,10 +64,10 @@ export const SmallStyledHexButton = styled(StyledHexButton)`
     border-right: 25px solid transparent;
   }
   :before {
-    border-bottom: 14.43px solid rgb(0, 124, 146);
+    border-bottom: 14.43px solid ${(props) => props.backgroundColor};
   }
   :after {
-    border-top: 14.43px solid rgb(0, 124, 146);
+    border-top: 14.43px solid ${(props) => props.backgroundColor};
   }
 `;
 
@@ -75,6 +76,8 @@ export const TinyStyledHexButton = styled(StyledHexButton)`
   height: 24.83px;
   margin: 12.41px 0;
   font-size: ${(props) => props.fontSize};
+  background-color: ${(props) => props.backgroundColor};
+  color: ${(props) => props.color};
 
   :before,
   :after {
@@ -82,10 +85,10 @@ export const TinyStyledHexButton = styled(StyledHexButton)`
     border-right: 21.5px solid transparent;
   }
   :before {
-    border-bottom: 12.41px solid rgb(0, 124, 146);
+    border-bottom: 12.41px solid ${(props) => props.backgroundColor};
   }
   :after {
-    border-top: 12.41px solid rgb(0, 124, 146);
+    border-top: 12.41px solid ${(props) => props.backgroundColor};
   }
 `;
 

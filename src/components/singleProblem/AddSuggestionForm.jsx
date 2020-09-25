@@ -59,7 +59,11 @@ class AddSuggestionForm extends Component {
             value={body}
             onChange={this.handleChangeBody}
           />
-          <SmallStyledHexButton as="button" type="submit">
+          <SmallStyledHexButton
+            as="button"
+            type="submit"
+            backgroundColor="rgb(0, 124, 146)"
+          >
             Submit
           </SmallStyledHexButton>
         </form>

@@ -1,12 +1,7 @@
 import React, { Component } from "react";
 import { formatTimeString } from "../../utils/time";
 import { UserContext } from "../../UserContext";
-import {
-  StyledHexButton,
-  StyledErrorPage,
-  SmallStyledHexButton,
-  TinyStyledHexButton,
-} from "../../styled/lib";
+import { StyledErrorPage, TinyStyledHexButton } from "../../styled/lib";
 import { StyledEditSuggestionForm } from "../../styled/singleProblem";
 import * as api from "../../utils/api";
 
@@ -92,6 +87,7 @@ class SuggestionCard extends Component {
                   as="button"
                   fontSize={"8pt"}
                   onClick={this.toggleEditForm}
+                  backgroundColor="rgb(0, 124, 146)"
                 >
                   Edit
                 </TinyStyledHexButton>
@@ -101,6 +97,7 @@ class SuggestionCard extends Component {
                   onClick={() => {
                     deleteSuggestionOptimistic(suggestion.suggestion_id);
                   }}
+                  backgroundColor="#ed6270"
                 >
                   Delete
                 </TinyStyledHexButton>
@@ -111,6 +108,7 @@ class SuggestionCard extends Component {
                 as="button"
                 fontSize={"7.5pt"}
                 onClick={this.handleSolve}
+                backgroundColor="rgb(0, 124, 146)"
               >
                 Solved?
               </TinyStyledHexButton>
