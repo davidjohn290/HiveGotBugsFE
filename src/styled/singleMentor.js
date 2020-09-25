@@ -4,7 +4,6 @@ import SingleMentor from "../components/singleMentor/SingleMentor";
 // <main>
 export const StyledSingleMentor = styled(SingleMentor)`
   max-width: 100%;
-  margin-top: 0.4em;
   background-color: grey;
   font-family: monospace;
   font-size: 15pt;
@@ -13,7 +12,7 @@ export const StyledSingleMentor = styled(SingleMentor)`
   flex-direction: column;
   align-items: center;
   margin: 5%;
-  margin-top: 15%;
+  margin-top: 10%;
   padding: 5%;
   padding-bottom: 5%;
 

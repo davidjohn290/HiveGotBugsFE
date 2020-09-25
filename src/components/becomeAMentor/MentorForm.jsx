@@ -165,7 +165,7 @@ class MentorForm extends Component {
               <input
                 type="text"
                 name="name"
-                onchange={this.onInput}
+                onChange={this.onInput}
                 value={formValues.name}
                 placeholder="Write here..."
                 required
