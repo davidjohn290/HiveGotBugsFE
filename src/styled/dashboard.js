@@ -41,6 +41,11 @@ export const StyledUserCard = styled(UserCard)`
     display: flex;
     margin: auto;
   }
+
+  .github {
+    font-size: 9pt;
+    overflow-wrap: break-word;
+  }
 `;
 
 // <section>
