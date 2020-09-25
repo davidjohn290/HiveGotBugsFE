@@ -121,7 +121,7 @@ class BugChart extends Component {
     const techData = Object.values(techTally);
     let problemData = Object.values(solvedTally);
     let problemLabels = ["unsolved", "solved"];
-    if (bugPoints === 0) {
+    if (problemData.length === 0) {
       problemLabels = [];
       problemData = [];
     }

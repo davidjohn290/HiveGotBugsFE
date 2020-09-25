@@ -9,7 +9,7 @@ export const StyledMentorImage = styled(MentorImage)`
     margin: 34.64px 0;
     background-image: ${(props) => {
       const { url } = props;
-      console.log(url);
+
       if (url) return `url(${url})`;
       else
         return `url(https://genslerzudansdentistry.com/wp-content/uploads/2015/11/anonymous-user.png)`;
