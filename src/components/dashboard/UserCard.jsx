@@ -28,6 +28,7 @@ const UserCard = ({ user, className }) => {
             </label>
           </>
         ) : null}
+        <br />
       </header>
     </article>
   );
