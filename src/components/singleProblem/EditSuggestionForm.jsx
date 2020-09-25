@@ -1,9 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import {
-  StyledErrorPage,
-  TinyStyledHexButton,
-} from "../../styled/lib";
+import { StyledErrorPage, TinyStyledHexButton } from "../../styled/lib";
 
 class EditSuggestionForm extends Component {
   state = {
