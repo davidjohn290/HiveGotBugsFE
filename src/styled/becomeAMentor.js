@@ -12,8 +12,7 @@ export const StyledMentorForm = styled(MentorForm)`
   border-radius: 8px;
   margin: 10%;
   text-align: center;
-  padding: 1.4rem 0;
-
+  padding: 1.4rem 0.05rem;
 
   h2 {
     font-weight: bold;
@@ -62,7 +61,7 @@ export const StyledMentorForm = styled(MentorForm)`
 
   textarea {
     margin-bottom: 16px;
-    width:100%;
+    width: 100%;
     margin-bottom: 3rem;
   }
 

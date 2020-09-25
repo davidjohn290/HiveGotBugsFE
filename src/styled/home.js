@@ -11,6 +11,10 @@ export const StyledHome = styled(Home)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h2 {
+    margin-top: 1.5em;
+  }
 `;
 
 // <section>

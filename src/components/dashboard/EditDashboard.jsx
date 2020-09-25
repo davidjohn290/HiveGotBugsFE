@@ -86,7 +86,14 @@ class EditDashboard extends Component {
           },
         });
       });
-    this.setState({ submitted: true });
+    this.setState({
+      submitted: true,
+      github_url: "",
+      skill1: "",
+      skill2: "",
+      skill3: "",
+      description: "",
+    });
   };
 
   handleInput = ({ target: { value, id } }) => {

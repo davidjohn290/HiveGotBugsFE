@@ -10,18 +10,17 @@ export const StyledMentorList = styled(MentorList)`
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   grid-gap: 2rem;
   margin: 0 auto;
-  margin-top:5%;
   box-sizing: border-box;
   font-size: 15px;
   display: flex;
-  flex-direction:row;
-  flex-wrap:wrap;
-  justify-content:space-evenly;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
 
   .mentorCards {
     width: 260px;
     background: grey;
-    border:2px solid rgb(0,124,146);
+    border: 2px solid rgb(0, 124, 146);
     box-shadow: 0 4px 6px -1px rgba(15, 15, 15, 0.219),
       0 2px 4px -1px rgba(15, 15, 15, 0.219);
     border-radius: 8px;
@@ -29,21 +28,9 @@ export const StyledMentorList = styled(MentorList)`
     flex-direction: column;
     place-items: center;
     padding: 0.5rem 1rem;
-    margin: 4rem 0 0 0;
+    margin: 3.5rem 0 1rem 0;
     color: white;
-
-   
-}
   }
-
-  /* .mentor-img {
-    margin: -70px;
-    border: 2px solid rgb(0, 124, 146);
-    border-radius: 50%;
-    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1),
-      0 4px 6px -2px rgb(0, 124, 146);
-      
-  } */
 
   .mentor-bio {
     display: block;
@@ -72,10 +59,8 @@ export const StyledMentorList = styled(MentorList)`
   .mentor-skills h5 {
     margin-right: 1rem;
     margin-top: 5px;
-    /* background: rgb(156, 214, 214); */
     padding: 0.2rem;
     border-radius: 45%;
-    /* color: #ffffff; */
     font-weight: bold;
   }
 
@@ -94,8 +79,4 @@ export const StyledMentorList = styled(MentorList)`
     font-weight: 700;
     text-align: center;
   }
-
-  
-
-  
 `;
