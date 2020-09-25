@@ -13,7 +13,21 @@ export const StyledSingleMentor = styled(SingleMentor)`
   flex-direction: column;
   align-items: center;
   margin: 5%;
+  margin-top: 15%;
+  padding: 5%;
   padding-bottom: 5%;
+
+  --notchSize: 30px;
+  clip-path: polygon(
+    0% var(--notchSize),
+    var(--notchSize) 0%,
+    calc(100% - var(--notchSize)) 0%,
+    100% var(--notchSize),
+    100% calc(100% - var(--notchSize)),
+    calc(100% - var(--notchSize)) 100%,
+    var(--notchSize) 100%,
+    0% calc(100% - var(--notchSize))
+  );
 
   section {
     display: flex;
@@ -37,7 +51,8 @@ export const StyledSingleMentor = styled(SingleMentor)`
   a {
     color: lightblue;
     overflow-wrap: break-word;
-    font-size: 9pt;
+    font-size: 11pt;
+    font-weight: bold;
     margin: auto;
   }
 `;

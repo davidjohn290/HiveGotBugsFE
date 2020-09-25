@@ -60,9 +60,12 @@ class SingleMentor extends React.Component {
           <h3>Bio</h3>
         </div>
         <p>{mentor.description}</p>
-        <p>Github Link:</p>
-        <a href={mentor.github_url} target="_blank" rel="noopener noreferrer">{mentor.github_url}</a>
-
+        <p>
+          <strong>Contact this mentor through github:</strong>
+        </p>
+        <a href={mentor.github_url} target="_blank" rel="noopener noreferrer">
+          {mentor.github_url}
+        </a>
       </main>
     );
   }

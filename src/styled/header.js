@@ -48,6 +48,10 @@ export const StyledMenuNav = styled(MenuNav)`
   margin: 0px;
   margin-right: 0.3em;
 
+  @media only screen and (max-width: 376px) {
+    margin-top: 7px;
+  }
+
   @media only screen and (min-width: 375px) {
     position: relative;
     right: 38px;

@@ -24,7 +24,7 @@ const UserCard = ({ user, className }) => {
             </label>
             <label>
               Github URL:
-              <h4>{user.github_url}</h4>
+              <p className="github">{user.github_url}</p>
             </label>
           </>
         ) : null}

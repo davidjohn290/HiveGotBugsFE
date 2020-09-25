@@ -8,6 +8,8 @@ import AddProblem from "../components/dashboard/AddProblem";
 // <article>
 export const StyledUserCard = styled(UserCard)`
   text-align: center;
+  padding: 0.3em;
+
   h2 {
     text-align: center;
   }
@@ -36,10 +38,16 @@ export const StyledUserCard = styled(UserCard)`
     margin-top: 5%;
     margin-bottom: 5%;
     text-align: center;
+    padding-top: 0.5em;
   }
   button {
     display: flex;
     margin: auto;
+  }
+
+  .github {
+    font-size: 9pt;
+    overflow-wrap: break-word;
   }
 `;
 
@@ -56,11 +64,9 @@ export const StyledBugChart = styled(BugChart)`
     margin: 10%;
   }
   p {
-    text-align:center;
-    font-size:12px;
-    margin:25%
+    text-align: center;
+    font-size: 12px;
     margin-bottom: 5%;
-
   }
   #bugPoints {
     font-family: monospace;
@@ -70,46 +76,41 @@ export const StyledBugChart = styled(BugChart)`
     font-family: monospace;
     font-size: 10pt;
   }
-  
+
   #chartList {
     margin: 0;
-    width:100%;
+    width: 100%;
   }
   ul {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
     margin: 15%;
-    justify-content:space-space-between;
+    justify-content: space-space-between;
   }
 
   li {
     list-style: none;
     margin: 0;
-    padding: 1cm
-
+    padding: 1cm;
   }
-  
+
   canvas {
     margin: 0;
     max-height: 100%;
-    max-width:100%;
+    max-width: 100%;
   }
 `;
 
 //<main>
 export const StyledDashboard = styled(Dashboard)`
+  margin-top: 1.5em;
   .dashboardButtons {
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
     list-style: none;
   }
-
-  /* #editButton {
-    margin: 10%;
-    margin-bottom: 5cm;
-  } */
 
   #solvedButton {
     margin: 10%;
@@ -165,6 +166,7 @@ export const StyledEditDashboard = styled(EditDashboard)`
   border-radius: 8px;
   margin: 10%;
   text-align: center;
+  padding: 0.7em;
 
   h2 {
     font-weight: bold;
@@ -208,6 +210,7 @@ export const StyledEditDashboard = styled(EditDashboard)`
 
   textarea {
     margin-bottom: 16px;
+    width: 100%;
   }
 
   button {
@@ -229,6 +232,7 @@ export const StyledAddProblem = styled(AddProblem)`
   margin: 5%;
   margin-bottom: 10%;
   text-align: center;
+
   h2 {
     font-weight: bold;
     text-align: center;
@@ -246,11 +250,9 @@ export const StyledAddProblem = styled(AddProblem)`
     justify-content: space-evenly;
     flex-wrap: wrap;
   }
-  
 
   label {
     vertical-align: middle;
-
   }
 
   input {
@@ -262,6 +264,7 @@ export const StyledAddProblem = styled(AddProblem)`
     margin-top: 6px;
     margin-bottom: 16px;
   }
+
   select {
     width: 100%;
     padding: 12px;
@@ -271,14 +274,10 @@ export const StyledAddProblem = styled(AddProblem)`
     margin-top: 6px;
     margin-bottom: 16px;
   }
-  
-  }
-  
-}
+
   textarea {
     margin-bottom: 16px;
-    width:100%;
-    
+    width: 100%;
   }
 
   button {

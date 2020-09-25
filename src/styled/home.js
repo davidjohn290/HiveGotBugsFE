@@ -11,6 +11,10 @@ export const StyledHome = styled(Home)`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  h2 {
+    margin-top: 1.5em;
+  }
 `;
 
 // <section>
@@ -54,6 +58,13 @@ export const StyledProblemCard = styled(ProblemCard)`
   article {
     width: 100%;
     height: 100%;
+    h2 {
+      margin: 0.1em;
+    }
+  }
+
+  .header {
+    font-size: 8pt;
   }
 
   .container {
