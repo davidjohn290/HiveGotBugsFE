@@ -15,7 +15,7 @@ class AddProblem extends Component {
     isLoading: true,
     techList: [],
     tech: "",
-    difficulty: 0,
+    difficulty: "",
     title: "",
     body: "",
     submitted: false,
@@ -70,7 +70,9 @@ class AddProblem extends Component {
         <label>
           Tech used:
           <select id="tech" onChange={this.handleInput} value={tech} required>
-            <option value=""></option>
+            <option value="" hidden>
+              Pick tech used
+            </option>
             {techList.map((tech) => {
               return (
                 <option value={tech.slug} key={tech.slug}>
@@ -89,7 +91,9 @@ class AddProblem extends Component {
             value={difficulty}
             required
           >
-            <option value="">Pick a difficulty</option>
+            <option value="" hidden>
+              Pick a difficulty
+            </option>
             <option value="0">Easy</option>
             <option value="1">Medium</option>
             <option value="2">Hard</option>
@@ -104,11 +108,13 @@ class AddProblem extends Component {
             value={title}
             onChange={this.handleInput}
             required
+            placeholder="Enter text here..."
           />
         </label>
 
         <label>
           Problem:
+          <br />
           <textarea
             cols="30"
             rows="8"
@@ -118,6 +124,7 @@ class AddProblem extends Component {
             value={body}
             onChange={this.handleInput}
             required
+            placeholder="Enter text here..."
           />
         </label>
 

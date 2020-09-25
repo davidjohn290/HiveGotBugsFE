@@ -20,6 +20,7 @@ export const StyledUserCard = styled(UserCard)`
     margin-top: 1cm;
     max-width: 4cm;
     max-height: 4cm;
+    margin-bottom: 0.5cm;
   }
 
   header {
@@ -33,20 +34,25 @@ export const StyledUserCard = styled(UserCard)`
 
 // <section>
 export const StyledBugChart = styled(BugChart)`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     margin: 10%;
   }
   #bugPoints {
     font-family: monospace;
     font-size: 10pt;
-    float: right;
   }
   #toggleChart {
     font-family: monospace;
     font-size: 10pt;
-    float: left;
   }
-  #chartList {
+  /* {
     display: flex;
     flex-wrap: nowrap;
     justify-content: space-evenly;
@@ -54,9 +60,17 @@ export const StyledBugChart = styled(BugChart)`
     max-width: 5cm;
     text-decoration: none;
     margin: auto;
+  } */
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    padding: 0;
+    margin: auto;
   }
+
   li {
     list-style: none;
+    margin: 0em;
   }
 `;
 //<main>
@@ -65,18 +79,32 @@ export const StyledDashboard = styled(Dashboard)`
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
+    list-style: none;
   }
+
+  /* #editButton {
+    margin: 10%;
+    margin-bottom: 5cm;
+  } */
+
   #solvedButton {
-    margin: 5%;
-    margin-bottom: 1.5cm;
+    margin: 10%;
+    margin-bottom: 2cm;
   }
+
+  #addButton {
+    margin: 10%;
+    margin-bottom: 2cm;
+  }
+
   #editButton {
-    margin: 5%;
-    margin-bottom: 0;
+    margin: 10%;
+    margin-bottom: 2cm;
   }
 
   h2 {
     text-align: center;
+    margin: auto;
     margin-top: 15px;
     margin-bottom: 1cm;
     text-decoration: underline;
@@ -95,23 +123,22 @@ export const StyledDashboard = styled(Dashboard)`
 // <form>
 export const StyledEditDashboard = styled(EditDashboard)`
   font-size: 0.5cm;
-  border: black 1px solid;
   width: auto;
   height: auto;
   background-color: grey;
-  padding: 30px;
   margin-bottom: 25px;
   border-radius: 8px;
-  margin: auto;
+  margin: 10%;
   text-align: center;
+
   h2 {
     font-weight: bold;
     text-align: center;
-    margin-top: 0;
+    margin-top: 0px;
   }
 
   header {
-    padding-bottom: 1cm;
+    margin-top: 10px;
   }
 
   form {
@@ -119,6 +146,10 @@ export const StyledEditDashboard = styled(EditDashboard)`
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
+  }
+
+  label {
+    vertical-align: middle;
   }
 
   input {
@@ -178,6 +209,13 @@ export const StyledAddProblem = styled(AddProblem)`
     text-align: center;
     justify-content: space-evenly;
   }
+  label {
+    text-align: left;
+  }
+
+  label {
+    vertical-align: middle;
+  }
 
   input {
     width: 100%;
@@ -199,6 +237,7 @@ export const StyledAddProblem = styled(AddProblem)`
   }
 
   textarea {
+    vertical-align: top;
     margin-bottom: 16px;
   }
 
