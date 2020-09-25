@@ -34,20 +34,60 @@ export const StyledSingleProblemCard = styled(SingleProblemCard)`
     var(--notchSize) 100%,
     0% calc(100% - var(--notchSize))
   );
+
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5em;
+  }
+
+  .textLeft {
+    font-size: 11pt;
+  }
+
+  .textCenter {
+    font-size: 11pt;
+    margin: auto;
+  }
+
+  .buttons {
+    display: flex;
+    gap: 0.3em;
+  }
 `;
 
 // <form>
 export const StyledEditProblemForm = styled(EditProblemForm)`
+  color: black;
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
+  background: white;
+  padding-bottom: 0.7em;
 
   label {
-    display: flex;
-    gap: 0.3em;
-    justify-content: space-between;
+    margin-top: 0.5em;
+    margin-bottom: 0.4em;
+    width: 80%;
   }
+
+  .formElement {
+    width: 100%;
+  }
+
+  --notchSize: 10px;
+  clip-path: polygon(
+    0% var(--notchSize),
+    var(--notchSize) 0%,
+    calc(100% - var(--notchSize)) 0%,
+    100% var(--notchSize),
+    100% calc(100% - var(--notchSize)),
+    calc(100% - var(--notchSize)) 100%,
+    var(--notchSize) 100%,
+    0% calc(100% - var(--notchSize))
+  );
 `;
 
 // <section>
@@ -147,9 +187,9 @@ export const StyledSuggestionCard = styled(SuggestionCard)`
     }
   }
 
-  /* p {
+  p {
     overflow-wrap: anywhere;
-  } */
+  }
 `;
 
 // <form>

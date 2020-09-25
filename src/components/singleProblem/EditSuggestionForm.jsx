@@ -1,10 +1,6 @@
 import React, { Component } from "react";
 import * as api from "../../utils/api";
-import {
-  StyledHexButton,
-  StyledErrorPage,
-  TinyStyledHexButton,
-} from "../../styled/lib";
+import { StyledErrorPage, TinyStyledHexButton } from "../../styled/lib";
 
 class EditSuggestionForm extends Component {
   state = {
@@ -66,7 +62,12 @@ class EditSuggestionForm extends Component {
           onChange={this.handleChangeBody}
         />
 
-        <TinyStyledHexButton as="button" fontSize={"8pt"} type="submit">
+        <TinyStyledHexButton
+          as="button"
+          fontSize={"8pt"}
+          type="submit"
+          backgroundColor="rgb(0, 124, 146)"
+        >
           Submit
         </TinyStyledHexButton>
       </form>
