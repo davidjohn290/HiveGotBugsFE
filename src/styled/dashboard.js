@@ -87,15 +87,15 @@ export const StyledBugChart = styled(BugChart)`
     list-style: none;
     margin: 0;
     padding: 1cm
-    
-    
   }
+  
   canvas {
     margin: 0;
     max-height: 100%;
     max-width:100%;
   }
 `;
+
 //<main>
 export const StyledDashboard = styled(Dashboard)`
   .dashboardButtons {

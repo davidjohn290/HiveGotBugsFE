@@ -11,14 +11,14 @@ import { StyledMentorList } from "./styled/mentors";
 import { StyledErrorPage } from "./styled/lib";
 
 class App extends Component {
-  state = { username: "Destiny82", err: null };
+  state = { username: null, err: null };
 
-  // componentDidMount() {
-  //   this.setUsername(localStorage.getItem("username"));
-  // }
+  componentDidMount() {
+    this.setUsername(localStorage.getItem("username"));
+  }
 
-  setUsername = (username) => {
-    this.setState({ username });
+  setUsername = (username, avatar_url) => {
+    this.setState({ username, avatar_url });
     localStorage.setItem("username", username);
   };
 
