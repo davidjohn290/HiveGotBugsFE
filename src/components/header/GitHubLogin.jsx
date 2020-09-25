@@ -21,32 +21,32 @@ class GitHubLogin extends Component {
     signInOptions: [firebase.auth.GithubAuthProvider.PROVIDER_ID],
   };
 
-  signIn = () => {
-    const { setUsername } = this.context;
-    let username, avatar_url;
-    firebase
-      .auth()
-      .signInWithPopup(new firebase.auth.GithubAuthProvider())
-      .then(({ additionalUserInfo }) => {
-        username = additionalUserInfo.username;
-        avatar_url = additionalUserInfo.profile.avatar_url;
-        return api.getUserByUsername(username);
-      })
-      .then(() => {
-        setUsername(username);
-        this.setState({ err: null });
-      })
-      .catch(() => {
-        api
-          .addUser(username, { avatar_url })
-          .then(() => {
-            setUsername(username);
-          })
-          .catch(() => {
-            this.setState({ err: true });
-          });
-      });
-  };
+  // signIn = () => {
+  //   const { setUsername } = this.context;
+  //   let username, avatar_url;
+  //   firebase
+  //     .auth()
+  //     .signInWithPopup(new firebase.auth.GithubAuthProvider())
+  //     .then(({ additionalUserInfo }) => {
+  //       username = additionalUserInfo.username;
+  //       avatar_url = additionalUserInfo.profile.avatar_url;
+  //       return api.getUserByUsername(username);
+  //     })
+  //     .then(() => {
+  //       setUsername(username);
+  //       this.setState({ err: null });
+  //     })
+  //     .catch(() => {
+  //       api
+  //         .addUser(username, { avatar_url })
+  //         .then(() => {
+  //           setUsername(username);
+  //         })
+  //         .catch(() => {
+  //           this.setState({ err: true });
+  //         });
+  //     });
+  // };
 
   signOut = () => {
     const { setUsername } = this.context;
