@@ -104,7 +104,10 @@ export const StyledBugChart = styled(BugChart)`
 
 //<main>
 export const StyledDashboard = styled(Dashboard)`
-  margin-top: 1.5em;
+  header {
+    margin-top: 50px;
+  }
+
   .dashboardButtons {
     display: flex;
     justify-content: space-between;

@@ -12,7 +12,7 @@ export const StyledSingleMentor = styled(SingleMentor)`
   flex-direction: column;
   align-items: center;
   margin: 5%;
-  margin-top: 10%;
+  margin-top: 50px;
   padding: 5%;
   padding-bottom: 5%;
 

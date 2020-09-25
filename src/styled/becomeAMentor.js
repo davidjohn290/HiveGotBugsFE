@@ -13,6 +13,7 @@ export const StyledMentorForm = styled(MentorForm)`
   margin: 10%;
   text-align: center;
   padding: 1.4rem 0.05rem;
+  margin-top: 50px;
 
   h2 {
     font-weight: bold;
