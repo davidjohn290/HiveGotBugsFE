@@ -7,6 +7,7 @@ import AddProblem from "../components/dashboard/AddProblem";
 
 // <article>
 export const StyledUserCard = styled(UserCard)`
+  text-align: center;
   h2 {
     text-align: center;
   }
@@ -14,6 +15,10 @@ export const StyledUserCard = styled(UserCard)`
   h4 {
     margin: 5px;
     margin-bottom: 5px;
+  }
+
+  label {
+    text-align: center;
   }
 
   img {
@@ -24,6 +29,12 @@ export const StyledUserCard = styled(UserCard)`
   }
 
   header {
+    background-color: grey;
+    margin-bottom: 25px;
+    border-radius: 8px;
+    margin: 10%;
+    margin-top: 5%;
+    margin-bottom: 5%;
     text-align: center;
   }
   button {
@@ -44,6 +55,13 @@ export const StyledBugChart = styled(BugChart)`
     justify-content: center;
     margin: 10%;
   }
+  p {
+    text-align:center;
+    font-size:12px;
+    margin:25%
+    margin-bottom: 5%;
+
+  }
   #bugPoints {
     font-family: monospace;
     font-size: 10pt;
@@ -52,25 +70,30 @@ export const StyledBugChart = styled(BugChart)`
     font-family: monospace;
     font-size: 10pt;
   }
-  /* {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-evenly;
-    max-height: 5cm;
-    max-width: 5cm;
-    text-decoration: none;
-    margin: auto;
-  } */
+  
+  #chartList {
+    margin: 0;
+    width:100%;
+  }
   ul {
     display: flex;
     flex-wrap: wrap;
     padding: 0;
-    margin: auto;
+    margin: 15%;
+    justify-content:space-space-between;
   }
 
   li {
     list-style: none;
-    margin: 0em;
+    margin: 0;
+    padding: 1cm
+    
+    
+  }
+  canvas {
+    margin: 0;
+    max-height: 100%;
+    max-width:100%;
   }
 `;
 //<main>
@@ -191,7 +214,8 @@ export const StyledAddProblem = styled(AddProblem)`
   padding: 30px;
   margin-bottom: 25px;
   border-radius: 8px;
-  margin: auto;
+  margin: 5%;
+  margin-bottom: 10%;
   text-align: center;
   h2 {
     font-weight: bold;
@@ -208,13 +232,13 @@ export const StyledAddProblem = styled(AddProblem)`
     flex-direction: column;
     text-align: center;
     justify-content: space-evenly;
+    flex-wrap: wrap;
   }
-  label {
-    text-align: left;
-  }
+  
 
   label {
     vertical-align: middle;
+
   }
 
   input {
@@ -235,10 +259,14 @@ export const StyledAddProblem = styled(AddProblem)`
     margin-top: 6px;
     margin-bottom: 16px;
   }
-
+  
+  }
+  
+}
   textarea {
-    vertical-align: top;
     margin-bottom: 16px;
+    width:100%;
+    
   }
 
   button {

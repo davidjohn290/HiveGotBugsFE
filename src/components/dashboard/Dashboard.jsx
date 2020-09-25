@@ -24,7 +24,6 @@ class Dashboard extends Component {
     problems: [],
     toggleEdit: false,
     filter: false,
-    toggleProblem: false,
     enableProblems: false,
   };
 
@@ -129,12 +128,6 @@ class Dashboard extends Component {
     });
   };
 
-  toggleProblem = () => {
-    this.setState((currentState) => {
-      return { toggleProblem: !currentState.toggleProblem };
-    });
-  };
-
   render() {
     const {
       err,
@@ -144,7 +137,6 @@ class Dashboard extends Component {
       problems,
       toggleEdit,
       filter,
-      toggleProblem,
       enableProblems,
     } = this.state;
     const { className } = this.props;
@@ -162,6 +154,7 @@ class Dashboard extends Component {
           <h2>Posted problems</h2>
           {!enableProblems && <p>Your added problems will appear here!</p>}
           <header>
+            <StyledAddProblem updateProblemList={this.addProblem} />
             <ul className="dashboardButtons">
               {user.role === "mentor" && (
                 <li>
@@ -170,7 +163,7 @@ class Dashboard extends Component {
                     id="editButton"
                     onClick={this.toggleShowEdit}
                   >
-                    {!toggleEdit ? "Edit" : "Close Edit"}
+                    {!toggleEdit ? "Edit Profile" : "Close Edit"}
                   </StyledHexButton>
                 </li>
               )}
@@ -186,18 +179,6 @@ class Dashboard extends Component {
                   </StyledHexButton>
                 </li>
               )}
-              <li>
-                <StyledHexButton
-                  as="button"
-                  id="addButton"
-                  onClick={this.toggleProblem}
-                >
-                  {toggleProblem ? "Close" : "Add Problem"}
-                </StyledHexButton>
-                {toggleProblem && (
-                  <StyledAddProblem updateProblemList={this.addProblem} />
-                )}
-              </li>
             </ul>
           </header>
           <ul>

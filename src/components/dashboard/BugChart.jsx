@@ -130,12 +130,12 @@ class BugChart extends Component {
       datasets: [
         {
           backgroundColor: [
-            "#de1738",
-            "#36A2EB",
-            "#FFCE56",
-            "#CCC",
-            "#36A2EB",
-            "#FFCE56",
+            "rgb(0, 124, 146)",
+            "#808080",
+            "#da995c",
+            "#8cc56f",
+            "#ed6270",
+            "#ffffff",
           ],
           borderColor: "#da995c",
           borderWidth: 1,
@@ -149,14 +149,7 @@ class BugChart extends Component {
       labels: problemLabels,
       datasets: [
         {
-          backgroundColor: [
-            "#de1738",
-            "#36A2EB",
-            "#FFCE56",
-            "#CCC",
-            "#36A2EB",
-            "#FFCE56",
-          ],
+          backgroundColor: ["rgb(0, 124, 146)", "#808080"],
           borderColor: "#da995c",
           borderWidth: 1,
           hoverBackgroundColor: "rgba(255,100,64,0.4)",
@@ -178,6 +171,7 @@ class BugChart extends Component {
           <ul id="chartList">
             {techData.length > 0 && (
               <li>
+                <p>Summary of tech used for each problem</p>
                 <Doughnut
                   data={techChartData}
                   options={{
@@ -189,6 +183,7 @@ class BugChart extends Component {
             )}
             {bugPoints > 0 && (
               <li>
+                <p>Total amount of solved problems versus unsolved</p>
                 <Doughnut
                   data={problemChartData}
                   options={{
