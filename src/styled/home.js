@@ -54,6 +54,13 @@ export const StyledProblemCard = styled(ProblemCard)`
   article {
     width: 100%;
     height: 100%;
+    h2 {
+      margin: 0.1em;
+    }
+  }
+
+  .header {
+    font-size: 8pt;
   }
 
   .container {
