@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-import MentorList from "../components/mentors/MentorList2";
+import MentorList from "../components/mentors/MentorList";
 
 // <main>
 export const StyledMentorList = styled(MentorList)`

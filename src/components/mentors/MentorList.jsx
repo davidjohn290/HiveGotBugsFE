@@ -51,15 +51,20 @@ class MentorList extends Component {
               </h1>
               <p>{mentor.description}</p>
             </section>
-            <section className="mentor-skills">
-              <h5>{mentor.skill1}</h5>
-              <h5>{mentor.skill2}</h5>
-              <h5>{mentor.skill3}</h5>
-              <h5>{mentor.skill4}</h5>
-            </section>
+            <label>
+              Skills:
+              <section className="mentor-skills">
+                <h5>{mentor.skill1}</h5>
+                <h5>{mentor.skill2}</h5>
+                <h5>{mentor.skill3}</h5>
+                <h5>{mentor.skill4}</h5>
+              </section>
+            </label>
             <section className="mentor-stats">
-              <p>{mentor.bug_points}</p>
-              <p>{mentor.online_status}</p>
+              <label>
+                Bug Points:
+                <p>{mentor.bug_points}</p>
+              </label>
             </section>
           </section>
         ))}
