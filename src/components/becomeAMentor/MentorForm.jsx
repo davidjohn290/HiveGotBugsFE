@@ -19,7 +19,14 @@ class MentorForm extends Component {
     tech: [],
     user: {},
     isLoading: false,
-    formValues: { bio: "", skill1: "", skill2: "", skill3: "", github: "" },
+    formValues: {
+      bio: "",
+      skill1: "",
+      skill2: "",
+      skill3: "",
+      github: "",
+      name: "",
+    },
     err: null,
     validUsername: null,
   };
@@ -108,7 +115,13 @@ class MentorForm extends Component {
           },
         });
       });
-      this.setState({ submitted: true, bio: "", skills: [], github: "" });
+      this.setState({
+        submitted: true,
+        bio: "",
+        skills: [],
+        github: "",
+        name: "",
+      });
     }
   };
 
@@ -147,6 +160,17 @@ class MentorForm extends Component {
         </header>
         {!submitted ? (
           <form className={className} onSubmit={this.onSubmit}>
+            <label>
+              Name:
+              <input
+                type="text"
+                name="name"
+                onchange={this.onInput}
+                value={formValues.name}
+                placeholder="Write here..."
+                required
+              />
+            </label>
             <label>
               Skill 1:
               <select
