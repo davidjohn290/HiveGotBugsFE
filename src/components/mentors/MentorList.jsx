@@ -50,6 +50,8 @@ class MentorList extends Component {
                   {mentor.username}
                 </StyledLink>
               </h1>
+              <strong>Contact this mentor:</strong>
+              <br />
               <a
                 href={mentor.github_url}
                 target="_blank"
@@ -65,7 +67,6 @@ class MentorList extends Component {
                 <h5>{mentor.skill1}</h5>
                 <h5>{mentor.skill2}</h5>
                 <h5>{mentor.skill3}</h5>
-                <h5>{mentor.skill4}</h5>
               </section>
             </label>
             <section className="mentor-stats">
