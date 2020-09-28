@@ -50,6 +50,13 @@ class MentorList extends Component {
                   {mentor.username}
                 </StyledLink>
               </h1>
+              <a
+                href={mentor.github_url}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {mentor.github_url}
+              </a>
               <p>{mentor.description}</p>
             </section>
             <label>

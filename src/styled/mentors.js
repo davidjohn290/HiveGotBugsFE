@@ -34,7 +34,7 @@ export const StyledMentorList = styled(MentorList)`
 
   .mentor-bio {
     display: block;
-    margin-top: 4rem;
+    margin-top: 0rem;
     text-align: center;
   }
 
