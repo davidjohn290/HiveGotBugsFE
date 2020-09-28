@@ -9,7 +9,7 @@ export const StyledMentorList = styled(MentorList)`
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
   grid-gap: 2rem;
-  margin: 0 auto;
+  margin: 3rem auto;
   box-sizing: border-box;
   font-size: 15px;
   display: flex;
@@ -34,7 +34,7 @@ export const StyledMentorList = styled(MentorList)`
 
   .mentor-bio {
     display: block;
-    margin-top: 0rem;
+    margin-top: -5rem;
     text-align: center;
   }
 
