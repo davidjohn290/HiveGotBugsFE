@@ -1,0 +1,13 @@
+#becomeAMentorPTag {
+  padding: 0.5em;
+  text-align: center;
+  font-family: sans-serif;
+  font-size: 15pt;
+  max-width: 60%;
+  margin: auto;
+  margin-top: 50px;
+}
+
+p a {
+  color: white;
+}
