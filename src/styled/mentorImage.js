@@ -15,7 +15,6 @@ export const StyledMentorImage = styled(MentorImage)`
     }};
     background-size: auto 138.5641px;
     background-position: center;
-    margin: -50px;
   }
 
   .hexTop,
