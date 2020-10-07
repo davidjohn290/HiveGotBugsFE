@@ -30,4 +30,4 @@ Hive Got Bugs is a site where junior developers can share solutions to common co
 
 ## Acknowledgements
 
-Many thanks to [Abby Clarke](https://www.abbyclarkedesign.com/) for designing the 'code bug' logo:
+Many thanks to [Abby Clarke](https://www.abbyclarkedesign.com/) for designing the 'code bug' logo.
